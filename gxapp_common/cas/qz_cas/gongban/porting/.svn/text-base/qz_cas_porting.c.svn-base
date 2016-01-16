@@ -1,0 +1,603 @@
+/*****************************************************************************
+* 						   CONFIDENTIAL
+*        Hangzhou GuoXin Science and Technology Co., Ltd.
+*                      (C)2014, All right reserved
+******************************************************************************
+
+******************************************************************************
+* File Name :	mg_cas_porting.c
+* Author    : 	zhouhm
+* Project   :	goxceed dvbc
+* Type      :
+******************************************************************************
+* Purpose   :	mg cas porting
+******************************************************************************
+* Release History:
+VERSION	Date			  AUTHOR         Description
+1.0  	2014.05.6		  chenth 	 			creation
+*****************************************************************************/
+#include "ca_process.h"
+#include "app_common_flash.h"
+#include "app_common_porting_stb_api.h"
+#include "app_common_porting_ca_flash.h"
+#include "app_common_porting_ca_demux.h"
+#include "app_common_porting_ca_os.h"
+#include "app_common_porting_ca_smart.h"
+#include "app_common_porting_ca_descramble.h"
+#include "app_common_play.h"
+#include "app_qz_cas_api_pop.h"
+#include "app_qz_cas_api_demux.h"
+#include "app_qz_cas_api_smart.h"
+#include "app_qz_cas_api_email.h"
+#include "app_common_epg.h"
+
+handle_t semaphore = 0;	
+extern uint8_t zonecode; 
+
+extern qz_cas_rolling_message_st rollingmsg[];
+extern SMARTCARD_INFO card;
+
+static uint8_t short_message[QZ_CA_MAX_LEN_OSD];
+static uint16_t short_message_length = 0;
+
+
+extern void check_sw1sw2(uint16_t sw1sw2);
+
+void Qz_STBPort_Create_Semaphore(void)
+{
+    app_porting_ca_os_sem_create(&semaphore,1);
+}
+
+void Qz_STBPort_Obtain_Semaphore(void)
+{
+	app_porting_ca_os_sem_wait(semaphore);
+}
+
+void Qz_STBPort_Release_Semaphore(void)
+{
+	app_porting_ca_os_sem_signal(semaphore);
+}
+
+
+int DVTSTBCA_GetValidSNID(uint8_t *pSN,int *len)
+{
+#define MAX_SEARIAL_LEN (20)
+	char caUser[MAX_SEARIAL_LEN]={0};
+    char temp[MAX_SEARIAL_LEN]={0};
+    int length = 0,i;
+    int firstSerialNum = -1;
+	app_flash_get_serial_number(0,(char *)caUser,MAX_SEARIAL_LEN);
+    if(*len <=MAX_SEARIAL_LEN)
+    {//截取后面长度
+        memcpy(temp, caUser+(MAX_SEARIAL_LEN-*len), *len);
+        length = *len;
+    }
+    else
+    {
+        memcpy(temp, caUser, MAX_SEARIAL_LEN);
+        length = MAX_SEARIAL_LEN;
+    }
+
+    for(i=0;i<length;i++)
+    {
+        if ((temp[i] != '0') && (-1 == firstSerialNum))
+		{
+			firstSerialNum = i;
+            break;
+		}
+    }
+    if(i<length)
+    {
+        *len = length-i;
+        memcpy(pSN, temp+i, length-i);
+    }
+    else if(i>=length)//默认序列号
+    {
+        int32_t mode = 0;
+	    mode = qzcas_get_config_hs_mode();
+        if(HOST_MODE == mode)
+        {
+            strcpy((char *)pSN,"100001");
+        }
+        else
+        {
+            strcpy((char *)pSN,"100002");
+        }
+        *len = 6;
+    }
+    
+    return *len;
+}
+
+
+
+uint8_t QZCA_SetPrivateDataFilter( uint8_t        byReqID,
+									   const uint8_t* pbyFilter,
+									   const uint8_t* pbyMask,
+									   uint8_t        byLen,
+									   uint16_t       wPid,
+									   uint8_t        byWaitSeconds );
+
+/* 释放私有数据过滤器 */
+void QZCA_ReleasePrivateDataFilter( uint8_t  byReqID,
+                                           uint16_t wPid )
+{
+	uint32_t filterId = 0;
+    bool releaseChannel = TRUE;
+	ca_filter_t sfilter = {0};
+
+	/*
+	* 查找对应channel id , filter id
+	*/
+
+	for (filterId = 0; filterId< MAX_FILTER_COUNT;filterId++)
+	{
+		app_porting_ca_demux_get_by_filter_id(filterId,&sfilter);
+		if (( 0 != sfilter.usedStatus)&&(0 != sfilter.handle)&&(0 != sfilter.channelhandle)
+			&&(wPid == sfilter.pid)&&(byReqID == sfilter.byReqID))
+		{
+
+            app_porting_ca_demux_release_filter( filterId, releaseChannel);
+            return ;
+
+		}
+	}
+
+	return ;
+}
+
+//设置emc过滤器
+uint8_t QZCA_SetEcmFilter(uint16_t wPid)
+{
+    uint8_t match[18]={0};
+    uint8_t mask[18]={0};
+    int i = 0;
+
+    memset(match,0,sizeof(match));
+    memset(mask,0,sizeof(mask));
+    
+    match[0] = ECM_TABLEID;
+	mask[0] = 0xFF;
+
+	for( i = 3; i < 7; i++ )
+    {
+        match[i] = card.super_cas_id[i-3];
+        mask[i] = 0xff;		
+    }
+
+    CAS_DUMP("ECM Match", match, 8);
+    CAS_DUMP("ECM Mask", mask, 8);
+    
+    
+ 	QZCA_SetPrivateDataFilter( ECM_TABLEID,
+							   match,
+							   mask,
+							   8,
+							   wPid,
+							   0 );	
+	return 0;
+}
+
+uint8_t QZCA_SetEmmFilter(uint16_t  wPid)
+{
+    uint8_t match[18]={0};
+    uint8_t mask[18]={0};
+	
+    int i;
+    memset(match,0,sizeof(match));
+    memset(mask,0,sizeof(mask));
+
+    match[0] = EMM_TABLEID;
+	mask[0] = 0xFF;
+
+    
+	if (Ca_Card_Ready() == ERR_OK)
+    {
+        for( i = 3; i < 7; i++ )
+        {
+            match[i] = card.super_cas_id[i-3];
+            mask[i] = 0xff;		
+        }
+    	for( i = 7; i < 10; i++ )
+    	{
+    		match[i] = card.smartcard_id[i-7];
+            mask[i] = 0xff;	
+    	}
+        
+        CAS_DUMP("EMM Match", match, 11);
+        CAS_DUMP("EMM Mask", mask, 11);
+        
+     	QZCA_SetPrivateDataFilter( EMM_TABLEID,
+    							   match,
+    							   mask,
+    							   11,
+    							   wPid,
+    							   20 );	
+	 }
+    else
+    {
+        printf("Ca Card not Ready.\n");
+    }
+	return 0;
+}
+
+void QZCA_ShowBugMessage(uint16_t messageType)
+{
+	uint8_t  byMessageType = 0xff;
+
+	switch(messageType)
+	{
+        case NO_SW1SW2:
+		case SW1SW2_OK:
+			byMessageType = CA_QZ_SUCCESS;
+			break;
+        case SW1SW2_MEMORY_ERROR:
+            byMessageType = CA_QZ_ERR_NO_MEMORY;
+			break;
+        case SW1SW2_INCORRECT_DATA:
+        case SW1SW2_GENERAL_ERROR:
+            byMessageType = CA_QZ_ERR_ILLEGAL_CARD;
+			break;
+        case SW1SW2_EXPIRED:
+            byMessageType = CA_QZ_ERR_AUTH_OVERDUE;
+			break;
+        case SW1SW2_NOT_START:
+            byMessageType = CA_QZ_ERR_AUTH_NOTSTART;
+			break;
+        case SW1SW2_INCORRECT_SMARTCARD_ID:
+        case SW1SW2_STB_SN_NOT_MATCH:
+            byMessageType = CA_QZ_ERR_CARD_NOTMATCH;
+			break;
+        case SW1SW2_CARD_NOT_INIT:
+            byMessageType = CA_QZ_ERR_CARD_NOTINIT;
+			break;
+        case SW1SW2_PPV_EXCEED:
+            byMessageType = CA_QZ_ERR_PPV_OUTDATE;
+            break; 
+        case SW1SW2_NOT_PAIRED:
+            byMessageType = CA_QZ_ERR_PINERR_CARD_PAIRED;
+            break; 
+            
+        case SW1SW2_ECM_NOT_AUTHORIZED:
+            byMessageType = CA_QZ_ERR_ECM_NOT_AUTHORIZED;
+            break;
+        case SW1SW2_LIMIT_AREA:
+            byMessageType = CA_QZ_ERR_ZONE_CODE;
+            break;
+        case SW1SW2_LIMIT_CARD:
+            byMessageType = CA_QZ_ERR_LIMIT_CARD;
+            break;
+        case SW1SW2_NOT_CHILD_MODE:
+            byMessageType = CA_QZ_ERR_NOT_CHILD_MODE;
+            break;
+        case SW1SW2_NO_CHILD_AUTH:
+            byMessageType = CA_QZ_ERR_NO_CHILD_AUTH;
+            break;
+        case SW1SW2_CHILD_NOT_AUTHORIZED:
+            byMessageType = CA_QZ_ERR_CHILD_NOT_AUTHORIZED;
+            break;
+        case SW1SW2_CHILD_AUTH_TIMEOUT:
+            byMessageType = CA_QZ_ERR_CHILD_AUTH_TIMEOUT;
+            break;
+        case SW1SW2_CHILD_AUTH_EXPIRED:
+            byMessageType = CA_QZ_ERR_CHILD_AUTH_EXPIRED;
+            break;
+        case QZ_CARD_NOTFOUND:
+            byMessageType = CA_QZ_ERR_CARD_NOTFOUND;
+            break;
+		default:
+			/* only for dbg */
+			break;
+	}
+
+	if (0xff != byMessageType)
+	{
+		if (MSG_POP_COMMON_END+byMessageType+1 >= MESSAGE_MAX_COUNT)
+			return ;			
+	}
+	if ( TRUE != app_play_get_msg_pop_type_state(MSG_POP_COMMON_END+byMessageType+1))
+	{
+		app_play_clear_ca_msg();
+		app_play_set_msg_pop_type(MSG_POP_COMMON_END+byMessageType+1);
+	}
+	return ;
+	
+}
+
+
+void QZCA_InitAreaCode()
+{
+	Qz_Dbg(" QZCA_InitAreaCode \n"); 
+    int32_t AreaCode = 0xffffffff;						
+	GxBus_ConfigSetInt("QZAreaCode", AreaCode);
+}
+static int	QZCA_GetAreaCode(uint32_t *pdwData)
+{
+	Qz_Dbg(" QZCA_CheckAreaCode \n"); 
+	int32_t AreaCode = 0;
+	GxBus_ConfigGetInt("QZAreaCode", &AreaCode, 0xffffffff);
+	if (0xffffffff != AreaCode)
+	{
+		*pdwData = (uint32_t)AreaCode;
+		return 1;	
+	}
+	else
+	{
+		*pdwData = 0xffffffff;	
+		return 0;		
+	}
+
+}
+
+//ecm数据处理
+/*
+wEcmPID:pid
+MG_ECM:ecm数据处理
+*/
+void QZCA_EcmDataGot(uint16_t wEcmPID,uint8_t *ECM_Data,uint8_t ECM_Len)
+{
+    int err;
+    ECM_DATA *pEcm = NULL;
+    uint8_t cw[16];
+    
+    uint16_t crc = 0;
+	uint8_t crc_a = 0;
+	uint8_t crc_b = 0;
+    static uint32_t areaCode = 0xffffffff;
+    uint8_t *pareaCode = (uint8_t *)&areaCode;
+
+    
+    if(ECM_Len > sizeof(ECM_DATA))
+    {
+        pEcm = (ECM_DATA *)ECM_Data;
+        Qz_Dbg("ECM_Len:%d\n",ECM_Len);
+        Qz_DUMP("[ECM_DATA]", ECM_Data, sizeof(ECM_DATA));
+    }
+    else
+    {
+        printf("QZCA_EcmDataGot data Error.\n");
+        return ;
+    }
+
+    crc = crc16ccitt(&ECM_Data[3], ECM_Len-2);
+    crc_a = (unsigned char)(crc >> 8);
+    crc_b = (unsigned char)crc;
+
+    if(crc_a != ECM_Data[ECM_Len+1] || crc_b != ECM_Data[ECM_Len+2])
+	{
+		printf("[ECM] crc check error\n");
+		return;
+	}
+
+    if(areaCode == 0xffffffff)
+    {
+        QZCA_GetAreaCode(&areaCode);
+        Qz_Dbg("##QZCA_GetAreaCode:0x%08x\n",areaCode);
+    }
+    
+    if((pareaCode[0] == card.area_code[0])&&(pareaCode[1] == card.area_code[1])
+		&&(pareaCode[2] == card.area_code[2])&&(pareaCode[3] == card.area_code[3]))
+	{
+		//printf("####111\n");
+	}
+	else if((pareaCode[0] == 0xff)&&(pareaCode[1] == 0xff)
+		&&(pareaCode[2] == 0xff)&&(pareaCode[3] == 0xff))
+	{
+		//printf("####222\n");
+	}
+	else
+	{
+		check_sw1sw2(SW1SW2_LIMIT_AREA);
+		return;
+	}
+    
+    
+    err = process_ecm_apdu(ECM_Data+3,ECM_Len,card.cw_mask,cw);
+	if(err == ERR_OK)
+	{
+		set_cw(wEcmPID,cw);
+        
+    //时间获取设置
+        Qz_Dbg("###############################################\n");
+        if(ECM_Len>=sizeof(ECM_DATA)+10)
+        {
+            struct tm Time = {0};
+            memset(&Time,0,sizeof(struct tm));
+            Time.tm_year = (pEcm->ecm_rest[3]<<8)|(pEcm->ecm_rest[4]);
+            Time.tm_mon = pEcm->ecm_rest[5];
+            Time.tm_mday = pEcm->ecm_rest[6];
+            Time.tm_hour = pEcm->ecm_rest[7];
+            Time.tm_min = pEcm->ecm_rest[8];
+            Time.tm_sec = pEcm->ecm_rest[9];
+            app_epg_set_local_time(&Time,TRUE);
+            
+            Qz_Dbg("Date:%04d-%02d-%02d %02d:%02d:%02d\n",
+            Time.tm_year,Time.tm_mon,Time.tm_mday,
+            Time.tm_hour,Time.tm_min,Time.tm_sec);
+        }
+        
+	}
+	else if( err != ERR_OLD_DATA)
+	{
+		//printf("[ecm]process_ecm_apdu error,code:%#x\n ",err);
+	}
+	return;
+
+ }
+
+//EMM处理
+void QZCA_EmmDataGot(uint16_t wEcmPID,uint8_t *EMM_Data,uint8_t EMM_Len)
+{
+    int err;
+    EMM_DATA *pEmm = NULL;
+    if(EMM_Len > sizeof(EMM_DATA))
+    {
+        pEmm = (EMM_DATA *)EMM_Data;
+        //CAS_DUMP("[EMM_DATA]", EMM_Data, sizeof(EMM_DATA));
+    }
+    else
+    {
+        printf("QZCA_EmmDataGot data Error.\n");
+        return ;
+    }
+    //0x00 for common emm, 0x01 for message, 0x02 for mail
+    //printf("emm_type:%d\n",pEmm->emm_type);
+    if(pEmm->emm_type == 0x1)//短信
+    {
+        uint16_t sLength = 0;
+        sLength = ((pEmm->emm_rest[0]<<8)|pEmm->emm_rest[1]);
+        uint8_t *pData = NULL;
+        pData = &pEmm->emm_rest[2];
+
+        sLength = (sLength<=sizeof(rollingmsg[QZ_MSG_OSD].content)-1)?sLength:sizeof(rollingmsg[QZ_MSG_OSD].content)-1;
+
+        if(short_message_length == sLength)
+        {
+            if(!memcmp(short_message,pData,sLength))
+            {
+                Qz_Dbg("the same osd.\n");
+                return ;
+            }
+        }
+
+        Qz_Dbg("recv osd\n");
+
+        GxCore_MutexLock (rollingmsg[QZ_MSG_OSD].mutex);
+        rollingmsg[QZ_MSG_OSD].wStatus = TRUE;
+        rollingmsg[QZ_MSG_OSD].roll_status = FALSE;	
+        rollingmsg[QZ_MSG_OSD].byStyle = QZ_CA_OSD_TOP;
+        rollingmsg[QZ_MSG_OSD].message_type = QZ_MSG_OSD;
+        rollingmsg[QZ_MSG_OSD].wTimes = 3;	
+        memset(rollingmsg[QZ_MSG_OSD].content,0,QZ_CA_MAX_LEN_OSD);
+        memcpy(rollingmsg[QZ_MSG_OSD].content,pData,sLength);
+
+        short_message_length = sLength;
+        memcpy(short_message,pData,sLength);
+        
+        GxCore_MutexUnlock (rollingmsg[QZ_MSG_OSD].mutex);
+		app_cas_api_on_event(DVB_CA_ROLLING_INFO,CAS_NAME, &rollingmsg[QZ_MSG_OSD], sizeof(qz_cas_rolling_message_st));						
+        return ;
+    }
+    else if(pEmm->emm_type == 0x2)//邮件
+    {//接收邮件
+        uint16_t len = 0;
+        int ret;
+        uint8_t mailId = 0;
+    	char EmailBody[Email_Content_MAXLEN]={0};
+        char EmailTitle[EMail_Title_MAXLEN]={0};
+        char Sender[EMail_Sender_MAXLEN]={0};
+        char cTime[EMail_TIME]={0};
+        len = ((pEmm->emm_rest[0]<<8)|pEmm->emm_rest[1]);
+        if(Email_Analyze(&pEmm->emm_rest[2],len,\
+            &mailId,EmailTitle,EmailBody,Sender,cTime)<0)
+        {
+            return ;
+        }
+        
+        ret = EmailList_Update(mailId,EmailTitle,EmailBody,Sender,cTime,0);
+        if(ret > 0)
+        {
+            CA_toEmailNotify(CAS_NEW_EAMIL);
+        }
+        else if(ret == 0)//邮件保存失败
+        {
+            CA_toEmailNotify(CAS_NEW_EMAIL_NO_ROOM);
+        }
+        
+		Qz_Dbg("recv mail.\n");
+      
+        return ;
+    }
+    else if(pEmm->emm_type == 0x0)
+    {
+        uint16_t crc = 0;
+    	uint8_t crc_a = 0;
+    	uint8_t crc_b = 0;
+
+        crc = crc16ccitt(&EMM_Data[3], EMM_Len-2);
+        crc_a = (unsigned char)(crc >> 8);
+        crc_b = (unsigned char)crc;
+
+        if(crc_a != EMM_Data[EMM_Len+1] || crc_b != EMM_Data[EMM_Len+2])
+    	{
+    		printf("[EMM] crc check error\n");
+    		return;
+    	}
+        
+        err = process_emm_apdu(EMM_Data+3,EMM_Len);
+        if(ERR_OK == err)
+    	{
+    		printf("[EMM] ok\n");
+    	}
+        else if( ERR_OLD_DATA != err)
+    	{
+    		printf("[EMM]process_emm_apdu error,code:%#x\n ",err);
+    	}
+    }
+    
+    return ;  
+}
+
+
+/* 设置私有数据过滤器 */
+uint8_t QZCA_SetPrivateDataFilter( uint8_t        byReqID,
+									   const uint8_t* pbyFilter,
+									   const uint8_t* pbyMask,
+									   uint8_t        byLen,
+									   uint16_t       wPid,
+									   uint8_t        byWaitSeconds )
+{
+	ca_filter_t filter = {0};
+	bool repeatFlag = TRUE;
+    //ca_filter_t* sfilter = NULL;
+    //uint32_t filterId = 0;
+	uint8_t     match[18] = {0,};
+	uint8_t     mask[18] = {0,};
+    
+	if(pbyFilter == NULL || pbyMask == NULL )
+	{
+		return FALSE;
+	}
+
+	memcpy(match,pbyFilter,byLen);
+	memcpy(mask,pbyMask,byLen);
+
+//	DUMP(DEMUX,INFO,byLen,pbyFilter,"%x");
+//	DUMP(DEMUX,INFO,byLen,pbyMask,"%x");
+
+#if 0
+	for (filterId = 0; filterId< MAX_FILTER_COUNT;filterId++)
+	{
+		sfilter = app_porting_ca_demux_get_by_filter_id(filterId);
+		if (( 0 != sfilter->usedStatus)&&(0 != sfilter->handle)&&(0 != sfilter->channelhandle)
+			&&(wPid == sfilter->pid)&&(byReqID == sfilter->byReqID)
+			&&(byLen == sfilter->filterLen))
+		{
+			if ((0 == memcmp(sfilter->match,pbyFilter,byLen))&&
+				(0 == memcmp(sfilter->mask,pbyMask,byLen)))
+				{
+
+					return TRUE;
+				}
+		}
+	}
+#endif
+
+	QZCA_ReleasePrivateDataFilter(   byReqID, wPid );
+
+	filter.byReqID = byReqID;
+	filter.crcFlag = FALSE;
+	filter.filterLen = byLen;
+	memcpy(filter.match,match,byLen);
+	memcpy(filter.mask,mask,byLen);
+	filter.nWaitSeconds = byWaitSeconds;
+	filter.pid = wPid;
+	filter.equalFlag = TRUE;
+	filter.repeatFlag = repeatFlag;
+	filter.Callback = app_qz_cas_filter_notify;//过滤器数据回调处理
+	filter.timeOutCallback = app_qz_cas_filter_timeout_notify;//超时回调
+	return app_porting_ca_demux_start_filter(&filter);//设置CA过滤器
+
+}
+
+

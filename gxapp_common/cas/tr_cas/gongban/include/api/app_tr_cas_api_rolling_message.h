@@ -1,0 +1,62 @@
+/**
+ *
+ * @file        app_tr_cas_api_rolling_message.h
+ * @brief
+ * @version     1.1.0
+ * @date        04/16/2014 
+ * @author      zhouhuaming (zhouhm), zhuohm@nationalchip.com
+ * @modify:    wangjian modify on 20141227.
+ */
+#ifndef __APP_TR_CAS_API_ROLLING_MESSAGE_H__
+#define __APP_TR_CAS_API_ROLLING_MESSAGE_H__
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "app_common_play.h"
+#include "Tr_Cas.h"
+
+
+#define TR_CA_MAX_LEN_OSD       	(MSG_DATA_MAX_LENGTH)
+#define TR_CA_SCROLL_TIMES        	(1)
+
+typedef enum
+{
+	TR_CA_OSD_TOP = 0,
+	TR_CA_OSD_BOTTOM,
+	TR_CA_OSD_MAX
+}TR_CA_OSD_TYPE_e;
+
+typedef struct 
+{
+	handle_t mutex;
+	uint32_t dataCrc32;
+	uint8_t wStatus; /* 0: not show, 1: need to show.*/
+	uint8_t roll_status; /*0 : rolling status, 1: not rolling status.*/
+	uint8_t byStyle; /*osd type.*/
+	int32_t wTimes; /*rolling count.*/
+	uint16_t period;/*rolling period(the unit is sec).*/
+	event_list *timer_handle;
+	
+	CAS_TIMESTAMP create_time;
+	uint8_t valid_data;/*string is valid.*/
+	uint16_t len;
+	uint8_t content[TR_CA_MAX_LEN_OSD+1];
+}TR_CAS_ROLLING_MSG_t; 
+
+
+
+int8_t app_tr_cas_rolling_message_init(void);
+int32_t app_tr_cas_gxmsg_ca_on_event_rolling(GxMsgProperty0_OnEvent* event);
+int32_t app_tr_cas_rolling_message_exec(void);
+void app_tr_cas_rolling_message_hide(void);
+uint8_t app_tr_cas_get_cur_rolling_info(uint8_t osd_type, TR_CAS_ROLLING_MSG_t *rolling_infoPtr);
+
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /*__APP_TR_CAS_API_ROLLING_MESSAGE_H__*/
+

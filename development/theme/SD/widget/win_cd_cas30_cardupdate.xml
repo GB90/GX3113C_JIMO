@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="GB2312" standalone="no"?>
+<widget name="win_cd_cas30_cardupdate" style="default" class="window">
+    <property>
+        <rect>[0,0,720,576]</rect>
+        <forecolor>[#000000,#000000,#000000]</forecolor>
+        <backcolor>[#00FF00,#00FF00,#00FF00]</backcolor>
+    </property>
+    <signal>
+        <create>win_cd_cas30_cardupdate_create</create>
+        <destroy>win_cd_cas30_cardupdate_destroy</destroy>
+        <keypress>win_cd_cas30_cardupdate_keypress</keypress>
+    </signal>
+    <children>
+        <widget name="win_cd_cas30_cardupdate_image_bg" style="default" class="image">
+            <property>
+                <rect>[80,78,560,420]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#33508C,#33508C,#33508C]</backcolor>
+                <mode>multiple</mode>
+                <img></img>
+                <lt_img>DS_WIN_BG_T_l.bmp</lt_img>
+                <rt_img>DS_WIN_BG_T_r.bmp</rt_img>
+                <l_img>DS_WIN_BG.bmp</l_img>
+                <r_img>DS_WIN_BG.bmp</r_img>
+            </property>
+        </widget>
+        <widget name="win_audio_set_image202" style="default" class="image">
+            <property>
+                <rect>[80,456,560,31]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#808080,#808080,#808080]</backcolor>
+                <mode>single</mode>
+                <img>DS_HELP_COTE.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_cardupdate_record" style="default" class="text">
+            <property>
+                <rect>[118,222,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Update Record</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_cardupdate_record_value" style="default" class="text">
+            <property>
+                <rect>[332,223,300,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_cardupdate_time" style="default" class="text">
+            <property>
+                <rect>[118,279,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Update Time</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_cardupdate_time_value" style="default" class="text">
+            <property>
+                <rect>[332,279,300,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_cardupdate_tip_image_exit" style="default" class="image">
+            <property>
+                <rect>[277,459,34,22]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <mode>single</mode>
+                <img>DS_Icon_Exit.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_tip_text_exit" style="default" class="text">
+            <property>
+                <rect>[328,457,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Exit Menu</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_cardupdate_title" style="default" class="text">
+            <property>
+                <rect>[163,88,400,42]</rect>
+                <forecolor>[#FFFFFF,#FFFFFF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>simhei</font>
+                <string>Card Update Info</string>
+                <format>static</format>
+            </property>
+        </widget>
+    </children>
+</widget>

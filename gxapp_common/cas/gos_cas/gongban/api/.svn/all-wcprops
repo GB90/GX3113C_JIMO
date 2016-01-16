@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/3201_DVBC/!svn/ver/968/gxapp_common/cas/gos_cas/gongban/api
+END
+app_gos_cas_api_demux.c
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/gos_cas/gongban/api/app_gos_cas_api_demux.c
+END
+app_gos_cas_api_baseinfo.c
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/gos_cas/gongban/api/app_gos_cas_api_baseinfo.c
+END
+app_gos_cas_api_smart.c
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/3201_DVBC/!svn/ver/968/gxapp_common/cas/gos_cas/gongban/api/app_gos_cas_api_smart.c
+END
+app_gos_cas_porting_stb_api.c
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/gos_cas/gongban/api/app_gos_cas_porting_stb_api.c
+END

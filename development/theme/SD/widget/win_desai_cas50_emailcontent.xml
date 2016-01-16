@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="GB2312" standalone="no"?>
+<widget name="win_desai_cas50_emailcontent" style="default" class="window">
+    <property>
+        <rect>[0,0,720,576]</rect>
+        <forecolor>[#000000,#000000,#000000]</forecolor>
+        <backcolor>[#00FF00,#00FF00,#00FF00]</backcolor>
+    </property>
+    <signal>
+        <create>app_email_content_create</create>
+        <destroy>app_email_content_destroy</destroy>
+        <keypress>app_email_content_keypress</keypress>
+    </signal>
+    <children>
+        <widget name="win_desai_cas50_emailcontent_backgroup" style="default" class="image">
+            <property>
+                <rect>[80,78,560,420]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#33508C,#33508C,#33508C]</backcolor>
+                <mode>multiple</mode>
+                <img></img>
+                <lt_img>DS_WIN_BG_T_l.bmp</lt_img>
+                <rt_img>DS_WIN_BG_T_r.bmp</rt_img>
+                <l_img>DS_WIN_BG.bmp</l_img>
+                <r_img>DS_WIN_BG.bmp</r_img>
+            </property>
+        </widget>
+        <widget name="win_audio_set_image202" style="default" class="image">
+            <property>
+                <rect>[80,456,560,31]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#808080,#808080,#808080]</backcolor>
+                <mode>single</mode>
+                <img>DS_HELP_COTE.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_emailcontent_title" style="default" class="text">
+            <property>
+                <rect>[203,98,300,30]</rect>
+                <forecolor>[#FFFFFF,#FFFFFF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <string>Email Content</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_emailcontent_mailtitle" style="default" class="text">
+            <property>
+                <rect>[113,137,500,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_email_content_image_line" style="default_img" class="image">
+            <property>
+                <rect>[80,175,560,2]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#070707,#070707,#070707]</backcolor>
+                <mode>single</mode>
+                <img></img>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_emailcontent_content" style="default" class="notepad">
+            <property>
+                <rect>[114,182,500,260]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <alignment>left|top</alignment>
+                <font>Arial</font>
+                <vertical_margin>0</vertical_margin>
+                <horizontal_margin>0</horizontal_margin>
+            </property>
+            <children>
+                <widget name="win_desai_cas50_emailcontent_content_scrollbar" style="default" class="scrollbar">
+                    <property>
+                        <rect>[493,0,0,260]</rect>
+                        <forecolor>[#000000,#000000,#000000]</forecolor>
+                        <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                        <format>scroll_hide</format>
+                    </property>
+                </widget>
+            </children>
+        </widget>
+        <widget name="win_stb_info_tip_image_exit" style="default" class="image">
+            <property>
+                <rect>[411,460,34,22]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_Icon_Exit.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_tip_text_exit" style="default" class="text">
+            <property>
+                <rect>[455,457,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Exit Menu</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_emailcontent_image_updown" style="default" class="image">
+            <property>
+                <rect>[167,464,54,12]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_ICON_SWORD.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_emailcontent_text_updown" style="default" class="text">
+            <property>
+                <rect>[227,457,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Read</string>
+                <format>static</format>
+            </property>
+        </widget>
+    </children>
+</widget>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="GB2312" standalone="no"?>
+<widget name="win_desai_cas50_card_setwatchlevel" style="default" class="window">
+    <property>
+        <rect>[0,0,720,576]</rect>
+        <forecolor>[#000000,#000000,#000000]</forecolor>
+        <backcolor>[#00FF00,#00FF00,#00FF00]</backcolor>
+    </property>
+    <signal>
+        <create>win_card_setwatchlevel_create</create>
+        <destroy>win_card_setwatchlevel_destroy</destroy>
+        <keypress>win_card_setwatchlevel_keypress</keypress>
+    </signal>
+    <children>
+        <widget name="win_desai_cas50_card_setwatchlevel_backgroup" style="default" class="image">
+            <property>
+                <rect>[80,78,560,420]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#33508C,#33508C,#33508C]</backcolor>
+                <mode>multiple</mode>
+                <img></img>
+                <lt_img>DS_WIN_BG_T_l.bmp</lt_img>
+                <rt_img>DS_WIN_BG_T_r.bmp</rt_img>
+                <l_img>DS_WIN_BG.bmp</l_img>
+                <r_img>DS_WIN_BG.bmp</r_img>
+            </property>
+        </widget>
+        <widget name="win_audio_set_image202" style="default" class="image">
+            <property>
+                <rect>[80,456,560,31]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#808080,#808080,#808080]</backcolor>
+                <mode>single</mode>
+                <img>DS_HELP_COTE.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_card_setwatchlevel_title" style="default" class="text">
+            <property>
+                <rect>[163,88,400,42]</rect>
+                <forecolor>[#FFFFFF,#FFFFFF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>simhei</font>
+                <string>Card Set Watchlevel</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_card_setwatchlevel_box" style="default" class="box">
+            <property>
+                <rect>[139,183,447,160]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <interval>10</interval>
+                <format>vertical</format>
+            </property>
+            <signal>
+                <keypress>win_card_setwatchlevel_box_keypress</keypress>
+            </signal>
+            <children>
+                <widget name="win_desai_cas50_card_setwatchlevel_boxitem1" style="default" class="boxitem">
+                    <property>
+                        <rect>[0,10,447,29]</rect>
+                        <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                        <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                        <unfocus_image>DS_BOX_ALLOW_BLUE.bmp</unfocus_image>
+                        <focus_image>DS_BOX_ALLOW_ORANGE.bmp</focus_image>
+                    </property>
+                    <children>
+                        <widget name="win_desai_cas50_card_setwatchlevel_boxitem1_text" style="default" class="text">
+                            <property>
+                                <rect>[13,1,200,26]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                                <font>Arial</font>
+                                <alignment>left|vcentre</alignment>
+                                <string>Watch Level</string>
+                                <format>static</format>
+                            </property>
+                        </widget>
+                        <widget name="win_desai_cas50_card_setwatchlevel_boxitem1_combobox" style="default" class="combobox">
+                            <property>
+                                <rect>[226,2,200,26]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                                <font>Arial</font>
+                                <content>[1,2,3,4,5,6,7,8,9]</content>
+                            </property>
+                        </widget>
+                    </children>
+                </widget>
+                <widget name="win_desai_cas50_card_setwatchlevel_boxitem2" style="default" class="boxitem">
+                    <property>
+                        <rect>[0,49,447,29]</rect>
+                        <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                        <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                        <unfocus_image>DS_BOX_ALLOW_BLUE.bmp</unfocus_image>
+                        <focus_image>DS_BOX_ALLOW_BLUE.bmp</focus_image>
+                        <disable_image>DS_BOX_ALLOW_BLUE.bmp</disable_image>
+                    </property>
+                    <children>
+                        <widget name="win_desai_cas50_card_setwatchlevel_boxitem2_text" style="default" class="text">
+                            <property>
+                                <rect>[13,1,200,26]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                                <font>Arial</font>
+                                <alignment>left|vcentre</alignment>
+                                <string>Input PIN</string>
+                                <format>static</format>
+                            </property>
+                        </widget>
+                        <widget name="win_desai_cas50_card_setwatchlevel_boxitem2_edit" style="default" class="edit">
+                            <property>
+                                <rect>[226,1,200,26]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#ff00ff,#debe42,#ff00ff]</backcolor>
+                                <font>Arial</font>
+                                <alignment>hcentre|vcentre</alignment>
+                                <intaglio>*</intaglio>
+                                <maxlen>6</maxlen>
+                                <format>edit_digit</format>
+                            </property>
+                        </widget>
+                    </children>
+                </widget>
+            </children>
+        </widget>
+        <widget name="win_tip_image_updown" style="default" class="image">
+            <property>
+                <rect>[88,465,54,12]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_ICON_SWORD.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_passwd_set_tip_image_exit" style="default" class="image">
+            <property>
+                <rect>[498,460,34,22]</rect>
+                <forecolor>[#FFFFFF,#FF00FF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_Icon_Exit.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_passwd_set_tip_image_ok" style="default" class="image">
+            <property>
+                <rect>[245,460,34,22]</rect>
+                <forecolor>[#FFFFFF,#FF00FF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_ICON_OK.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_tip_text_updown" style="default" class="text">
+            <property>
+                <rect>[144,457,100,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Move Focus</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_tip_text_exit" style="default" class="text">
+            <property>
+                <rect>[537,457,100,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Exit Menu</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_tip_text_ok" style="default" class="text">
+            <property>
+                <rect>[284,457,80,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Save</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_passwd_set_text_tip_input" style="default" class="text">
+            <property>
+                <rect>[413,456,80,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Input</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_card_setwatchlevel_text1334" style="default" class="text">
+            <property>
+                <rect>[369,459,40,25]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <string>0~9</string>
+                <format>static</format>
+            </property>
+        </widget>
+    </children>
+</widget>

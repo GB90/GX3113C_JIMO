@@ -1,0 +1,208 @@
+/*****************************************************************************
+* 						   CONFIDENTIAL
+*        Hangzhou GuoXin Science and Technology Co., Ltd.
+*                      (C)2012, All right reserved
+******************************************************************************
+
+******************************************************************************
+* File Name :	app_tr_cas_api_announce.c
+* Author    : 	wangjian
+* Project   :	
+* Type      :
+******************************************************************************
+* Purpose   :	模块头文件
+******************************************************************************
+* Release History:
+VERSION	Date			  AUTHOR         Description
+1.0  	2014.12.28		  wangjian 	     creation
+*****************************************************************************/
+#include "app_common_porting_stb_api.h"
+#include "app_tr_cas_api_announce.h"
+
+
+/*Extern data--------------------------------------------------------*/
+extern uint8_t win_tr_cas_announce_show(void *data, int size);
+extern uint8_t win_tr_cas_announce_get_show_status(void);
+extern char* GUI_GetFocusWindow(void);
+
+/*Local data--------------------------------------------------------*/
+static TR_CAS_ANNOUNCE_LIST_t  s_casAnnounceList = {0};
+
+
+/*API--------------------------------------------------------*/
+static int announce_time_compare(const void *a ,const void *b)
+{
+    TR_CAS_ANNOUNCE_INFO_t *pre = (TR_CAS_ANNOUNCE_INFO_t *)a;
+    TR_CAS_ANNOUNCE_INFO_t *nxt = (TR_CAS_ANNOUNCE_INFO_t *)b ;
+	int ret = 0;
+	
+	ret = memcmp(&pre->create_time, &nxt->create_time, sizeof(CAS_TIMESTAMP));
+	if (ret > 0)
+	{
+		return 1;
+	}
+	else if (0 == ret)
+	{
+		return 0;
+	}
+	else
+	{
+		return (-1);
+	}
+}
+
+static uint8_t announce_list_get_index(void)
+{
+	uint8_t i = 0;
+
+	if (s_casAnnounceList.count < TRCAS_ANNOUNCE_NUM_MAX)
+	{
+		for (i = 0; i < TRCAS_ANNOUNCE_NUM_MAX; i++)
+		{
+			if (ANNOUNCE_FREE == s_casAnnounceList.announce_list[i].status)
+			{
+				break;
+			}
+		}
+	}
+	else
+	{
+		/*list sort, according to create time.*/
+		i = 0;
+	}
+
+	return i;
+}
+
+int8_t app_tr_cas_announce_init(void)
+{	
+	memset(&s_casAnnounceList, 0, sizeof(s_casAnnounceList));
+
+    if (GXCORE_SUCCESS != GxCore_MutexCreate(&s_casAnnounceList.mutex))
+    {
+        printf("[app_tr_cas_announce_init]s_trAnnounceList.mutex create failed!!!\n");
+		return 1;
+    }
+
+    return 0;
+}
+
+int32_t app_tr_cas_gxmsg_ca_on_event_announce(GxMsgProperty0_OnEvent* event)
+{
+	TR_CAS_ANNOUNCE_INFO_t *pAnnounceMsg = NULL;
+	uint8_t validIdx = 0;
+	TR_CAS_ANNOUNCE_INFO_t *pTmpData = NULL;
+	uint8_t tmpLen = 0;
+	
+	if (NULL == event)
+	{
+		printf("[app_tr_cas_gxmsg_ca_on_event_announce]param event is NULL!!!\n");
+		return 1;
+	}
+
+	pAnnounceMsg = (TR_CAS_ANNOUNCE_INFO_t *)(event->buf);
+	if (NULL == pAnnounceMsg)
+	{
+		printf("[app_tr_cas_gxmsg_ca_on_event_announce]pRollingMsg is NULL!!!\n");
+		return 2;
+	}
+
+	GxCore_MutexLock(s_casAnnounceList.mutex);
+	validIdx = announce_list_get_index();
+	memcpy(&s_casAnnounceList.announce_list[validIdx], pAnnounceMsg, sizeof(TR_CAS_ANNOUNCE_INFO_t));
+	s_casAnnounceList.count++;
+	if (s_casAnnounceList.count > TRCAS_ANNOUNCE_NUM_MAX)
+	{
+		s_casAnnounceList.count = TRCAS_ANNOUNCE_NUM_MAX;
+	}
+		
+	/*list sort, according to create time.*/
+	pTmpData = s_casAnnounceList.announce_list;
+	tmpLen = TRCAS_ANNOUNCE_NUM_MAX;
+	qsort((void *)pTmpData, tmpLen, sizeof(TR_CAS_ANNOUNCE_INFO_t), announce_time_compare);	
+	GxCore_MutexUnlock(s_casAnnounceList.mutex);
+	
+	return 0;
+}
+
+uint8_t app_tr_cas_announce_exec(void)
+{
+	uint8_t i = 0;
+	char* curFocusWin = NULL;
+	int8_t idxNew = -1;
+	TR_CAS_ANNOUNCE_INFO_t tmpAnnounceData = {0};
+
+	curFocusWin = (char *)GUI_GetFocusWindow();
+	if ((NULL != curFocusWin) && (strcasecmp(curFocusWin, "win_full_screen") != 0))
+	{
+		return 1;
+	}
+	
+	if (win_tr_cas_announce_get_show_status())
+	{
+		return 2;
+	}
+
+    GxCore_MutexLock(s_casAnnounceList.mutex);
+	for (i = 0; i < TRCAS_ANNOUNCE_NUM_MAX; i++)
+	{
+		if (ANNOUNCE_FREE == s_casAnnounceList.announce_list[i].status)
+		{
+			continue;
+		}
+	
+		if (ANNOUNCE_UNREAD == s_casAnnounceList.announce_list[i].status)
+		{
+			idxNew = i;
+			break;	
+		}
+	}
+
+	if (idxNew >= 0)
+	{
+		memcpy(&tmpAnnounceData, &s_casAnnounceList.announce_list[idxNew],\
+				sizeof(tmpAnnounceData));
+		s_casAnnounceList.announce_list[idxNew].status = ANNOUNCE_READED;
+	}
+    GxCore_MutexUnlock(s_casAnnounceList.mutex);
+
+	if (idxNew >= 0)
+	{
+		win_tr_cas_announce_show((void *)&tmpAnnounceData, sizeof(tmpAnnounceData));
+	}
+    
+	return 0;
+}
+
+uint8_t app_tr_cas_announce_is_new(uint32_t msg_crc32)
+{
+	uint8_t isNew = 0;
+	uint8_t i = 0;
+
+	GxCore_MutexLock(s_casAnnounceList.mutex);
+	
+	for (i = 0; i < TRCAS_ANNOUNCE_NUM_MAX; i++)
+	{
+		if (ANNOUNCE_FREE == s_casAnnounceList.announce_list[i].status)
+		{
+			continue;
+		}
+
+		if (msg_crc32 == s_casAnnounceList.announce_list[i].data_crc32)
+		{
+			isNew = 0;
+			break;
+		}
+	}
+
+	if (i >= TRCAS_ANNOUNCE_NUM_MAX)
+	{
+		isNew = 1;
+	}
+
+	GxCore_MutexUnlock(s_casAnnounceList.mutex);
+
+	return isNew;
+}
+
+

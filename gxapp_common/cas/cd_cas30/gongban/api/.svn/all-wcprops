@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/3201_DVBC/!svn/ver/986/gxapp_common/cas/cd_cas30/gongban/api
+END
+app_cd_cas_3.0_api_mother_child.c
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/3201_DVBC/!svn/ver/826/gxapp_common/cas/cd_cas30/gongban/api/app_cd_cas_3.0_api_mother_child.c
+END
+app_cd_cas_3.0_api_worktime.c
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/cd_cas30/gongban/api/app_cd_cas_3.0_api_worktime.c
+END
+app_cd_cas_3.0_api_paired.c
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/3201_DVBC/!svn/ver/772/gxapp_common/cas/cd_cas30/gongban/api/app_cd_cas_3.0_api_paired.c
+END
+app_cd_cas_3.0_api_entitle.c
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/3201_DVBC/!svn/ver/986/gxapp_common/cas/cd_cas30/gongban/api/app_cd_cas_3.0_api_entitle.c
+END
+app_cd_cas_3.0_api_lock_service.c
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/3201_DVBC/!svn/ver/772/gxapp_common/cas/cd_cas30/gongban/api/app_cd_cas_3.0_api_lock_service.c
+END
+app_cd_cas_3.0_api_rolling_message.c
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/3201_DVBC/!svn/ver/939/gxapp_common/cas/cd_cas30/gongban/api/app_cd_cas_3.0_api_rolling_message.c
+END
+app_cd_cas_3.0_api_finger.c
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/3201_DVBC/!svn/ver/772/gxapp_common/cas/cd_cas30/gongban/api/app_cd_cas_3.0_api_finger.c
+END
+app_cd_cas_3.0_api_updating.c
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/cd_cas30/gongban/api/app_cd_cas_3.0_api_updating.c
+END
+app_cd_cas_3.0_api_features.c
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/3201_DVBC/!svn/ver/826/gxapp_common/cas/cd_cas30/gongban/api/app_cd_cas_3.0_api_features.c
+END
+app_cd_cas_3.0_api_ippv_slot.c
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/cd_cas30/gongban/api/app_cd_cas_3.0_api_ippv_slot.c
+END
+app_cd_cas_3.0_api_demux.c
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/3201_DVBC/!svn/ver/986/gxapp_common/cas/cd_cas30/gongban/api/app_cd_cas_3.0_api_demux.c
+END
+app_cd_cas_3.0_api_rating.c
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/cd_cas30/gongban/api/app_cd_cas_3.0_api_rating.c
+END
+app_cd_cas_3.0_api_smart.c
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/3201_DVBC/!svn/ver/882/gxapp_common/cas/cd_cas30/gongban/api/app_cd_cas_3.0_api_smart.c
+END
+app_cd_cas_3.0_api_pin.c
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/cd_cas30/gongban/api/app_cd_cas_3.0_api_pin.c
+END
+app_cd_cas_3.0_api_baseinfo.c
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/3201_DVBC/!svn/ver/986/gxapp_common/cas/cd_cas30/gongban/api/app_cd_cas_3.0_api_baseinfo.c
+END
+app_cd_cas_3.0_api_email.c
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/cd_cas30/gongban/api/app_cd_cas_3.0_api_email.c
+END
+app_cd_cas_3.0_api_ippv_info.c
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/3201_DVBC/!svn/ver/826/gxapp_common/cas/cd_cas30/gongban/api/app_cd_cas_3.0_api_ippv_info.c
+END
+app_cd_cas_3.0_api_detitle.c
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/3201_DVBC/!svn/ver/772/gxapp_common/cas/cd_cas30/gongban/api/app_cd_cas_3.0_api_detitle.c
+END
+app_cd_cas_3.0_porting_stb_api.c
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/3201_DVBC/!svn/ver/839/gxapp_common/cas/cd_cas30/gongban/api/app_cd_cas_3.0_porting_stb_api.c
+END

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="GB2312" standalone="no"?>
+<widget name="win_mg_cas312_featurescode" style="default" class="window">
+    <property>
+        <rect>[0,0,720,576]</rect>
+        <forecolor>[#000000,#000000,#000000]</forecolor>
+        <backcolor>[#00FF00,#00FF00,#00FF00]</backcolor>
+    </property>
+    <signal>
+        <create>win_mg_cas_featurescode_create</create>
+        <destroy>win_mg_cas_featurescode_destroy</destroy>
+        <keypress>win_mg_cas_featurescode_keypress</keypress>
+    </signal>
+    <children>
+        <widget name="win_mg_cas_featurescode_image_bg" style="default" class="image">
+            <property>
+                <rect>[80,78,560,420]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#33508C,#33508C,#33508C]</backcolor>
+                <mode>multiple</mode>
+                <img></img>
+                <lt_img>DS_WIN_BG_T_l.bmp</lt_img>
+                <rt_img>DS_WIN_BG_T_r.bmp</rt_img>
+                <l_img>DS_WIN_BG.bmp</l_img>
+                <r_img>DS_WIN_BG.bmp</r_img>
+            </property>
+        </widget>
+        <widget name="win_mg_cas_featurescode_image202" style="default" class="image">
+            <property>
+                <rect>[80,456,560,31]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#808080,#808080,#808080]</backcolor>
+                <mode>single</mode>
+                <img>DS_HELP_COTE.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_mg_cas_featurescode_title" style="default" class="text">
+            <property>
+                <rect>[163,88,400,42]</rect>
+                <forecolor>[#FFFFFF,#FFFFFF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>simhei</font>
+                <string>Features Code</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_mg_cas_featurescode_v1" style="default" class="text">
+            <property>
+                <rect>[170,210,400,40]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_mg_cas_featurescode_v2" style="default" class="text">
+            <property>
+                <rect>[170,260,400,40]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_mgcas_featurescode_tip_image_exit" style="default" class="image">
+            <property>
+                <rect>[290,461,34,22]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_Icon_Exit.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_tip_text_exit" style="default" class="text">
+            <property>
+                <rect>[335,458,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Exit Menu</string>
+                <format>static</format>
+            </property>
+        </widget>
+    </children>
+</widget>

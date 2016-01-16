@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/3201_DVBC/!svn/ver/826/gxapp_common/cas/gy_cas/gongban/include/porting
+END
+gyca_interface.h
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/3201_DVBC/!svn/ver/826/gxapp_common/cas/gy_cas/gongban/include/porting/gyca_interface.h
+END
+gyca_osp.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/3201_DVBC/!svn/ver/826/gxapp_common/cas/gy_cas/gongban/include/porting/gyca_osp.h
+END
+gyca_porting.h
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/3201_DVBC/!svn/ver/826/gxapp_common/cas/gy_cas/gongban/include/porting/gyca_porting.h
+END
+gyca_pub.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/3201_DVBC/!svn/ver/826/gxapp_common/cas/gy_cas/gongban/include/porting/gyca_pub.h
+END
+gyca_def.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/3201_DVBC/!svn/ver/826/gxapp_common/cas/gy_cas/gongban/include/porting/gyca_def.h
+END

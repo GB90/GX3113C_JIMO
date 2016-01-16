@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="GB2312" standalone="no"?>
+<widget name="win_dvt_cas_email" style="default" class="window">
+    <property>
+        <rect>[0,0,720,576]</rect>
+        <forecolor>[#000000,#000000,#000000]</forecolor>
+        <backcolor>[#00FF00,#00FF00,#00FF00]</backcolor>
+    </property>
+    <signal>
+        <create>app_dvt_cas_email_create</create>
+        <destroy>app_dvt_cas_email_destroy</destroy>
+        <keypress>app_dvt_cas_email_keypress</keypress>
+    </signal>
+    <children>
+        <widget name="win_dvt_cas_email_image_bg" style="default" class="image">
+            <property>
+                <rect>[80,78,560,420]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#33508C,#33508C,#33508C]</backcolor>
+                <mode>multiple</mode>
+                <img></img>
+                <lt_img>DS_WIN_BG_T_l.bmp</lt_img>
+                <rt_img>DS_WIN_BG_T_r.bmp</rt_img>
+                <l_img>DS_WIN_BG.bmp</l_img>
+                <r_img>DS_WIN_BG.bmp</r_img>
+            </property>
+        </widget>
+        <widget name="win_divitone_cas_cardinfo_image202" style="default" class="image">
+            <property>
+                <rect>[80,456,560,31]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#808080,#808080,#808080]</backcolor>
+                <mode>single</mode>
+                <img>DS_HELP_COTE.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_dvt_cas_email_title" style="default" class="image">
+            <property>
+                <rect>[214,91,300,35]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img></img>
+            </property>
+        </widget>
+        <widget name="win_dvt_cas_email_listview" style="default" class="listview">
+            <property>
+                <rect>[139,156,447,250]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <roll_time>0</roll_time>
+                <interval>1</interval>
+                <focus_img>s_bar_orange580.bmp</focus_img>
+                <i18n>true</i18n>
+                <item_rect>[0,0,447,36]</item_rect>
+                <item_fore_color>[#CEE8FF,#212021,#CEE8FF]</item_fore_color>
+                <item_back_color>[#FF00FF,#FF00FF,#FF00FF]</item_back_color>
+            </property>
+            <signal>
+                <get_total>app_dvt_cas_email_get_count</get_total>
+                <get_data>app_dvt_cas_email_get_data</get_data>
+            </signal>
+            <children>
+                <widget name="win_dvt_cas_email_listwiew_header" style="default" class="header">
+                    <property>
+                        <rect>[0,0,447,40]</rect>
+                        <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                        <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                        <format>headershow</format>
+                        <colum_number>4</colum_number>
+                    </property>
+                    <children>
+                        <widget name="win_dvt_cas_email_listwiew_new" style="default" class="text">
+                            <property>
+                                <rect>[0,0,67,40]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                                <font>Arial</font>
+                                <string>No.</string>
+                                <format>static</format>
+                            </property>
+                        </widget>
+                        <widget name="win_dvt_cas_email_listwiew_head" style="default" class="text">
+                            <property>
+                                <rect>[67,0,73,40]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                                <font>Arial</font>
+                                <string>State</string>
+                                <format>static</format>
+                            </property>
+                        </widget>
+                        <widget name="win_dvt_cas_email_listwiew_date" style="default" class="text">
+                            <property>
+                                <rect>[140,0,186,40]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                                <font>Arial</font>
+                                <string>Mail Title</string>
+                                <format>static</format>
+                            </property>
+                        </widget>
+                        <widget name="win_dvt_cas_email_listwiew_despatcher" style="default" class="text">
+                            <property>
+                                <rect>[326,0,121,40]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                                <font>Arial</font>
+                                <string>Despatcher</string>
+                                <format>static</format>
+                            </property>
+                        </widget>
+                    </children>
+                </widget>
+                <widget name="win_dvt_cas_email_email_listwiew_scrollbar" style="default" class="scrollbar">
+                    <property>
+                        <rect>[440,40,0,210]</rect>
+                        <state>hide</state>
+                        <forecolor>[#000000,#000000,#000000]</forecolor>
+                        <backcolor>[#212021,#212021,#212021]</backcolor>
+                        <format>scroll_hide</format>
+                    </property>
+                </widget>
+                <widget name="win_dvt_cas_email_listwiew_listitem1" style="default" class="listitem">
+                    <property>
+                        <font>Arial</font>
+                    </property>
+                </widget>
+                <widget name="win_dvt_cas_email_listwiew_listitem2" style="default" class="listitem">
+                    <property>
+                        <font>Arial</font>
+                    </property>
+                </widget>
+                <widget name="win_dvt_cas_email_listwiew_listitem3" style="default" class="listitem">
+                    <property>
+                        <font>Arial</font>
+                    </property>
+                </widget>
+                <widget name="win_dvt_cas_email_listwiew_listitem4" style="default" class="listitem">
+                    <property>
+                        <font>Arial</font>
+                    </property>
+                </widget>
+                <widget name="win_dvt_cas_email_listwiew_listitem5" style="default" class="listitem">
+                    <property>
+                        <font>Arial</font>
+                    </property>
+                </widget>
+            </children>
+        </widget>
+        <widget name="win_dvt_cas_email_text_num" style="default" class="text">
+            <property>
+                <rect>[90,420,140,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Email Total:</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_dvt_cas_email_text_count" style="default" class="text">
+            <property>
+                <rect>[232,420,100,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_dvt_cas_email_text_space_num" style="default" class="text">
+            <property>
+                <rect>[395,420,140,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Email New:</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_dvt_cas_email_text_space_count" style="default" class="text">
+            <property>
+                <rect>[537,420,100,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_dvt_cas_email_hint_exit" style="default" class="image">
+            <property>
+                <rect>[87,460,34,22]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_Icon_Exit.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_dvt_cas_email_exit_context" style="default" class="text">
+            <property>
+                <rect>[126,457,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Exit Menu</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_dvt_cas_email_red_flag" style="default" class="image">
+            <property>
+                <rect>[247,463,22,22]</rect>
+                <forecolor>[#FFFFFF,#FF00FF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_ICON_RED.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_dvt_cas_email_blue_flag" style="default" class="image">
+            <property>
+                <rect>[369,462,21,22]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_ICON_BLUE.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_dvt_cas_email_confirm_flag" style="default" class="image">
+            <property>
+                <rect>[519,461,34,22]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_ICON_OK.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_dvt_cas_email_delete_hint" style="default" class="text">
+            <property>
+                <rect>[270,457,100,30]</rect>
+                <forecolor>[#FFFFFF,#FF00FF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Delete</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_dvt_cas_email_delete_all_hint" style="default" class="text">
+            <property>
+                <rect>[394,457,120,30]</rect>
+                <forecolor>[#FFFFFF,#FF00FF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Delete All</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_dvt_cas_email_ok_hint" style="default" class="text">
+            <property>
+                <rect>[563,458,70,30]</rect>
+                <forecolor>[#FFFFFF,#FF00FF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Read Email</string>
+                <format>static</format>
+            </property>
+        </widget>
+    </children>
+</widget>

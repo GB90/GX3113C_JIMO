@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/qilian_cas/gongban/porting
+END
+qilian_cas_porting.c
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/qilian_cas/gongban/porting/qilian_cas_porting.c
+END
+qilian_cas_text.c
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/qilian_cas/gongban/porting/qilian_cas_text.c
+END
+qilian_cas_text_promt.c
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/qilian_cas/gongban/porting/qilian_cas_text_promt.c
+END

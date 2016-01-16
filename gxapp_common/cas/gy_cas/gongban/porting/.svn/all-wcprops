@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/3201_DVBC/!svn/ver/826/gxapp_common/cas/gy_cas/gongban/porting
+END
+gy_cas_porting_flash.c
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/3201_DVBC/!svn/ver/826/gxapp_common/cas/gy_cas/gongban/porting/gy_cas_porting_flash.c
+END
+gy_cas_porting_smartcard.c
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/3201_DVBC/!svn/ver/826/gxapp_common/cas/gy_cas/gongban/porting/gy_cas_porting_smartcard.c
+END
+gy_cas_porting_os.c
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/3201_DVBC/!svn/ver/826/gxapp_common/cas/gy_cas/gongban/porting/gy_cas_porting_os.c
+END
+gy_cas_porting_demux.c
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/3201_DVBC/!svn/ver/826/gxapp_common/cas/gy_cas/gongban/porting/gy_cas_porting_demux.c
+END
+gy_cas_porting_system.c
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/3201_DVBC/!svn/ver/826/gxapp_common/cas/gy_cas/gongban/porting/gy_cas_porting_system.c
+END

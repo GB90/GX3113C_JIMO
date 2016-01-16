@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/desai_cas50/gongban/include/api
+END
+app_desai_cas_5.0_api_demux.h
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/desai_cas50/gongban/include/api/app_desai_cas_5.0_api_demux.h
+END
+app_desai_cas_5.0_api_baseinfo.h
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/desai_cas50/gongban/include/api/app_desai_cas_5.0_api_baseinfo.h
+END
+app_desai_cas_5.0_api_smart.h
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/desai_cas50/gongban/include/api/app_desai_cas_5.0_api_smart.h
+END
+app_desai_cas_5.0_api_pop.h
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/desai_cas50/gongban/include/api/app_desai_cas_5.0_api_pop.h
+END

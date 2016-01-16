@@ -1,0 +1,107 @@
+/*****************************************************************************
+* 						   CONFIDENTIAL
+*        Hangzhou GuoXin Science and Technology Co., Ltd.
+*                      (C)2012, All right reserved
+******************************************************************************
+
+******************************************************************************
+* File Name :	app_tr_cas_api_smart.c
+* Author    : 	bingyu
+* Project   :	goxceed dvbc
+* Type      :
+******************************************************************************
+* Purpose   :	模块头文件
+******************************************************************************
+* Release History:
+VERSION	Date			  AUTHOR         Description
+1.0  	2012.12.02		  bingyu 	 			creation
+*****************************************************************************/
+#include <gxtype.h>
+#include "gxmsg.h"
+#include "gxapp_sys_config.h"
+#include "app_common_play.h"
+#include "app_common_table_pmt.h"
+#include "app_common_porting_stb_api.h"
+#include "app_common_porting_ca_flash.h"
+#include "app_common_porting_ca_demux.h"
+#include "app_common_porting_ca_descramble.h"
+#include "app_common_porting_ca_smart.h"
+	
+#include "Tr_Cas.h"
+#include "app_tr_cas_api_smart.h"
+#include "app_tr_cas_api_demux.h"
+
+
+extern void TRDRV_DESC_Clear_Cw(void);
+
+
+void app_tr_api_smart_init(void)
+{
+	GxSmcParams param;
+	GxSmcTimeParams time;
+	
+	memset(&time, 0, sizeof(GxSmcTimeParams));
+	memset(&param, 0, sizeof(GxSmcParams));
+
+	time.baud_rate 	= RUNTIME_BAUD_RATE;
+	time.egt        = RUNTIME_EGT;
+	time.etu        = RUNTIME_ETU;
+	time.tgt        = RUNTIME_TGT;
+	time.twdt       = RUNTIME_TWDT;
+	time.wdt        = RUNTIME_WDT;
+	
+	param.detect_pole = GXSMC_DETECT_HIGH_LEVEL;
+    param.io_conv = GXSMC_DATA_CONV_DIRECT;
+	param.parity = GXSMC_PARITY_ODD;
+	param.protocol = DISABLE_REPEAT_WHEN_ERR;
+	param.sci_sel = __GXSMART_SCI2;
+	param.stop_len = GXSMC_STOPLEN_0BIT;
+	param.vcc_pole = GXSMC_VCC_HIGH_LEVEL;
+	param.default_etu = RUNTIME_ETU;
+	param.auto_etu = 1;
+	param.auto_parity = 1;
+	//param.debug_info = O_BDBG|O_CDBG;
+
+    return app_porting_ca_smart_card_init(param,time);
+}
+
+/*ATR: 3B FE 11 00 00 50 80 FF 5C 54 52 43 07 00 00 0B 08 11 00 06 00 80 */
+uint8_t app_tr_cas_api_smart_check_valid(void)
+{
+	unsigned char ucLen;
+	GxSmcTimeParams TimeParam;
+	unsigned char aATR[256] = {0,};
+
+	TimeParam.baud_rate  = RUNTIME_BAUD_RATE;
+	TimeParam.egt        = RUNTIME_EGT;
+	TimeParam.etu        = RUNTIME_ETU;
+	TimeParam.tgt        = RUNTIME_TGT;
+	TimeParam.twdt       = RUNTIME_TWDT;
+	TimeParam.wdt        = RUNTIME_WDT;
+			
+	if (FALSE == app_porting_ca_smart_reset(TimeParam, aATR, &ucLen))
+	{
+		printf("[app_tr_cas_api_smart_check_valid]Reset fail!!!\n");
+	}
+
+	return TRUE;	
+}
+
+uint8_t app_tr_cas_api_card_in(char *atr, uint8_t len)
+{
+	TRDRV_SCARD_In(atr);
+	return 1;
+}
+
+uint8_t app_tr_cas_api_card_out(void)
+{
+	char Atr[256] = {0,};
+
+	memset(Atr, 0x00, 256);
+	
+	TRDRV_SCARD_Remove(Atr);
+	TRDRV_DESC_Clear_Cw();
+	
+	return 1;
+}
+

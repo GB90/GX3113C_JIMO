@@ -1,0 +1,10 @@
+﻿德赛广告(公版) env.sh配置：
+
+export DVB_AD_NAME=dsads
+export DVB_AD_FLAG=DVB_AD_TYPE_DS_FLAG
+export DVB_AD_LIB=dsad
+
+
+export DVB_AD_NAME=dsads41
+export DVB_AD_FLAG=DVB_AD_TYPE_DS_FLAG41
+export DVB_AD_LIB=dsad41

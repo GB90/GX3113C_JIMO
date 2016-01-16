@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="GB2312" standalone="no"?>
+<widget name="win_divitone_cas_cardinfo" style="default" class="window">
+    <property>
+        <rect>[0,0,720,576]</rect>
+        <forecolor>[#000000,#000000,#000000]</forecolor>
+        <backcolor>[#00FF00,#00FF00,#00FF00]</backcolor>
+    </property>
+    <signal>
+        <create>win_divitone_cas_cardinfo_create</create>
+        <destroy>win_divitone_cas_cardinfo_destroy</destroy>
+        <keypress>win_divitone_cas_cardinfo_keypress</keypress>
+    </signal>
+    <children>
+        <widget name="win_divitone_cas_baseinfo_image_bg" style="default" class="image">
+            <property>
+                <rect>[80,78,560,420]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#33508C,#33508C,#33508C]</backcolor>
+                <mode>multiple</mode>
+                <img></img>
+                <lt_img>DS_WIN_BG_T_l.bmp</lt_img>
+                <rt_img>DS_WIN_BG_T_r.bmp</rt_img>
+                <l_img>DS_WIN_BG.bmp</l_img>
+                <r_img>DS_WIN_BG.bmp</r_img>
+            </property>
+        </widget>
+        <widget name="win_divitone_cas_cardinfo_image202" style="default" class="image">
+            <property>
+                <rect>[80,456,560,31]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#808080,#808080,#808080]</backcolor>
+                <mode>single</mode>
+                <img>DS_HELP_COTE.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_divitone_cas_cardinfo_title" style="default" class="text">
+            <property>
+                <rect>[163,88,400,42]</rect>
+                <forecolor>[#FFFFFF,#FFFFFF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>simhei</font>
+                <string>Card Info</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_divitone_cas_card_id" style="default" class="text">
+            <property>
+                <rect>[90,135,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Card Id</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_divitone_cas_card_type" style="default" class="text">
+            <property>
+                <rect>[90,172,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Card Type</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_divitone_cas_card_state" style="default" class="text">
+            <property>
+                <rect>[90,212,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Card State</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_divitone_cas_area" style="default" class="text">
+            <property>
+                <rect>[90,251,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Region Id</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_divitone_cas_work_time" style="default" class="text">
+            <property>
+                <rect>[90,292,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Work Time</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_divitone_cas_watch_level" style="default" class="text">
+            <property>
+                <rect>[90,334,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Watch Level</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_divitone_cas_encryption_state" style="default" class="text">
+            <property>
+                <rect>[90,374,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Pair State</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_divitone_cas_ca_version" style="default" class="text">
+            <property>
+                <rect>[91,416,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>CA Version</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_divitone_cas_card_id_value" style="default" class="text">
+            <property>
+                <rect>[290,135,350,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_divitone_cas_cardtype_value" style="default" class="text">
+            <property>
+                <rect>[290,172,350,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_divitone_cas_cardstate_value" style="default" class="text">
+            <property>
+                <rect>[290,212,350,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_divitone_cas_cardarea_value" style="default" class="text">
+            <property>
+                <rect>[290,251,350,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_divitone_cas_worktime_value" style="default" class="text">
+            <property>
+                <rect>[290,292,350,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_divitone_cas_watchlevel_value" style="default" class="text">
+            <property>
+                <rect>[290,334,350,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_divitone_cas_pairstate_value" style="default" class="text">
+            <property>
+                <rect>[290,374,350,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_divitone_cas_caversion_value" style="default" class="text">
+            <property>
+                <rect>[291,416,350,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_stb_info_tip_image_exit" style="default" class="image">
+            <property>
+                <rect>[279,460,34,22]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_Icon_Exit.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_tip_text_exit" style="default" class="text">
+            <property>
+                <rect>[321,456,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Exit Menu</string>
+                <format>static</format>
+            </property>
+        </widget>
+    </children>
+</widget>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="GB2312" standalone="no"?>
+<widget name="win_cd_cas30_updating" style="default" class="window">
+    <property>
+        <rect>[70,210,580,180]</rect>
+        <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+        <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+    </property>
+    <signal>
+        <create>win_cd_cas30_updating_create</create>
+        <destroy>win_cd_cas30_updating_destroy</destroy>
+        <keypress>win_cd_cas30_updating_keypress</keypress>
+    </signal>
+    <children>
+        <widget name="win_cd_cas30_updating_image_bg" style="default" class="image">
+            <property>
+                <rect>[0,0,580,180]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#33508C,#33508C,#33508C]</backcolor>
+                <mode>multiple</mode>
+                <img></img>
+                <lt_img>DS_WIN_BG.bmp</lt_img>
+                <rt_img>DS_WIN_BG.bmp</rt_img>
+                <lb_img>DS_WIN_BG.bmp</lb_img>
+                <rb_img>DS_WIN_BG.bmp</rb_img>
+                <l_img>DS_WIN_BG.bmp</l_img>
+                <r_img>DS_WIN_BG.bmp</r_img>
+                <t_img>DS_WIN_BG.bmp</t_img>
+                <b_img>DS_WIN_BG.bmp</b_img>
+            </property>
+        </widget>
+        <widget name="win_audio_set_image202" style="default" class="image">
+            <property>
+                <rect>[80,456,560,31]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#808080,#808080,#808080]</backcolor>
+                <mode>single</mode>
+                <img>DS_HELP_COTE.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_updating_mark" style="default" class="text">
+            <property>
+                <rect>[44,70,500,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_updating_update" style="default" class="text">
+            <property>
+                <rect>[86,4,400,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <string>Card Update</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_updating_progbar" style="default" class="progbar">
+            <property>
+                <rect>[29,127,460,12]</rect>
+                <forecolor>[#FFFFFF,#FFFFFF,#000000]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <min>0</min>
+                <max>100</max>
+                <back_image_l>DS_PROBAR_BLUE.bmp</back_image_l>
+                <back_image_m>DS_PROBAR_BLUE.bmp</back_image_m>
+                <back_image_r>DS_PROBAR_BLUE.bmp</back_image_r>
+                <fore_image_l>DS_ICON_TRAN_BG.bmp</fore_image_l>
+                <fore_image_m>DS_ICON_TRAN_BG.bmp</fore_image_m>
+                <fore_image_r>DS_ICON_TRAN_BG.bmp</fore_image_r>
+                <format>water</format>
+                <text_format>hide</text_format>
+                <alignment>hcentre|vcentre</alignment>
+                <font>Arial</font>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_updating_text_percent" style="default" class="text">
+            <property>
+                <rect>[494,117,80,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+    </children>
+</widget>

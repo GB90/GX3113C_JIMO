@@ -1,0 +1,65 @@
+/**
+ *
+ * @file        app_tr_cas_api_announce.h
+ * @brief
+ * @version     1.1.0
+ * @date        12/28/2014 
+ * @author      wangjian (wj), wangjian@nationalchip.com
+ */
+#ifndef __APP_TR_CAS_API_ANNOUNCE_H__
+#define __APP_TR_CAS_API_ANNOUNCE_H__
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "app_common_play.h"
+#include "Tr_Cas.h"
+
+
+#define TRCAS_ANNOUNCE_NUM_MAX       	(20)
+#define TRCAS_ANNOUNCE_TITLE_LEN    	(TRCAS_TITLE_LEN)
+#define TRCAS_ANNOUNCE_CONTENT_LEN    	(TRCAS_CONTENT_LEN)
+
+
+enum
+{
+	ANNOUNCE_FREE = 0,
+	ANNOUNCE_UNREAD,
+	ANNOUNCE_READED
+};
+
+typedef struct 
+{
+	uint8_t status;/*0: hide; 1: unread; 2: readed.*/
+	uint32_t data_crc32;
+	CAS_TIMESTAMP create_time;
+
+	uint8_t title[TRCAS_ANNOUNCE_TITLE_LEN];
+	uint8_t content[TRCAS_ANNOUNCE_CONTENT_LEN];
+	uint16_t title_len;
+	uint16_t content_len;
+}TR_CAS_ANNOUNCE_INFO_t; 
+
+typedef struct 
+{
+	handle_t mutex;
+
+	uint8_t count;
+	TR_CAS_ANNOUNCE_INFO_t announce_list[TRCAS_ANNOUNCE_NUM_MAX];
+}TR_CAS_ANNOUNCE_LIST_t; 
+
+
+/*-----------------------------------------------------------*/
+int8_t app_tr_cas_announce_init(void);
+int32_t app_tr_cas_gxmsg_ca_on_event_announce(GxMsgProperty0_OnEvent* event);
+uint8_t app_tr_cas_announce_exec(void);
+uint8_t app_tr_cas_announce_is_new(uint32_t msg_crc32);
+
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /*__APP_TR_CAS_API_ANNOUNCE_H__*/
+

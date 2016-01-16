@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/3201_DVBC/!svn/ver/839/gxapp_common/cas/wf_cas/gongban/include/porting
+END
+interfac.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/3201_DVBC/!svn/ver/839/gxapp_common/cas/wf_cas/gongban/include/porting/interfac.h
+END
+wftype.h
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/3201_DVBC/!svn/ver/839/gxapp_common/cas/wf_cas/gongban/include/porting/wftype.h
+END
+wanfacas.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/3201_DVBC/!svn/ver/839/gxapp_common/cas/wf_cas/gongban/include/porting/wanfacas.h
+END

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="GB2312" standalone="no"?>
+<widget name="win_desai_cas50_card_setworktime" style="default" class="window">
+    <property>
+        <rect>[0,0,720,576]</rect>
+        <forecolor>[#000000,#000000,#000000]</forecolor>
+        <backcolor>[#00FF00,#00FF00,#00FF00]</backcolor>
+    </property>
+    <signal>
+        <create>win_card_setworktime_create</create>
+        <destroy>win_card_setworktime_destroy</destroy>
+        <keypress>win_card_setworktime_keypress</keypress>
+    </signal>
+    <children>
+        <widget name="win_desai_cas50_card_setworktime_backgroup" style="default" class="image">
+            <property>
+                <rect>[80,78,560,420]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#33508C,#33508C,#33508C]</backcolor>
+                <mode>multiple</mode>
+                <img></img>
+                <lt_img>DS_WIN_BG_T_l.bmp</lt_img>
+                <rt_img>DS_WIN_BG_T_r.bmp</rt_img>
+                <l_img>DS_WIN_BG.bmp</l_img>
+                <r_img>DS_WIN_BG.bmp</r_img>
+            </property>
+        </widget>
+        <widget name="win_audio_set_image202" style="default" class="image">
+            <property>
+                <rect>[80,456,560,31]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#808080,#808080,#808080]</backcolor>
+                <mode>single</mode>
+                <img>DS_HELP_COTE.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_card_setworktime_title" style="default" class="text">
+            <property>
+                <rect>[163,88,400,42]</rect>
+                <forecolor>[#FFFFFF,#FFFFFF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>simhei</font>
+                <string>Card Set Worktime</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_card_setworktime_box" style="default" class="box">
+            <property>
+                <rect>[140,183,447,160]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <interval>10</interval>
+                <format>vertical</format>
+            </property>
+            <signal>
+                <keypress>win_card_setworktime_box_keypress</keypress>
+            </signal>
+            <children>
+                <widget name="win_desai_cas50_card_setworktime_boxitem1" style="default" class="boxitem">
+                    <property>
+                        <rect>[0,10,447,35]</rect>
+                        <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                        <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                        <unfocus_image>DS_update_blue.bmp</unfocus_image>
+                        <focus_image>DS_update_blue.bmp</focus_image>
+                        <disable_image>DS_update_blue.bmp</disable_image>
+                    </property>
+                    <children>
+                        <widget name="win_desai_cas50_card_setworktime_boxitem1_text" style="default" class="text">
+                            <property>
+                                <rect>[27,2,200,30]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                                <font>Arial</font>
+                                <alignment>left|vcentre</alignment>
+                                <string>StartTime</string>
+                                <format>static</format>
+                            </property>
+                        </widget>
+                        <widget name="win_desai_cas50_card_setworktime_boxitem1_edit" style="default" class="edit">
+                            <property>
+                                <rect>[243,3,200,30]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#ff00ff,#debe42,#ff00ff]</backcolor>
+                                <font>Arial</font>
+                                <alignment>hcentre|vcentre</alignment>
+                                <string>01:00</string>
+                                <maxlen>5</maxlen>
+                                <format>edit_time</format>
+                            </property>
+                        </widget>
+                    </children>
+                </widget>
+                <widget name="win_desai_cas50_card_setworktime_boxitem2" style="default" class="boxitem">
+                    <property>
+                        <rect>[0,55,447,35]</rect>
+                        <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                        <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                        <unfocus_image>DS_update_blue.bmp</unfocus_image>
+                        <focus_image>DS_update_blue.bmp</focus_image>
+                        <disable_image>DS_update_blue.bmp</disable_image>
+                    </property>
+                    <children>
+                        <widget name="win_desai_cas50_card_setworktime_boxitem2_text" style="default" class="text">
+                            <property>
+                                <rect>[27,2,200,30]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                                <font>Arial</font>
+                                <alignment>left|vcentre</alignment>
+                                <string>EndTime</string>
+                                <format>static</format>
+                            </property>
+                        </widget>
+                        <widget name="win_desai_cas50_card_setworktime_boxitem2_edit" style="default" class="edit">
+                            <property>
+                                <rect>[243,2,200,30]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#ff00ff,#debe42,#ff00ff]</backcolor>
+                                <font>Arial</font>
+                                <alignment>hcentre|vcentre</alignment>
+                                <string>12:00</string>
+                                <maxlen>5</maxlen>
+                                <format>edit_time</format>
+                            </property>
+                        </widget>
+                    </children>
+                </widget>
+                <widget name="win_desai_cas50_card_setworktime_boxitem4" style="default" class="boxitem">
+                    <property>
+                        <rect>[0,100,447,35]</rect>
+                        <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                        <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                        <unfocus_image>DS_update_blue.bmp</unfocus_image>
+                        <focus_image>DS_update_blue.bmp</focus_image>
+                        <disable_image>DS_update_blue.bmp</disable_image>
+                    </property>
+                    <children>
+                        <widget name="win_desai_cas50_card_setworktime_boxitem4_text" style="default" class="text">
+                            <property>
+                                <rect>[27,0,200,30]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                                <font>Arial</font>
+                                <alignment>left|vcentre</alignment>
+                                <string>Input PIN</string>
+                                <format>static</format>
+                            </property>
+                        </widget>
+                        <widget name="win_desai_cas50_card_setworktime_boxitem4_edit" style="default" class="edit">
+                            <property>
+                                <rect>[243,2,200,30]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#ff00ff,#debe42,#ff00ff]</backcolor>
+                                <font>Arial</font>
+                                <alignment>hcentre|vcentre</alignment>
+                                <intaglio>*</intaglio>
+                                <maxlen>6</maxlen>
+                                <format>edit_digit</format>
+                            </property>
+                        </widget>
+                    </children>
+                </widget>
+            </children>
+        </widget>
+        <widget name="win_tip_image_updown" style="default" class="image">
+            <property>
+                <rect>[84,466,54,12]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_ICON_SWORD.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_passwd_set_tip_image_exit" style="default" class="image">
+            <property>
+                <rect>[505,460,34,22]</rect>
+                <forecolor>[#FFFFFF,#FF00FF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_Icon_Exit.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_passwd_set_tip_image_ok" style="default" class="image">
+            <property>
+                <rect>[244,461,34,22]</rect>
+                <forecolor>[#FFFFFF,#FF00FF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_ICON_OK.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_tip_text_updown" style="default" class="text">
+            <property>
+                <rect>[140,459,100,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Move Focus</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_tip_text_exit" style="default" class="text">
+            <property>
+                <rect>[544,456,100,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Exit Menu</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_tip_text_ok" style="default" class="text">
+            <property>
+                <rect>[283,459,80,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Save</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_passwd_set_text_tip_input" style="default" class="text">
+            <property>
+                <rect>[418,456,80,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Input</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_card_setworktime_text1335" style="default" class="text">
+            <property>
+                <rect>[371,459,40,25]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <string>0~9</string>
+                <format>static</format>
+            </property>
+        </widget>
+    </children>
+</widget>

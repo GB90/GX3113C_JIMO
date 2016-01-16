@@ -1,0 +1,326 @@
+======================================================================
+		关于成都万发视通设备有限公司CA系统的说明
+======================================================================
+
+一．系统简介
+１．WF-DragonCrypt CAS
+	符合DVB同密（Simulcrypt）标准。最基本的授权方式：按流和（或者）
+	按节目授权，并且每个流（或节目）可以有不同的起始时间和截止时间；
+	在此基础上，可以用不同的组合而生成各种授权信息。EMM、ECM的加密
+	算法选用密钥长度128bit的3DES为基本算法再加上我公司的一个特有算
+	法，密钥有多个，支持机卡配对。EMM 产生速度：200个EMM/秒。寻址
+	速度：单个寻址，10万户/18秒/通道（每个通道每用户有6条授权）。选
+	用符合“中国金融交易卡”安全要求的大容量智能卡为授权卡，保证足
+	够的安全性，最多可存525条授权，为未来业务的扩展留有足够的空间。
+	用户信息管理系统软件（SMS），包括授权信息产生，授权管理，用户基
+	本信息管理，帐务统计分析，IC卡管理，节目管理，用户可定制的帐单、
+	报表打印，写卡日志，系统日志、操作员管理等功能；还可以根据用户
+	需求即时定制，以满足不同用户的特殊需求。
+２．WF-FixCrypt CAS
+	固定加扰系统。它和WF-DragonCrypt的区别是它没有ECMG，因此也不需
+	要独立加扰机的SCS和CWG模块；所有授权信息均保存于智能卡中，但可
+	以有EMMG以达到前端授权的目的，这样可以降低独立加扰机的价格和免
+	去其它CAS前端设备的开销。这是我公司为初级应用提供的CAS，具有极
+	高的性价比。
+	
+二．移植要求
+	编程语言为C语言，要求操作系统支持多任务和计数信号量机制并实现对
+	符合ISO/IEC7816的智能卡的驱动。
+１．类型定义和函数原形见wftype.h,interfac.h,wanfacas.h三个头文件。
+	
+２．平台接口函数（由STB实现，被CAS调用）
+	（１）．U32 WFSMART_OpenCard(U08 *History,U16 *HistoryLen);
+	描　　述：给智能卡上电并进行复位，获取复位响应的历史字节。
+	输入参数：无
+	输出参数：
+		A：History,一个15字节的缓冲区,历史字节将返回在该缓冲区。
+		B：HistoryLen,实际历史字节的字节数。
+	　返回值：0成功，非0不成功
+	
+	（２）．U32 WFSMART_Transfer(U08 CmdL,U08 *Cmd,U08 RespL,U08 *Resp);
+	描　　述：向智能卡发送APDU,并获取相应的命令响应。实现时要求在其内部
+		　完成“GET RESPONSE”命令，此时先前发出的APDU的响应状态字
+		　等于0x61XX（参见SJ/T 11221-2000第二部分P16~P20）。
+	输入参数：
+		A：CmdL，APDU的字节数。
+		B：Cmd，APDU缓冲区首地址。
+		C：RespL，应该响应的字节数，不包括状态字SW1SW2。
+	输出参数：
+		A：Resp，RespL字节的缓冲区首地址,命令响应将返回在该缓冲区。
+	　返回值：0成功，非0不成功
+	
+	（３）．U32 WFSMART_CloseCard(VOID);
+	描　　述：给智能卡下电,即执行由ISO/IEC7816规定的停活操作。
+	输入参数：无
+	输出参数：无
+	　返回值：0成功，非0不成功
+	
+	（４）．VOID WFSTB_Power(BOOL On);
+	描　　述：由CAS通知STB进行电源操作。
+	输入参数：
+		A：On,TRUE=开,FALSE=关。
+	输出参数：无
+	　返回值：无
+	
+	（５）．VOID WFSTB_Panel(BOOL Lock);
+	描　　述：由CAS通知STB进行遥控或者前面板操作。
+	输入参数：
+		A：Lock,TRUE=锁定,FALSE=解除锁定。
+	输出参数：无
+	　返回值：无
+	
+	（６）．VOID	WFSTB_PPTNotify(BOOL IsPPV,U16 Interval,U16 UnitPrice);
+	描　　述：由CAS通知STB，当前节目是一个按时(次)付费节目，让用户确认是
+		  否收看，如果用户要收看，则按某一个键以示确认，一旦用户确认，
+	          将通过U32 WFCAS_SendPPTOkFlag(BOOL IsPPV)函数告知CAS。当该
+	          函数被调用的时候,STB方需要弹出一个信息提示框来提示用户确认,
+	          提示框中的内容要根据该函数的三个参数说明节目类型和费率情况。
+	输入参数：
+		A：IsPPV,节目类型,TRUE=PPV节目,FALSE=PPT节目。
+		B：Interval,计时时长,单位是秒。
+		C：UnitPrice,点数/计时时长。
+	输出参数：无
+	　返回值：无
+	
+	（７）．VOID WFSTB_EmailNotify(WFSTB_Email_t *Email);
+	描　　述：由CAS通知STB有邮件到达。
+	输入参数：
+		A：Email，邮件的属性及其内容。Email->Type等于TRUE的时候表示这
+		  是封邮件，否则表示这是个屏显消息。屏显消息要求在屏幕底部自
+		  右向左游动显示。
+	输出参数：无
+	　返回值：无
+	
+	（８）．VOID WFSTB_EntitlementNotify(U16 Remains);
+	描　　述：由CAS通知STB当前收看的节目快要过期了。
+	输入参数：
+		A：Remains,节目剩余的授权天数。
+	输出参数：无
+	　返回值：无
+	
+	（９）．VOID	WFSTB_DownLoadNotify(U08 Type,U08 Version,U16 CurrentPiece,U16 LastPiece,U08 Bytes,U08 *Data);
+	描　　述：由CAS通知STB，有数据需要下载。
+	输入参数：
+		A：Type,0代表开机画面,其它将来使用。
+		B：Version,当前类型数据的版本,0不使用。
+		C：CurrentPiece,当前数据块的块号,从0开始。
+		D：LastPiece,最后一块数据块的块号。
+		E：Bytes,此数据块的字节数。
+		F：Data,此数据块的内容。
+	输出参数：无
+	　返回值：无
+	
+	（１０）．VOID WFSTB_SetDesCw(BOOL IsCipherCw,WFSTB_DesCw_t *DesCw);
+	描　　述：设置解扰控制字到解码器，以便解扰。
+	输入参数：
+		A：IsCipherCw，解扰控制字是否加密。
+		B：DesCw，解扰控制字及其奇偶性。
+	输出参数：无
+	　返回值：无
+	
+	（１１）．VOID WFSTB_SwitchProgram(WFCAS_Program_t *Program);
+	描　　述：由CAS通知STB切换到指定的节目。
+	输入参数：
+		A：Program,要切换到的节目,其中Network_Id不必考虑。
+	输出参数：无
+	　返回值：无
+	
+	（１２）．VOID WFSTB_OpReport(U08 OperateCode,U32 ErrorCode);
+	描　　述：CAS通知STB刚才CAS所做的操作的执行情况。
+	输入参数：
+		A：OperateCode,操作代码。
+		B：ErrorCode,错误代码。
+	输出参数：无
+	　返回值：无
+	
+	（１３）．VOID *WFMEM_Malloc(UINT Size);
+	描　　述：从堆中分配指定字节的存储块。
+	输入参数：
+		A：Size，需要分配的存储块的字节数。
+	输出参数：无
+	　返回值：被分配的存储块的首地址。
+	
+	（１４）．VOID WFMEM_Free(VOID *Ptr);
+	描　　述：释放指定的存储块,该存储块必须是由WFMEM_Malloc所分配的。
+	输入参数：
+		A：Ptr，被释放的存储块的首地址。
+	输出参数：无
+	　返回值：无
+	
+	（１５）．VOID WFOS_SemWait(VOID *Semaphore);
+	描　　述：在计数信号量Semaphore上执行一个P操作。
+	输入参数：
+		A：Semaphore，指向计数信号量的指针。
+	输出参数：无
+	　返回值：无
+	
+	（１６）．VOID WFOS_SemSignal(VOID *Semaphore);
+	描　　述：在计数信号量Semaphore上执行一个V操作。
+	输入参数：
+		A：Semaphore，指向计数信号量的指针。
+	输出参数：无
+	　返回值：无
+	
+	（１７）．VOID WFOS_SemDestroy(VOID *Semaphore);
+	描　　述：释放一个计数信号量Semaphore。
+	输入参数：
+		A：Semaphore，指向计数信号量的指针。
+	输出参数：无
+	　返回值：无
+	
+	（１８）．VOID *WFOS_SemCreate(S32 InitCount);
+	描　　述：分配一个计数信号量Semaphore。
+	输入参数：
+		A：InitCount，计数信号量的初始值。
+	输出参数：无
+	　返回值：如果成功，返回指向计数信号量的指针；否则返回NULL。
+	
+	（１９）．VOID *WFOS_TaskCreate(WFOS_Task_t Task,VOID *Parameter,U32 StackSize);
+	描　　述：创建一个任务。
+	输入参数：
+		A：Task，任务体。
+		B：Parameter，传递给任务的参数。
+		C：StackSize，任务所需的堆栈空间的大小。
+	输出参数：无
+	　返回值：如果成功，返回指向一个任务描述符的指针；否则返回NULL。
+	
+	（２０）．VOID WFSTB_SendStringToCom(CHAR *String);
+	描　　述：把一个字符串通过串口发送出去。
+	输入参数：
+		A：String，字符串。
+	输出参数：无
+	　返回值：无。
+	
+	（２１）．VOID WFSTB_SetDesDck(U08 *Dck);
+	描　　述：在高级安全中CAS调用此接口用于设置Dck。
+	输入参数：
+		A：Dck，16字节的Dck。
+	输出参数：无
+	　返回值：无。
+	
+	（２２）．VOID WFSTB_EmmFilterNotify(UINT Count,WFSTB_FilterData_t *FilterData);
+	描　　述：当CAS读卡正确后调用此接口，以告知STB方按接口所给参数重新设置EMM段过滤。
+	输入参数：
+		A：Count，EMM段过滤参数的个数。
+		B：FilterData，EMM段过滤参数。
+	输出参数：无
+	　返回值：无。
+	
+３．CA应用接口函数（由CAS实现，被STB调用）
+	（１）．U32 WFCAS_GetStbNo(U32 *StbNo);
+	描　　述：取回机顶盒号码（用于显示）。
+	输入参数：无
+	输出参数：
+		A：机顶盒号码在StbNo中。
+	　返回值：0成功，非0不成功
+	
+	（２）．U32 WFCAS_GetPurseInfo(WFCAS_Purse_t *Purse);
+	描　　述：取回钱包信息（用于显示）。
+	输入参数：无
+	输出参数：
+		A：钱包信息在Purse中。
+	　返回值：0成功，非0不成功
+	
+	（３）．U32 WFCAS_GetUserInfo(WFCAS_User_t *UserInfo);
+	描　　述：取回用户信息（用于显示）。
+	输入参数：无
+	输出参数：
+		A：用户信息在UserInfo中。
+	　返回值：0成功，非0不成功
+	
+	（４）．U32 WFCAS_GetVerInfo(WFCAS_Version_t *VerInfo);
+	描　　述：取回版本信息（用于显示和过滤CMT）。
+	输入参数：无
+	输出参数：
+		A：版本信息在VerInfo中。
+	　返回值：0成功，非0不成功
+	
+	（５）．U32 WFCAS_GetDateTime(WFCAS_DateTime_t *DateTime);
+	描　　述：取回CAS系统时间（用于显示）。
+	输入参数：无
+	输出参数：
+		A：CAS系统时间在DateTime中。
+	　返回值：0成功，非0不成功
+	
+	（６）．U32 WFCAS_GetDelivery(WFCAS_Delivery_t *Delivery,WFCAS_Direction_t Direction);
+	描　　述：取得传送参数（用于节目搜索和数据广播）。在Delivery结构的Mode域中,最低三位表
+                  示调制的方式或者极化的方式，最高位B7表示LOADER频点,B6表示NIT频点,B5表示数据
+                  广播频点。机顶盒开机时应当首先看有没有LOADER频点，有就在此频点上寻找升级信息；
+                  当机顶盒中存储的节目为空的时候看有没有NIT频点，有则在此频点搜索NIT；如果没有
+                  则把卡上所有频点搜索一遍；数据广播频点在做数据广播时使用。
+	输入参数：
+		A：Direction,方向：FIRST取第一个,PREV取前一个，NEXT取下一个,LAST取最后一个。
+	输出参数：
+		A：传送参数在Delivery中。
+	　返回值：0成功，非0不成功
+	
+	（７）．U32 WFCAS_GetEntitlement(WFCAS_Entitlement_t *Entitlement,WFCAS_Direction_t Direction);
+	描　　述：取得授权信息（用于显示授权记录）。
+	输入参数：
+		A：Direction,方向：FIRST取第一个,PREV取前一个，NEXT取下一个,LAST取最后一个。
+	输出参数：
+		A：授权信息在Entitlement中。
+	　返回值：0成功，非0不成功
+	
+	（８）．U32 WFCAS_CardEventNotify(BOOL Inserted);
+	描　　述：智能卡的拔插事件的通知函数。
+	输入参数：
+		A：Inserted，TRUE=插卡,FALSE=拔卡。
+	输出参数：无
+	　返回值：0成功，非0不成功
+	
+	（９）．U32 WFCAS_SendPPTOkFlag(BOOL IsPPV);
+	描　　述：通知CAS，用户已经确认收看当前这个按时(次)付费节目。
+	输入参数：
+		A：IsPPV,节目类型,TRUE=PPV节目,FALSE=PPT节目。
+	输出参数：无
+	　返回值：0成功，非0不成功
+	
+	（１０）．U32 WFCAS_ProgramEntitle(WFCAS_Program_t *Program);
+	描　　述：通知CAS，对指定的节目进行授权。
+	输入参数：
+		A：Program，节目的标识。
+	输出参数：无
+	　返回值：0成功，非0不成功
+	
+	（１１）．U32 ParseCaTable(WFCAS_CaTable_t *CaTable);
+	描　　述：通知CAS，对指定的CA相关表格(CAT,PMT,CMT)的内容进行分析。
+	输入参数：
+		A：CaTable，CA相关表格(CAT,PMT,CMT)的内容。
+	输出参数：无
+	　返回值：0成功，非0不成功
+	
+	（１２）．VOID WFCAS_ReceiveIsrForCom(CHAR Ch);
+	描　　述：串口的中断服务程序,接收从串口的硬件缓冲区接收到的字符。
+	输入参数：
+		A：Ch，从串口的硬件缓冲区接收到的字符。
+	输出参数：无
+	　返回值：无
+	
+	（１３）．U32 WFCAS_SubmitPduFromCom(VOID);
+	描　　述：把从WFCAS_ReceiveIsrForCom中分析出来的PDU提交给CAS,该
+                  函数应当在一线程或者进程中被周期性的调用,如周期为一秒。
+	输入参数：无
+	输出参数：无
+	　返回值：0成功，非0不成功
+	
+	（１４）．U32 WFCAS_LicensedToSubStb(VOID);
+	描　　述：通过串口发送授权给子机,该函数应当是用户在遥控器上按一
+                  次某个键就被调用一次。
+	输入参数：无
+	输出参数：无
+	　返回值：0成功，非0不成功
+	
+	（１５）．U32 WFCAS_SetZone(U08 *Zone/* 8个字节 */);
+	描　　述：设置区域码。
+	输入参数：
+		A：Zone，区域码的编码。
+	输出参数：无
+	　返回值：0成功，非0不成功
+	
+	（１６）．U32 WFCAS_Initialize(WFSTB_Identity_t *Identity);
+	描　　述：初始化CAS。
+	输入参数：
+		A：Identity，STB的唯一标识。
+	输出参数：无
+	　返回值：0成功，非0不成功

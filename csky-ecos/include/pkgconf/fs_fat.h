@@ -1,0 +1,27 @@
+#ifndef CYGONCE_PKGCONF_FS_FAT_H
+#define CYGONCE_PKGCONF_FS_FAT_H
+/*
+ * File <pkgconf/fs_fat.h>
+ *
+ * This file is generated automatically by the configuration
+ * system. It should not be edited. Any changes to this file
+ * may be overwritten.
+ */
+
+#define CYGNUM_FS_FAT_NODE_HASH_TABLE_SIZE 512
+#define CYGNUM_FS_FAT_NODE_HASH_TABLE_SIZE_512
+#define CYGNUM_FS_FAT_NODE_POOL_SIZE 256
+#define CYGNUM_FS_FAT_NODE_POOL_SIZE_256
+#define CYGNUM_FS_FAT_BLOCK_CACHE_MEMSIZE 131072
+#define CYGNUM_FS_FAT_BLOCK_CACHE_MEMSIZE_131072
+#define FATFS_TRACE_FAT_TABLE_CACHE 131072
+#define FATFS_TRACE_FAT_TABLE_CACHE_131072
+#define FATFS_FAT_TABLE_CACHE_INCREMENT 8192
+#define FATFS_FAT_TABLE_CACHE_INCREMENT_8192
+#define CYGCFG_FS_FAT_USE_ATTRIBUTES 1
+#define CYGPKG_FS_FAT_RET_DIRENT_DTYPE 1
+#define CYGPKG_DEVS_DISK_TESTING 1
+#define CYGDAT_DEVS_DISK_TEST_DEVICE "/dev/synthdisk0/1"
+#define CYGDAT_DEVS_DISK_TEST_DEVICE2 "/dev/synthdisk0/2"
+
+#endif

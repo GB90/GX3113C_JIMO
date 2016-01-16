@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/3201_DVBC/!svn/ver/1140/gxapp_common/cas/kp_cas/gongban/api
+END
+app_kp_cas_api_event.c
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/3201_DVBC/!svn/ver/1140/gxapp_common/cas/kp_cas/gongban/api/app_kp_cas_api_event.c
+END
+app_kp_cas_api_worktime.c
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/3201_DVBC/!svn/ver/1140/gxapp_common/cas/kp_cas/gongban/api/app_kp_cas_api_worktime.c
+END
+app_kp_cas_api_demux.c
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/3201_DVBC/!svn/ver/1140/gxapp_common/cas/kp_cas/gongban/api/app_kp_cas_api_demux.c
+END
+app_kp_cas_api_entitle.c
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/3201_DVBC/!svn/ver/1140/gxapp_common/cas/kp_cas/gongban/api/app_kp_cas_api_entitle.c
+END
+app_kp_cas_api_baseinfo.c
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/3201_DVBC/!svn/ver/1140/gxapp_common/cas/kp_cas/gongban/api/app_kp_cas_api_baseinfo.c
+END
+app_kp_cas_api_pin.c
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/3201_DVBC/!svn/ver/1140/gxapp_common/cas/kp_cas/gongban/api/app_kp_cas_api_pin.c
+END
+app_kp_cas_api_smart.c
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/3201_DVBC/!svn/ver/1140/gxapp_common/cas/kp_cas/gongban/api/app_kp_cas_api_smart.c
+END
+app_kp_cas_api_email.c
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/3201_DVBC/!svn/ver/1140/gxapp_common/cas/kp_cas/gongban/api/app_kp_cas_api_email.c
+END
+kp_cas.c
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/3201_DVBC/!svn/ver/1140/gxapp_common/cas/kp_cas/gongban/api/kp_cas.c
+END
+app_kp_cas_api_rolling_message.c
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/3201_DVBC/!svn/ver/1140/gxapp_common/cas/kp_cas/gongban/api/app_kp_cas_api_rolling_message.c
+END
+app_kp_cas_porting_stb_api.c
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/3201_DVBC/!svn/ver/1140/gxapp_common/cas/kp_cas/gongban/api/app_kp_cas_porting_stb_api.c
+END
+app_kp_cas_api_watchlevel.c
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/3201_DVBC/!svn/ver/1140/gxapp_common/cas/kp_cas/gongban/api/app_kp_cas_api_watchlevel.c
+END
+app_kp_cas_api_ippv_slot.c
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/3201_DVBC/!svn/ver/1140/gxapp_common/cas/kp_cas/gongban/api/app_kp_cas_api_ippv_slot.c
+END

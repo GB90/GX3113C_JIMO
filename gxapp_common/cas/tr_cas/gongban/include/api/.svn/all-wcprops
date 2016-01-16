@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/3201_DVBC/!svn/ver/1154/gxapp_common/cas/tr_cas/gongban/include/api
+END
+app_tr_cas_api_lock_service.h
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/3201_DVBC/!svn/ver/1151/gxapp_common/cas/tr_cas/gongban/include/api/app_tr_cas_api_lock_service.h
+END
+app_tr_cas_api_rolling_message.h
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/3201_DVBC/!svn/ver/1151/gxapp_common/cas/tr_cas/gongban/include/api/app_tr_cas_api_rolling_message.h
+END
+app_tr_cas_api_finger.h
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/3201_DVBC/!svn/ver/1151/gxapp_common/cas/tr_cas/gongban/include/api/app_tr_cas_api_finger.h
+END
+app_tr_cas_api_crc32.h
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/3201_DVBC/!svn/ver/1151/gxapp_common/cas/tr_cas/gongban/include/api/app_tr_cas_api_crc32.h
+END
+app_tr_cas_api_ippv_slot.h
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/3201_DVBC/!svn/ver/1151/gxapp_common/cas/tr_cas/gongban/include/api/app_tr_cas_api_ippv_slot.h
+END
+app_tr_cas_api_ippv_bill.h
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/3201_DVBC/!svn/ver/1151/gxapp_common/cas/tr_cas/gongban/include/api/app_tr_cas_api_ippv_bill.h
+END
+app_tr_cas_api_demux.h
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/3201_DVBC/!svn/ver/1151/gxapp_common/cas/tr_cas/gongban/include/api/app_tr_cas_api_demux.h
+END
+app_tr_cas_api_rating.h
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/3201_DVBC/!svn/ver/1151/gxapp_common/cas/tr_cas/gongban/include/api/app_tr_cas_api_rating.h
+END
+app_tr_cas_api_smart.h
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/3201_DVBC/!svn/ver/1151/gxapp_common/cas/tr_cas/gongban/include/api/app_tr_cas_api_smart.h
+END
+app_tr_cas_api_pin.h
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/3201_DVBC/!svn/ver/1151/gxapp_common/cas/tr_cas/gongban/include/api/app_tr_cas_api_pin.h
+END
+app_tr_cas_api_baseinfo.h
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/3201_DVBC/!svn/ver/1151/gxapp_common/cas/tr_cas/gongban/include/api/app_tr_cas_api_baseinfo.h
+END
+app_tr_cas_api_email.h
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/3201_DVBC/!svn/ver/1151/gxapp_common/cas/tr_cas/gongban/include/api/app_tr_cas_api_email.h
+END
+app_tr_cas_api_ippv_info.h
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/3201_DVBC/!svn/ver/1151/gxapp_common/cas/tr_cas/gongban/include/api/app_tr_cas_api_ippv_info.h
+END
+app_tr_cas_api_entitle.h
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/3201_DVBC/!svn/ver/1154/gxapp_common/cas/tr_cas/gongban/include/api/app_tr_cas_api_entitle.h
+END
+app_tr_cas_api_announce.h
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/3201_DVBC/!svn/ver/1151/gxapp_common/cas/tr_cas/gongban/include/api/app_tr_cas_api_announce.h
+END

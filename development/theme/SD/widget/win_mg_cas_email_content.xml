@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="GB2312" standalone="no"?>
+<widget name="win_mg_cas_email_content" style="default" class="window">
+    <property>
+        <rect>[0,0,720,576]</rect>
+        <forecolor>[#000000,#000000,#000000]</forecolor>
+        <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+    </property>
+    <signal>
+        <create>win_mg_cas_email_content_create</create>
+        <destroy>win_mg_cas_email_content_destroy</destroy>
+        <keypress>win_mg_cas_email_content_keypress</keypress>
+    </signal>
+    <children>
+        <widget name="win_mg_cas_email_content_image_bg" style="default" class="image">
+            <property>
+                <rect>[80,78,560,420]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#33508C,#33508C,#33508C]</backcolor>
+                <mode>multiple</mode>
+                <img></img>
+                <lt_img>DS_WIN_BG_T_l.bmp</lt_img>
+                <rt_img>DS_WIN_BG_T_r.bmp</rt_img>
+                <l_img>DS_WIN_BG.bmp</l_img>
+                <r_img>DS_WIN_BG.bmp</r_img>
+            </property>
+        </widget>
+        <widget name="win_mg_cas_email_content_image202" style="default" class="image">
+            <property>
+                <rect>[80,456,560,31]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#808080,#808080,#808080]</backcolor>
+                <mode>single</mode>
+                <img>DS_HELP_COTE.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_mg_cas_email_content_head" style="default" class="text">
+            <property>
+                <rect>[116,88,500,40]</rect>
+                <forecolor>[#FFFFFF,#FFFFFF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>simhei</font>
+                <string></string>
+                <format>automatic</format>
+            </property>
+        </widget>
+        <widget name="win_mg_cas_email_content_content" style="default" class="notepad">
+            <property>
+                <rect>[113,163,500,240]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#36518f,#36518f,#36518f]</backcolor>
+                <alignment>left|top</alignment>
+                <font>Arial</font>
+                <vertical_margin>0</vertical_margin>
+                <horizontal_margin>0</horizontal_margin>
+            </property>
+            <children>
+                <widget name="win_divitone_cas_emailcontent_content_scrollbar" style="default" class="scrollbar">
+                    <property>
+                        <rect>[573,0,0,220]</rect>
+                        <state>hide</state>
+                        <forecolor>[#000000,#000000,#000000]</forecolor>
+                        <backcolor>[#212021,#212021,#212021]</backcolor>
+                        <format>scroll_hide</format>
+                    </property>
+                </widget>
+            </children>
+        </widget>
+        <widget name="win_stb_info_tip_image_exit" style="default" class="image">
+            <property>
+                <rect>[279,461,34,22]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_Icon_Exit.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_tip_text_exit" style="default" class="text">
+            <property>
+                <rect>[319,457,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <string>Exit Menu</string>
+                <format>static</format>
+            </property>
+        </widget>
+    </children>
+</widget>

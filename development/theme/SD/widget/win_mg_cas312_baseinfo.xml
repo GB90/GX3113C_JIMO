@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="GB2312" standalone="no"?>
+<widget name="win_mg_cas312_baseinfo" style="default" class="window">
+    <property>
+        <rect>[0,0,720,576]</rect>
+        <forecolor>[#000000,#000000,#000000]</forecolor>
+        <backcolor>[#00FF00,#00FF00,#00FF00]</backcolor>
+    </property>
+    <signal>
+        <create>win_mg_cas_baseinfo_create</create>
+        <destroy>win_mg_cas_baseinfo_destroy</destroy>
+        <keypress>win_mg_cas_baseinfo_keypress</keypress>
+    </signal>
+    <children>
+        <widget name="win_mg_cas_baseinfo_image_bg" style="default" class="image">
+            <property>
+                <rect>[80,78,560,420]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#33508C,#33508C,#33508C]</backcolor>
+                <mode>multiple</mode>
+                <img></img>
+                <lt_img>DS_WIN_BG_T_l.bmp</lt_img>
+                <rt_img>DS_WIN_BG_T_r.bmp</rt_img>
+                <l_img>DS_WIN_BG.bmp</l_img>
+                <r_img>DS_WIN_BG.bmp</r_img>
+            </property>
+        </widget>
+        <widget name="win_mg_cas_baseinfo_image202" style="default" class="image">
+            <property>
+                <rect>[80,456,560,31]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#808080,#808080,#808080]</backcolor>
+                <mode>single</mode>
+                <img>DS_HELP_COTE.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_mg_cas_baseinfo_ivs_name" style="default" class="text">
+            <property>
+                <rect>[160,146,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>TVS_1</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_mg_cas_baseinfo_caver_name" style="default" class="text">
+            <property>
+                <rect>[160,181,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Ca Version_1</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_mg_cas_baseinfo_cardno_name" style="default" class="text">
+            <property>
+                <rect>[160,217,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Card No_1</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_mg_cas_baseinfo_cardver_name" style="default" class="text">
+            <property>
+                <rect>[160,254,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Card Ver</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_mg_cas_baseinfo_balance_name" style="default" class="text">
+            <property>
+                <rect>[160,291,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Balance(Yuan)</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_mg_cas_baseinfo_overdraft_name" style="default" class="text">
+            <property>
+                <rect>[160,328,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Over Draft(Yuan)</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_mg_cas_baseinfo_areacode_name" style="default" class="text">
+            <property>
+                <rect>[160,365,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>AreaCode_1</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_mg_cas_baseinfo_partner_name" style="default" class="text">
+            <property>
+                <rect>[160,401,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Partner State</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_mg_cas_baseinfo_ivs_value" style="default" class="text">
+            <property>
+                <rect>[364,145,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_mg_cas_baseinfo_casver_value" style="default" class="text">
+            <property>
+                <rect>[364,181,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_mg_cas_baseinfo_cardno_value" style="default" class="text">
+            <property>
+                <rect>[364,218,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_mg_cas_baseinfo_cardver_value" style="default" class="text">
+            <property>
+                <rect>[364,254,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_mg_cas_baseinfo_balance_value" style="default" class="text">
+            <property>
+                <rect>[364,291,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_mg_cas_baseinfo_overdraft_value" style="default" class="text">
+            <property>
+                <rect>[364,328,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_mg_cas_baseinfo_zonecode_value" style="default" class="text">
+            <property>
+                <rect>[364,365,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_mg_cas_baseinfo_partner_value" style="default" class="text">
+            <property>
+                <rect>[364,402,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_mgcas_baseinfo_tip_image_exit" style="default" class="image">
+            <property>
+                <rect>[271,462,34,22]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_Icon_Exit.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_tip_text_exit" style="default" class="text">
+            <property>
+                <rect>[318,456,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Exit Menu</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_mg_cas_baseinfo_title" style="default" class="text">
+            <property>
+                <rect>[163,88,400,42]</rect>
+                <forecolor>[#FFFFFF,#FFFFFF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>simhei</font>
+                <string>Base info</string>
+                <format>static</format>
+            </property>
+        </widget>
+    </children>
+</widget>

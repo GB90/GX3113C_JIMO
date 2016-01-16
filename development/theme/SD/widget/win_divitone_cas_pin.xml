@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="GB2312" standalone="no"?>
+<widget name="win_divitone_cas_pin" style="default" class="window">
+    <property>
+        <rect>[0,0,720,576]</rect>
+        <forecolor>[#000000,#000000,#000000]</forecolor>
+        <backcolor>[#00FF00,#00FF00,#00FF00]</backcolor>
+    </property>
+    <signal>
+        <create>win_divitone_cas_pin_create</create>
+        <destroy>win_divitone_cas_pin_destroy</destroy>
+        <keypress>win_divitone_cas_pin_keypress</keypress>
+    </signal>
+    <children>
+        <widget name="win_divitone_pin_image_bg" style="default" class="image">
+            <property>
+                <rect>[80,78,560,420]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#33508C,#33508C,#33508C]</backcolor>
+                <mode>multiple</mode>
+                <img></img>
+                <lt_img>DS_WIN_BG_T_l.bmp</lt_img>
+                <rt_img>DS_WIN_BG_T_r.bmp</rt_img>
+                <l_img>DS_WIN_BG.bmp</l_img>
+                <r_img>DS_WIN_BG.bmp</r_img>
+            </property>
+        </widget>
+        <widget name="win_divitone_cas_cardinfo_image202" style="default" class="image">
+            <property>
+                <rect>[80,456,560,31]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#808080,#808080,#808080]</backcolor>
+                <mode>single</mode>
+                <img>DS_HELP_COTE.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_divitone_cas_pin_title" style="default" class="text">
+            <property>
+                <rect>[163,88,400,42]</rect>
+                <forecolor>[#FFFFFF,#FFFFFF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>simhei</font>
+                <string>Set Pin</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_divitone_cas_pin_box" style="default" class="box">
+            <property>
+                <rect>[135,175,447,160]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <interval>10</interval>
+                <format>vertical</format>
+            </property>
+            <signal>
+                <keypress>win_divitone_cas_pin_box_keypress</keypress>
+            </signal>
+            <children>
+                <widget name="win_divitone_cas_pin_boxitem1" style="default" class="boxitem">
+                    <property>
+                        <rect>[0,10,447,35]</rect>
+                        <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                        <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                        <unfocus_image>DS_update_blue.bmp</unfocus_image>
+                        <focus_image>DS_update_blue.bmp</focus_image>
+                        <disable_image>DS_update_blue.bmp</disable_image>
+                    </property>
+                    <children>
+                        <widget name="win_divitone_cas_pin_boxitem1_text" style="default" class="text">
+                            <property>
+                                <rect>[11,2,200,30]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                                <font>Arial</font>
+                                <alignment>left|vcentre</alignment>
+                                <string>Old Password</string>
+                                <format>static</format>
+                            </property>
+                        </widget>
+                        <widget name="win_divitone_cas_pin_boxitem1_edit" style="default" class="edit">
+                            <property>
+                                <rect>[233,5,200,26]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#ff00ff,#debe42,#ff00ff]</backcolor>
+                                <font>Arial</font>
+                                <alignment>hcentre|vcentre</alignment>
+                                <intaglio>*</intaglio>
+                                <maxlen>6</maxlen>
+                                <format>edit_digit</format>
+                            </property>
+                        </widget>
+                    </children>
+                </widget>
+                <widget name="win_divitone_cas_pin_boxitem2" style="default" class="boxitem">
+                    <property>
+                        <rect>[0,55,447,35]</rect>
+                        <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                        <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                        <unfocus_image>DS_update_blue.bmp</unfocus_image>
+                        <focus_image>DS_update_blue.bmp</focus_image>
+                        <disable_image>DS_update_blue.bmp</disable_image>
+                    </property>
+                    <children>
+                        <widget name="win_divitone_cas_pin_boxitem2_text" style="default" class="text">
+                            <property>
+                                <rect>[11,4,200,30]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                                <font>Arial</font>
+                                <alignment>left|vcentre</alignment>
+                                <string>New Password</string>
+                                <format>static</format>
+                            </property>
+                        </widget>
+                        <widget name="win_divitone_cas_pin_boxitem2_edit" style="default" class="edit">
+                            <property>
+                                <rect>[233,5,200,26]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#ff00ff,#debe42,#ff00ff]</backcolor>
+                                <font>Arial</font>
+                                <alignment>hcentre|vcentre</alignment>
+                                <intaglio>*</intaglio>
+                                <maxlen>6</maxlen>
+                                <format>edit_digit</format>
+                            </property>
+                        </widget>
+                    </children>
+                </widget>
+                <widget name="win_divitone_cas_pin_boxitem3" style="default" class="boxitem">
+                    <property>
+                        <rect>[0,100,447,35]</rect>
+                        <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                        <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                        <unfocus_image>DS_update_blue.bmp</unfocus_image>
+                        <focus_image>DS_update_blue.bmp</focus_image>
+                        <disable_image>DS_update_blue.bmp</disable_image>
+                    </property>
+                    <children>
+                        <widget name="win_divitone_cas_pin_boxitem3_text" style="default" class="text">
+                            <property>
+                                <rect>[11,2,200,30]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                                <font>Arial</font>
+                                <alignment>left|vcentre</alignment>
+                                <string>Confirm Password</string>
+                                <format>static</format>
+                            </property>
+                        </widget>
+                        <widget name="win_divitone_cas_pin_boxitem3_edit" style="default" class="edit">
+                            <property>
+                                <rect>[233,4,200,26]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#ff00ff,#debe42,#ff00ff]</backcolor>
+                                <font>Arial</font>
+                                <alignment>hcentre|vcentre</alignment>
+                                <intaglio>*</intaglio>
+                                <maxlen>6</maxlen>
+                                <format>edit_digit</format>
+                            </property>
+                        </widget>
+                    </children>
+                </widget>
+            </children>
+        </widget>
+        <widget name="win_divitone_cas_pin_updown" style="default" class="image">
+            <property>
+                <rect>[91,465,54,12]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_ICON_SWORD.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_divitone_cas_pin_tip_image_exit" style="default" class="image">
+            <property>
+                <rect>[302,460,34,22]</rect>
+                <forecolor>[#FFFFFF,#FF00FF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_Icon_Exit.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_divitone_cas_pin_tip_image_ok" style="default" class="image">
+            <property>
+                <rect>[493,460,34,22]</rect>
+                <forecolor>[#FFFFFF,#FF00FF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_ICON_OK.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_tip_text_updown" style="default" class="text">
+            <property>
+                <rect>[152,457,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Move Focus</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_tip_text_exit" style="default" class="text">
+            <property>
+                <rect>[346,457,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Exit Menu</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_tip_text_ok" style="default" class="text">
+            <property>
+                <rect>[536,455,100,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Save</string>
+                <format>static</format>
+            </property>
+        </widget>
+    </children>
+</widget>

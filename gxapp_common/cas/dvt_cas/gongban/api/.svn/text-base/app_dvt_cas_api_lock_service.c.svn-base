@@ -1,0 +1,170 @@
+/*****************************************************************************
+* 						   CONFIDENTIAL
+*        Hangzhou GuoXin Science and Technology Co., Ltd.
+*                      (C)2012, All right reserved
+******************************************************************************
+
+******************************************************************************
+* File Name :	app_dvt_cas_api_lock_service.c
+* Author    : 	zhouhm
+* Project   :	goxceed dvbc
+* Type      :
+******************************************************************************
+* Purpose   :	模块头文件
+******************************************************************************
+* Release History:
+VERSION	Date			  AUTHOR         Description
+1.0  	2012.12.02		  zhouhm 	 			creation
+*****************************************************************************/
+#include "app_common_play.h"
+#include "app_common_prog.h"
+#include "app_common_search.h"
+#include "app_common_porting_stb_api.h"
+#include "app_common_porting_ca_flash.h"
+#include "app_common_porting_ca_smart.h"
+#include "app_common_porting_ca_demux.h"
+#include "app_common_porting_ca_descramble.h"
+#include "gxmsg.h"
+#include "gxprogram_manage_berkeley.h"
+#include "service/gxplayer.h"
+#include "gxplayer_url.h"
+#include "app_dvt_cas_api_lock_service.h"
+#include "gui_key.h"
+#include "app_common_lcn.h"
+#include "DVTSTB_CASInf.h"
+#include "gui_core.h"
+
+
+ static uint8_t lock_service_status = FALSE;
+
+/*extern*/ GxTime emergencystarttime;
+/*extern*/ WORD emergencyduration ;
+
+extern void app_win_exist_to_full_screen(void);
+
+void app_dvt_cas_api_lock_service(WORD wOriNetID, WORD wTSID, WORD wServiceID, WORD wDuration)
+{
+
+	int32_t serviceIndex= 0;	// 逻辑频道号
+	GxBusPmDataProg prog_data = {0};
+	GxBusPmViewInfo sysinfo;
+	GxBusPmViewInfo old_sysinfo;
+	int32_t config;
+	uint16_t pos;
+	player_t play={0};
+	printf(" DVTSTBCA_UrgencyBroadcast  wOriNetID=%d wTSID=%d wServiceID=%d wDuration=%d\n",
+		wOriNetID,wTSID,wServiceID,wDuration);  
+
+
+	GxBus_PmViewInfoGet(&sysinfo);
+	memcpy(&old_sysinfo,&sysinfo,sizeof(GxBusPmViewInfo));
+	serviceIndex = GxBus_PmProgPosGet(wTSID,wServiceID);		// 返回逻辑频道号
+	if (-1 == serviceIndex)
+	{
+		printf("DVTSTBCA_UrgencyBroadcast GxBus_PmProgPosGet fail\n");
+		return;
+	}
+
+	app_win_exist_to_full_screen();
+
+
+	/*通过逻辑频道 号，获取节目位置*/
+
+	config = app_flash_get_config_lcn_flag();
+	if(LCN_STATE_ON == config)
+	{
+		if (FALSE == app_lcn_list_get_num_prog_pos(serviceIndex,&pos))
+		{
+			printf("DVTSTBCA_UrgencyBroadcast app_get_prog_pos_by_LCN fail\n");
+			return;						
+		}
+	}
+
+    GxBus_PmProgGetByPos(pos,1,&prog_data);	
+	printf("PROG NAME = %s\n", prog_data.prog_name);
+	if(GXCORE_SUCCESS == GxBus_PmViewInfoGet(&sysinfo))
+	{
+		if(sysinfo.stream_type == GXBUS_PM_PROG_TV)
+		{
+			sysinfo.tv_prog_cur = prog_data.id;
+		}
+#if (1 == DVB_HD_LIST)
+		else if(sysinfo.stream_type == GXBUS_PM_PROG_HD_SERVICE)
+		{
+			sysinfo.hd_prog_cur = prog_data.id;
+		}
+#endif
+		else
+		{
+			sysinfo.radio_prog_cur = prog_data.id;
+		}
+		GxBus_PmViewInfoModify(&sysinfo);
+		app_prog_save_playing_pos_in_group(pos);
+	}
+
+	GxCore_GetTickTime(&emergencystarttime);
+	printf("emergencystarttime time 1 = %d\n", emergencystarttime.seconds);
+
+	emergencyduration = wDuration;
+	app_dvt_cas_api_set_lock_status(TRUE);
+
+//	menu_flag = TRUE;
+
+	play.num = pos;
+	play.param = 0;
+	play.player = PLAYER0;	
+	app_send_msg(GXMSG_PLAYER_PLAY,(void*)&play);
+//	appMsg.msg = NULL;
+//	appMsg.param = NULL;	
+	
+	return;
+}
+
+
+
+
+
+uint8_t app_dvt_cas_api_set_lock_status(uint8_t lock_status)
+{
+	if (lock_service_status != lock_status)
+		lock_service_status = lock_status;
+	if (TRUE == lock_status)
+		{
+			GUI_SetProperty("full_screen_text_msg_5sec", "string", "正在紧急广播");
+			GUI_SetProperty("full_screen_text_msg_5sec","state","show");		
+		}
+	else
+		{
+			GUI_SetProperty("full_screen_text_msg_5sec","state","hide");			
+		}
+	return lock_service_status;
+	
+}
+
+uint8_t app_dvt_cas_api_get_lock_status(void)
+{
+
+	GxTime nowtime={0};
+	
+	if (FALSE == lock_service_status)
+	{
+//		GUI_SetProperty("full_screen_text_msg_5sec","state","hide");
+		return FALSE;
+	}
+
+/*	GUI_SetProperty("full_screen_text_msg_5sec", "string", "正在紧急广播");
+	GUI_SetProperty("full_screen_text_msg_5sec","state","show");*/
+	GxCore_GetTickTime(&nowtime);
+	if (nowtime.seconds - emergencystarttime.seconds >=  emergencyduration)
+	{
+		printf("now time = %d\n", nowtime.seconds);
+		printf("emergencystarttime time 2 = %d\n", emergencystarttime.seconds);
+		DVTSTBCA_CancelUrgencyBroadcast();
+		emergencyduration = 0;
+		return FALSE;
+	}
+
+	return lock_service_status;
+}
+
+

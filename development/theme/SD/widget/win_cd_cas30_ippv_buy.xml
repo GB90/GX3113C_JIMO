@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="GB2312" standalone="no"?>
+<widget name="win_cd_cas30_ippv_buy" style="default_window" class="window">
+    <property>
+        <rect>[80,78,560,420]</rect>
+        <forecolor>[#000000,#000000,#000000]</forecolor>
+        <backcolor>[#00FF00,#00FF00,#00FF00]</backcolor>
+    </property>
+    <signal>
+        <create>win_cd_cas30_ippv_buy_create</create>
+        <destroy>win_cd_cas30_ippv_buy_destroy</destroy>
+        <keypress>win_cd_cas30_ippv_buy_keypress</keypress>
+    </signal>
+    <children>
+        <widget name="win_cd_cas30_ippv_buy_image_bg" style="default" class="image">
+            <property>
+                <rect>[80,78,560,420]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#33508C,#33508C,#33508C]</backcolor>
+                <mode>multiple</mode>
+                <img></img>
+                <lt_img>DS_WIN_BG_T_l.bmp</lt_img>
+                <rt_img>DS_WIN_BG_T_r.bmp</rt_img>
+                <l_img>DS_WIN_BG.bmp</l_img>
+                <r_img>DS_WIN_BG.bmp</r_img>
+            </property>
+        </widget>
+        <widget name="win_audio_set_image202" style="default" class="image">
+            <property>
+                <rect>[80,456,560,31]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#808080,#808080,#808080]</backcolor>
+                <mode>single</mode>
+                <img>DS_HELP_COTE.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_ippv_buy_image1" style="default" class="image">
+            <property>
+                <rect>[0,0,560,480]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#729CCE,#729CCE,#729CCE]</backcolor>
+                <mode>multiple</mode>
+                <img></img>
+                <lt_img>DS_WIN_BG_T_l.bmp</lt_img>
+                <rt_img>DS_WIN_BG_T_r.bmp</rt_img>
+                <l_img>DS_WIN_BG.bmp</l_img>
+                <r_img>DS_WIN_BG.bmp</r_img>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_ippv_buy_title" style="default" class="text">
+            <property>
+                <rect>[99,19,380,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <string>IPPV Buy</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_ippt_buy_tip" style="default" class="text">
+            <property>
+                <rect>[53,63,470,30]</rect>
+                <state>hide</state>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <string>IPPT Tip</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_ippv_buy_id" style="default" class="text">
+            <property>
+                <rect>[30,105,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Program ID</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_ippv_buy_id_value" style="default" class="text">
+            <property>
+                <rect>[150,105,140,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_ippv_buy_overdue" style="default" class="text">
+            <property>
+                <rect>[294,105,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Expired Date</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_ippv_buy_overdue_value" style="default" class="text">
+            <property>
+                <rect>[413,105,140,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_ippv_buy_no_price" style="default" class="text">
+            <property>
+                <rect>[30,141,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Record Price</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_ippv_buy_no_price_value" style="default" class="text">
+            <property>
+                <rect>[413,141,140,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_ippv_buy_price" style="default" class="text">
+            <property>
+                <rect>[294,141,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>No Record Price</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_ippv_buy_price_value" style="default" class="text">
+            <property>
+                <rect>[150,141,140,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_ippv_buy_purse" style="default" class="text">
+            <property>
+                <rect>[30,177,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Slot ID</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_ippv_buy_purse_value" style="default" class="text">
+            <property>
+                <rect>[150,177,140,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_ippv_buy_purse_hit_buy" style="default" class="text">
+            <property>
+                <rect>[161,382,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Buy</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_ippv_buy_purse_hint_exit" style="default" class="text">
+            <property>
+                <rect>[358,381,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Cancel</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_ippv_buy_purse_tvs" style="default" class="text">
+            <property>
+                <rect>[294,177,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>TVS ID</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_ippv_buy_purse_tvs_value" style="default" class="text">
+            <property>
+                <rect>[413,177,140,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_ippv_buy_purse_tipinfo1" style="default" class="text">
+            <property>
+                <rect>[46,314,480,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_ippv_buy_purse_tipinfo2" style="default" class="text">
+            <property>
+                <rect>[45,315,480,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_ippv_buy_image_cancel" style="default" class="image">
+            <property>
+                <rect>[312,383,34,22]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <mode>single</mode>
+                <img>DS_Icon_Exit.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_ippv_buy_image_confirm" style="default" class="image">
+            <property>
+                <rect>[109,385,34,22]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <mode>single</mode>
+                <img>DS_ICON_OK.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_ippv_buy_text_finger0" style="default" class="text">
+            <property>
+                <rect>[3,23,165,30]</rect>
+                <state>hide</state>
+                <forecolor>[#FFFFFF,#FFFFFF,#FFFFFF]</forecolor>
+                <backcolor>[#3858B8,#3858B8,#3858B8]</backcolor>
+                <font>Arial</font>
+                <string>0123456789</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_ippv_buy_text_finger5" style="default" class="text">
+            <property>
+                <rect>[15,346,165,30]</rect>
+                <state>hide</state>
+                <forecolor>[#FFFFFF,#FFFFFF,#FFFFFF]</forecolor>
+                <backcolor>[#3858B8,#3858B8,#3858B8]</backcolor>
+                <font>Arial</font>
+                <string>0123456789</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_ippv_buy_text_finger6" style="default" class="text">
+            <property>
+                <rect>[387,347,165,30]</rect>
+                <state>hide</state>
+                <forecolor>[#FFFFFF,#FFFFFF,#FFFFFF]</forecolor>
+                <backcolor>[#3858B8,#3858B8,#3858B8]</backcolor>
+                <font>Arial</font>
+                <string>0123456789</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_ippv_buy_text_finger7" style="default" class="text">
+            <property>
+                <rect>[192,347,165,30]</rect>
+                <state>hide</state>
+                <forecolor>[#FFFFFF,#FFFFFF,#FFFFFF]</forecolor>
+                <backcolor>[#3858B8,#3858B8,#3858B8]</backcolor>
+                <font>Arial</font>
+                <string>0123456789</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_ippv_buy_box" style="default" class="box">
+            <property>
+                <rect>[60,213,447,100]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <interval>10</interval>
+                <format>vertical</format>
+            </property>
+            <signal>
+                <keypress>win_cd_cas30_ippv_buy_box_keypress</keypress>
+            </signal>
+            <children>
+                <widget name="win_cd_cas30_ippv_buy_purse_boxitem1" style="default" class="boxitem">
+                    <property>
+                        <rect>[0,10,447,35]</rect>
+                        <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                        <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                        <focus_image>DS_update_orange.bmp</focus_image>
+                    </property>
+                    <children>
+                        <widget name="win_cd_cas30_rating_boxitem1_text" style="default" class="text">
+                            <property>
+                                <rect>[7,3,200,30]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#ff00ff,#FF00FF,#ff00ff]</backcolor>
+                                <font>Arial</font>
+                                <string>Recordable</string>
+                                <format>static</format>
+                            </property>
+                        </widget>
+                        <widget name="win_cd_cas30_rating_boxitem1_value" style="default" class="combobox">
+                            <property>
+                                <rect>[242,2,200,30]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#ff00ff,#6bc65a,#ff00ff]</backcolor>
+                                <font>Arial</font>
+                                <content>[NO,YES]</content>
+                            </property>
+                        </widget>
+                    </children>
+                </widget>
+                <widget name="win_cd_cas30_ippv_buy_purse_boxitem2" style="default" class="boxitem">
+                    <property>
+                        <rect>[0,55,447,35]</rect>
+                        <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                        <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                        <focus_image>DS_update_orange.bmp</focus_image>
+                    </property>
+                    <children>
+                        <widget name="win_cd_cas30_ippv_buy_purse_boxitem2_text" style="default" class="text">
+                            <property>
+                                <rect>[6,4,200,30]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#ff00ff,#FF00FF,#ff00ff]</backcolor>
+                                <font>Arial</font>
+                                <string>Input Password</string>
+                                <format>static</format>
+                            </property>
+                        </widget>
+                        <widget name="win_cd_cas30_ippv_buy_purse_boxitem2_edit" style="default" class="edit">
+                            <property>
+                                <rect>[241,2,200,30]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#ff00ff,#6bc65a,#ff00ff]</backcolor>
+                                <font>Arial</font>
+                                <alignment>hcentre|vcentre</alignment>
+                                <intaglio>*</intaglio>
+                                <maxlen>6</maxlen>
+                                <format>edit_digit</format>
+                            </property>
+                        </widget>
+                    </children>
+                </widget>
+            </children>
+        </widget>
+    </children>
+</widget>

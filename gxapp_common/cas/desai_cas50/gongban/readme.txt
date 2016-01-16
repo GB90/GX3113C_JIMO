@@ -1,0 +1,12 @@
+﻿德赛CA5.0(公版) env.sh配置参考：
+5.3
+export DVB_CA_TYPE=DVB_CA_TYPE_DSCAS50
+export DVB_CA_1_NAME=desai_cas50
+export DVB_CA_1_LIB=ca
+export DVB_CA_1_FLAG=DVB_CA_TYPE_DS_CAS50_FLAG	
+
+5.2
+export DVB_CA_TYPE=DVB_CA_TYPE_DSCAS50
+export DVB_CA_1_NAME=desai_cas50
+export DVB_CA_1_LIB=ca_52
+export DVB_CA_1_FLAG=DVB_CA_TYPE_DS_CAS50_FLAG

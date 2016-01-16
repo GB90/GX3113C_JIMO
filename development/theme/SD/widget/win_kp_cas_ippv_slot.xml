@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="GB2312" standalone="no"?>
+<widget name="win_kp_cas_ippv_slot" style="default" class="window">
+    <property>
+        <rect>[0,0,720,576]</rect>
+        <forecolor>[#000000,#000000,#000000]</forecolor>
+        <backcolor>[#00FF00,#00FF00,#00FF00]</backcolor>
+    </property>
+    <signal>
+        <create>win_kp_cas_ippv_slot_create</create>
+        <destroy>win_kp_cas_ippv_slot_destroy</destroy>
+        <keypress>win_kp_cas_ippv_slot_keypress</keypress>
+    </signal>
+    <children>
+        <widget name="win_kp_cas_ippv_slot_backgroup" style="default" class="image">
+            <property>
+                <rect>[80,78,560,420]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#33508C,#33508C,#33508C]</backcolor>
+                <mode>multiple</mode>
+                <img></img>
+                <lt_img>DS_WIN_BG_T_l.bmp</lt_img>
+                <rt_img>DS_WIN_BG_T_r.bmp</rt_img>
+                <l_img>DS_WIN_BG.bmp</l_img>
+                <r_img>DS_WIN_BG.bmp</r_img>
+            </property>
+        </widget>
+        <widget name="win_divitone_cas_cardinfo_image202" style="default" class="image">
+            <property>
+                <rect>[80,456,560,31]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#808080,#808080,#808080]</backcolor>
+                <mode>single</mode>
+                <img>DS_HELP_COTE.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_kp_cas_ippv_slot_title" style="default" class="text">
+            <property>
+                <rect>[163,88,400,42]</rect>
+                <forecolor>[#FFFFFF,#FFFFFF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>simhei</font>
+                <string>IPPV Slot</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_kp_cas_ippv_slot_listview" style="default" class="listview">
+            <property>
+                <rect>[138,144,447,290]</rect>
+                <forecolor>[#CEE8FF,#FFFFFF,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <roll_time>0</roll_time>
+                <interval>1</interval>
+                <focus_img>button_focus_green895_1.bmp</focus_img>
+                <i18n>false</i18n>
+                <item_rect>[0,0,447,40]</item_rect>
+                <item_fore_color>[#CEE8FF,#FFFFFF,#CEE8FF]</item_fore_color>
+                <item_back_color>[#FF00FF,#FF00FF,#FF00FF]</item_back_color>
+            </property>
+            <signal>
+                <get_total>win_kp_cas_ippv_slot_get_count</get_total>
+                <get_data>win_kp_cas_ippv_slot_get_data</get_data>
+            </signal>
+            <children>
+                <widget name="win_kp_cas_ippv_slot_listwiew_header" style="default" class="header">
+                    <property>
+                        <rect>[0,0,447,40]</rect>
+                        <forecolor>[#CEE8FF,#FFFFFF,#CEE8FF]</forecolor>
+                        <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                        <format>headershow</format>
+                        <colum_number>4</colum_number>
+                    </property>
+                    <children>
+                        <widget name="win_kp_cas_ippv_slot_listwiew_tvs" style="default" class="text">
+                            <property>
+                                <rect>[0,0,70,40]</rect>
+                                <forecolor>[#CEE8FF,#FFFFFF,#CEE8FF]</forecolor>
+                                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                                <font>Arial</font>
+                                <string>TVS ID</string>
+                                <format>static</format>
+                            </property>
+                        </widget>
+                        <widget name="win_kp_cas_ippv_slot_listview_slot" style="default" class="text">
+                            <property>
+                                <rect>[70,0,165,40]</rect>
+                                <forecolor>[#CEE8FF,#FFFFFF,#CEE8FF]</forecolor>
+                                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                                <font>Arial</font>
+                                <string>TVS Info</string>
+                                <format>static</format>
+                            </property>
+                        </widget>
+                        <widget name="win_kp_cas_ippv_slot_listwiew_point" style="default" class="text">
+                            <property>
+                                <rect>[235,0,155,40]</rect>
+                                <forecolor>[#CEE8FF,#FFFFFF,#CEE8FF]</forecolor>
+                                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                                <font>Arial</font>
+                                <string>Amount</string>
+                                <format>static</format>
+                            </property>
+                        </widget>
+                        <widget name="win_kp_cas_ippv_slot_listwiew_Used" style="default" class="text">
+                            <property>
+                                <rect>[390,0,57,40]</rect>
+                                <forecolor>[#CEE8FF,#FFFFFF,#CEE8FF]</forecolor>
+                                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                                <font>Arial</font>
+                                <string>Balance</string>
+                                <format>static</format>
+                            </property>
+                        </widget>
+                    </children>
+                </widget>
+                <widget name="win_kp_cas_ippv_slot_listwiew_scrollbar" style="default" class="scrollbar">
+                    <property>
+                        <rect>[422,40,0,250]</rect>
+                        <state>hide</state>
+                        <forecolor>[#000000,#000000,#000000]</forecolor>
+                        <backcolor>[#408DD2,#408DD2,#408DD2]</backcolor>
+                        <format>scroll_hide</format>
+                    </property>
+                </widget>
+                <widget name="win_kp_cas_ippv_slot_listwiew_listitem1" style="default" class="listitem">
+                    <property>
+                        <font>Arial</font>
+                    </property>
+                </widget>
+                <widget name="win_kp_cas_ippv_slot_listwiew_listitem2" style="default" class="listitem">
+                    <property>
+                        <font>Arial</font>
+                    </property>
+                </widget>
+                <widget name="win_kp_cas_ippv_slot_listwiew_listitem3" style="default" class="listitem">
+                    <property>
+                        <font>Arial</font>
+                    </property>
+                </widget>
+                <widget name="win_kp_cas_ippv_slot_listwiew_listitem4" style="default" class="listitem">
+                    <property>
+                        <font>Arial</font>
+                    </property>
+                </widget>
+                <widget name="win_kp_cas_ippv_slot_listwiew_listitem5" style="default" class="listitem">
+                    <property>
+                        <font>Arial</font>
+                    </property>
+                </widget>
+                <widget name="win_kp_cas_ippv_slot_listwiew_listitem6" style="default" class="listitem">
+                    <property>
+                        <font>Arial</font>
+                    </property>
+                </widget>
+            </children>
+        </widget>
+        <widget name="win_kp_cas_ippv_slot_listwiew_updown" style="default" class="image">
+            <property>
+                <rect>[128,465,54,12]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_ICON_SWORD.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_kp_cas_ippv_slot_tip_image_exit" style="default" class="image">
+            <property>
+                <rect>[396,461,34,22]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_Icon_Exit.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_tip_text_updown" style="default" class="text">
+            <property>
+                <rect>[193,457,200,30]</rect>
+                <forecolor>[#CEE8FF,#FFFFFF,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Move Focus</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_tip_text_exit" style="default" class="text">
+            <property>
+                <rect>[440,457,200,30]</rect>
+                <forecolor>[#CEE8FF,#FFFFFF,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Exit Menu</string>
+                <format>static</format>
+            </property>
+        </widget>
+    </children>
+</widget>

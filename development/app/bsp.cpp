@@ -1,0 +1,96 @@
+#ifdef ECOS_OS
+#include "gxcore_bsp.h"
+#include "app_bsp.hxx"
+#include "frontend/gx_frontend_init.hxx"
+#include "gxapp_sys_config.h"
+#if (RC_VERSION<=GOXCEED_v1_9_3_4)
+CHIP_GX3201
+#else
+CHIP_GX3113C
+#endif
+
+//MOD_WDT
+MOD_I2C
+MOD_IRR
+MOD_SCI
+MOD_FAT
+MOD_NTFS
+//MOD_JFFS2
+MOD_CAMFS
+MOD_ROMFS
+MOD_RAMFS
+MOD_MINIFS
+
+//MOD_MMC
+#ifdef APP_SD
+MOD_AV(NULL)
+#endif
+#ifdef APP_HD
+MOD_AV
+#endif
+MOD_UART
+//MOD_NORFLASH
+MOD_SPIFLASH
+MOD_FLASHIO
+//MOD_NANDFLASH
+//MOD_NET
+MOD_USB
+
+MOD_PANEL
+
+/* -------------------------- Frontend ----------------------------------- */
+
+/* -------------------------- Language Package --------------------------- */
+//LANG_US
+LANG_SIMP_CHINESE
+//LANG_TRAD_CHINESE
+//LANG_KOREAN
+//LANG_JAPANESE
+//LANG_ARABIC_O
+//LANG_ARABIC_W
+//LANG_GREEK_O
+//LANG_GREEK_W
+//LANG_CENT_EUR
+//LANG_BALTIC_O
+//LANG_BALTIC_W
+//LANG_MULTI_LANTIN1
+//LANG_LATIN2_O
+//LANG_LATIN1_W
+//LANG_CYRILLIC_O
+//LANG_CYRILLIC_W
+//LANG_RUSSIAN_O
+//LANG_TURKISH_O
+//LANG_TURKISH_W
+//LANG_MULTI_LATIN1_EUR
+//LANG_HEBREW_O
+//LANG_HEBREW_W
+//LANG_THAI
+//LANG_VIETNAM
+
+//CODEC_AC3
+//CODEC_AVSA
+//CODEC_AVSV
+//CODEC_DRA
+//CODEC_H263
+//CODEC_H264
+#ifdef APP_HD
+CODEC_MPEG212A
+CODEC_MPEG4_AAC
+#endif
+
+#if (RC_VERSION<=GOXCEED_v1_9_3_4)
+#else
+CODEC_VIDEO(gx3113c)
+CODEC_AUDIO(gx3113c)
+#endif
+
+//#ifdef APP_SD
+//CODEC_ADEC
+//#endif
+//CODEC_MPEG4V
+//CODEC_OGG
+//CODEC_REAL_AAC
+//CODEC_REALV
+//CODEC_REAL_RA8LBR
+//CODEC_JPEG
+#endif

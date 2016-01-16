@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="GB2312" standalone="no"?>
+<widget name="wnd_factory_serialization" style="default_window" class="window">
+    <property>
+        <rect>[0,0,720,576]</rect>
+        <forecolor>[#000000,#000000,#000000]</forecolor>
+        <backcolor>[#00FF00,#00FF00,#00FF00]</backcolor>
+    </property>
+    <signal>
+        <destroy>On_wnd_factory_serialization_destroy</destroy>
+        <keypress>On_wnd_factory_serialization_keypress</keypress>
+    </signal>
+    <children>
+        <widget name="txt_factory_serialization_title" style="default" class="text">
+            <property>
+                <rect>[100,50,400,52]</rect>
+                <forecolor>[#cccccc,#cccccc,#cccccc]</forecolor>
+                <backcolor>[#000000,#000000,#000000]</backcolor>
+                <font>simhei</font>
+                <alignment>left|vcentre</alignment>
+                <string>Factory Serialization:</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="txt_factory_serialization_item1" style="default" class="text">
+            <property>
+                <rect>[100,108,400,30]</rect>
+                <forecolor>[#cccccc,#cccccc,#cccccc]</forecolor>
+                <backcolor>[#000000,#000000,#000000]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="txt_factory_serialization_item2" style="default" class="text">
+            <property>
+                <rect>[100,139,400,30]</rect>
+                <forecolor>[#cccccc,#cccccc,#cccccc]</forecolor>
+                <backcolor>[#000000,#000000,#000000]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="txt_factory_serialization_item3" style="default" class="text">
+            <property>
+                <rect>[100,170,400,30]</rect>
+                <forecolor>[#cccccc,#cccccc,#cccccc]</forecolor>
+                <backcolor>[#000000,#000000,#000000]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="txt_factory_serialization_item4" style="default" class="text">
+            <property>
+                <rect>[100,201,400,30]</rect>
+                <forecolor>[#cccccc,#cccccc,#cccccc]</forecolor>
+                <backcolor>[#000000,#000000,#000000]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="txt_factory_serialization_item5" style="default" class="text">
+            <property>
+                <rect>[100,232,400,30]</rect>
+                <forecolor>[#cccccc,#cccccc,#cccccc]</forecolor>
+                <backcolor>[#000000,#000000,#000000]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="txt_factory_serialization_item6" style="default" class="text">
+            <property>
+                <rect>[100,263,400,30]</rect>
+                <forecolor>[#cccccc,#cccccc,#cccccc]</forecolor>
+                <backcolor>[#000000,#000000,#000000]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="txt_factory_serialization_item7" style="default" class="text">
+            <property>
+                <rect>[100,294,400,30]</rect>
+                <forecolor>[#cccccc,#cccccc,#cccccc]</forecolor>
+                <backcolor>[#000000,#000000,#000000]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="txt_factory_serialization_item8" style="default" class="text">
+            <property>
+                <rect>[100,324,400,30]</rect>
+                <forecolor>[#cccccc,#cccccc,#cccccc]</forecolor>
+                <backcolor>[#000000,#000000,#000000]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="txt_factory_serialization_item9" style="default" class="text">
+            <property>
+                <rect>[100,355,400,30]</rect>
+                <forecolor>[#cccccc,#cccccc,#cccccc]</forecolor>
+                <backcolor>[#000001,#000001,#000001]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="txt_factory_serialization_item10" style="default" class="text">
+            <property>
+                <rect>[100,385,400,30]</rect>
+                <forecolor>[#cccccc,#cccccc,#cccccc]</forecolor>
+                <backcolor>[#000001,#000001,#000001]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="txt_factory_serialization_item11" style="default" class="text">
+            <property>
+                <rect>[100,416,400,30]</rect>
+                <forecolor>[#cccccc,#cccccc,#cccccc]</forecolor>
+                <backcolor>[#000001,#000001,#000001]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+    </children>
+</widget>

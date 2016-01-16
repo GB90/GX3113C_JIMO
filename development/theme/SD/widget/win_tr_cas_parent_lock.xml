@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="GB2312" standalone="no"?>
+<widget name="win_tr_cas_parent_lock" style="default" class="window">
+    <property>
+        <rect>[210,150,300,180]</rect>
+        <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+        <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+    </property>
+    <signal>
+        <create>win_tr_cas_parent_lock_create</create>
+        <destroy>win_tr_cas_parent_lock_destroy</destroy>
+        <keypress>win_tr_cas_parent_lock_keypress</keypress>
+    </signal>
+    <children>
+        <widget name="win_tr_cas_parent_lock_rect_image" style="default" class="image">
+            <property>
+                <rect>[0,0,300,180]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#515151,#515151,#515151]</backcolor>
+                <mode>multiple</mode>
+                <img></img>
+                <lt_img>DS_MASSAGE_LT.bmp</lt_img>
+                <rt_img>DS_MASSAGE_RT.bmp</rt_img>
+                <lb_img>DS_MASSAGE_LD.bmp</lb_img>
+                <rb_img>DS_MASSAGE_RD.bmp</rb_img>
+                <l_img>DS_MASSAGE_L.bmp</l_img>
+                <r_img>DS_MASSAGE_R.bmp</r_img>
+                <t_img>DS_MASSAGE_TOP.bmp</t_img>
+                <b_img>DS_MASSAGE_B.bmp</b_img>
+            </property>
+        </widget>
+        <widget name="win_tr_cas_password_input_image603" style="default" class="image">
+            <property>
+                <rect>[19,12,270,160]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#808080,#808080,#808080]</backcolor>
+                <mode>multiple</mode>
+                <img></img>
+                <l_img>DS_MSG_IMAGE_225_70.bmp</l_img>
+                <r_img>DS_MSG_IMAGE_225_70.bmp</r_img>
+                <t_img>DS_MSG_IMAGE_225_70.bmp</t_img>
+                <b_img>DS_MSG_IMAGE_225_70.bmp</b_img>
+            </property>
+        </widget>
+        <widget name="win_tr_cas_parent_lock_tip" style="default" class="text">
+            <property>
+                <rect>[11,2,280,34]</rect>
+                <forecolor>[#bbff00,#bbff00,#bbff00]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <string>Input 6-bit PIN</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_tr_cas_parent_lock_edit" style="default" class="edit">
+            <property>
+                <rect>[93,64,100,34]</rect>
+                <forecolor>[#040404,#040404,#040404]</forecolor>
+                <backcolor>[#fcfcf4,#fcfcf4,#fcfcf4]</backcolor>
+                <font>Arial</font>
+                <alignment>hcentre|vcentre</alignment>
+                <intaglio>*</intaglio>
+                <maxlen>6</maxlen>
+                <format>edit_digit</format>
+            </property>
+            <signal>
+                <keypress>win_tr_cas_parent_lock_edit_keypress</keypress>
+                <reach_end>win_tr_cas_parent_lock_reach_end</reach_end>
+            </signal>
+        </widget>
+        <widget name="win_tr_cas_parent_lock_text895" style="default" class="text">
+            <property>
+                <rect>[47,131,200,25]</rect>
+                <forecolor>[#BC0000,#BC0000,#BC0000]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <string>[Notice]Please input 6-bit Pin</string>
+                <format>static</format>
+            </property>
+        </widget>
+    </children>
+</widget>

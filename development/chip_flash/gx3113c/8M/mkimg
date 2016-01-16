@@ -1,0 +1,135 @@
+#!/bin/bash
+
+
+cd ../flash
+
+rm rootfs_ecos -rf
+cp -rf file_tree/rootfs_ecos ./
+cp -rf file_tree/datafs_ecos ./
+cp -rf ../theme/$DVB_RESOLUTION rootfs_ecos/theme
+cp -rf ../theme/$DVB_RESOLUTION/widget rootfs_ecos/widget_bak
+find rootfs_ecos -name '.svn'|xargs rm -rf
+find rootfs_ecos -name '*.sh'|xargs rm -rf
+find rootfs_ecos -name '*.xls'|xargs rm -rf
+find rootfs_ecos -name '*.db'|xargs rm -rf
+find rootfs_ecos -name '*.py'|xargs rm -rf
+find datafs_ecos -name '.svn'|xargs rm -rf
+find datafs_ecos -name '*.sh'|xargs rm -rf
+find datafs_ecos -name '*.xls'|xargs rm -rf
+
+if [ "no" = $DVB_PVR_FLAG ] ; then
+	rm -rf rootfs_ecos/theme/image/pvr
+	rm -rf rootfs_ecos/theme/widget/wnd_pvr_bar.xml
+fi
+if [ "no" = $DVB_NETWORK_FLAG ] ; then
+	rm -rf rootfs_ecos/theme/image/rss
+	rm -rf rootfs_ecos/theme/image/tip
+	rm -rf rootfs_ecos/theme/image/weather
+	rm -rf rootfs_ecos/theme/image/wifi
+	rm -rf rootfs_ecos/theme/image/youtube
+	rm -rf rootfs_ecos/theme/widget/win_wifi.xml
+	rm -rf rootfs_ecos/theme/widget/wnd_network.xml
+	rm -rf rootfs_ecos/theme/widget/wnd_picasa.xml
+	rm -rf rootfs_ecos/theme/widget/wnd_picasa_play.xml
+	rm -rf rootfs_ecos/theme/widget/wnd_rss.xml
+	rm -rf rootfs_ecos/theme/widget/wnd_rss_dialog.xml
+	rm -rf rootfs_ecos/theme/widget/wnd_weather_map.xml
+	rm -rf rootfs_ecos/theme/widget/wnd_youtube.xml
+	rm -rf rootfs_ecos/theme/widget/wnd_youtube_play.xml
+fi
+if [ "no" = $DVB_SUBTITLE_FLAG ] ; then
+if [ "no" = $DVB_NETWORK_FLAG ] ; then
+	rm -rf rootfs_ecos/theme/image/button
+fi
+fi
+if [ "no" = $DVB_SUBTITLE_FLAG ] ; then
+	rm -rf rootfs_ecos/theme/widget/wnd_subtitling.xml
+fi
+if [ "no" = $FACTORY_SERIALIZATION_SUPPORT ] ; then
+	rm -rf rootfs_ecos/theme/widget/wnd_factory_serialization.xml
+fi
+
+find rootfs_ecos/theme/widget -name "*_cas*.xml"|xargs rm -rf
+if [ -z "$DVB_CA_1_NAME" ] ; then
+        echo "ca 1 not exist "
+else
+	find rootfs_ecos/widget_bak -name "*_${DVB_CA_1_NAME}_*" |xargs -i cp {} rootfs_ecos/theme/widget/
+fi
+
+if [ -z "$DVB_CA_2_NAME" ] ; then
+        echo " ca 2 not exist "
+else
+        find rootfs_ecos/widget_bak -name "*_${DVB_CA_2_NAME}_*" |xargs -i cp {} rootfs_ecos/theme/widget/
+fi
+
+
+rm -rf rootfs_ecos/widget_bak
+
+mkfs.cramfs rootfs_ecos root_cramfs.img
+
+ecos_size=`du -sb ecos.img | awk '{print $1}'`
+ecos_size1=`expr ${ecos_size} % 65536`
+if [ ${ecos_size1} -ne 0 ]; then
+    ecos_size=`expr ${ecos_size} - ${ecos_size1} + 65536`
+fi
+rootfs_cramfs_size=`du -sb root_cramfs.img | awk '{print $1}'`
+rootfs_cramfs_size1=`expr ${rootfs_cramfs_size} % 65536`
+if [ ${rootfs_cramfs_size1} -ne 0 ]; then
+    rootfs_cramfs_size=`expr ${rootfs_cramfs_size} - ${rootfs_cramfs_size1} + 65536`
+fi
+
+datafs_jffs2_addr=`expr 131072 + ${ecos_size} + ${rootfs_cramfs_size}`
+
+printf "/dev/flash/0/10  /home/gx  minifs\nNONE  /mnt  ramfs"  $datafs_jffs2_addr  >rootfs_ecos/etc/fstab
+
+
+mkfs.cramfs rootfs_ecos root_cramfs.img
+
+mkfs.jffs2 -r datafs_ecos -o datafs.jffs2 -l -e 0x10000 -n --pad=0x10000
+
+
+rm -rf rootfs_ecos datafs_ecos
+chmod +x ./genflash
+#./genflash mkflash flash_booter.conf flash_booter.bin
+
+#./genflash mkflash flash_logo.conf flash_logo.bin
+
+#./genflash mkflash flash_loader.conf flash_loader.bin
+
+#./genflash mkflash flash_kernel.conf flash_kernel.bin
+
+#./genflash mkflash flash_rootfs.conf flash_rootfs.bin
+
+#./genflash mkflash flash_usb.conf flash_usb.bin
+if [ $CUSTOMER = "CUST_NEIMENG" ]; then
+./genflash mkflash flash_ts.conf flash_ts.dat
+./genflash mkflash flash_neimeng.conf flash.bin
+elif [ $CUSTOMER = "CUST_SUKE" ]; then
+./genflash mkflash flash_ts.conf flash_ts.dat
+./genflash mkflash flash_suke.conf flash.bin
+elif [ $CUSTOMER = "CUST_YULIN" ]; then
+./genflash mkflash flash_ts.conf flash_ts.dat
+./genflash mkflash flash_yulin.conf flash.bin
+elif [ $CUSTOMER = "CUST_XINGTAI" ]; then
+./genflash mkflash flash_ts.conf flash_ts.dat
+./genflash mkflash flash_xingtai.conf flash.bin
+elif [ $CUSTOMER = "CUST_TAIHUI_MG" ]; then
+./genflash mkflash flash_ts.conf flash_ts.dat
+./genflash mkflash flash_taihui_mg.conf flash.bin
+elif [ $CUSTOMER = "CUST_CANGZHOU" ]; then
+./genflash mkflash flash_ts.conf flash_ts.dat
+./genflash mkflash flash_cangzhou.conf flash.bin
+elif [ $CUSTOMER = "CUST_YUNNAN" ]; then
+./genflash mkflash flash_ts.conf flash_ts.dat
+./genflash mkflash flash_yunnan.conf flash.bin
+elif [ $CUSTOMER = "CUST_JIMO" ]; then
+./genflash mkflash flash_ts.conf flash_ts.dat
+./genflash mkflash flash_jimo.conf flash.bin
+elif [ $CUSTOMER = "CUST_SHANXI" ]; then
+./genflash mkflash flash_ts.conf flash_ts.dat
+./genflash mkflash flash_shanxi.conf flash.bin
+else
+./genflash mkflash flash_ts.conf flash_ts.dat
+./genflash mkflash flash.conf flash.bin
+fi
+	cp  flash.bin "$CHIP"_"$DVB_CA_1_NAME"_"$CUSTOMER"_"$DVB_AD_NAME"_`date +%Y%m%d_%H%M`.bin

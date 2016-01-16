@@ -1,0 +1,34 @@
+/**
+ *
+ * @file        app_by_cas_api_baseinfo.h
+ * @brief
+ * @version     1.1.0
+ * @date        11/30/2012 09:47:49 AM
+ * @author      zhouhuaming (zhouhm), zhuohm@nationalchip.com
+ *
+ */
+#ifndef __APP_BYCAS_API_BASEINFO_H__
+#define __APP_BYCAS_API_BASEINFO_H__
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "app_common_play.h"
+
+typedef enum 
+{
+	BY_BASEINFO_VERSION_ID=0,
+	BY_BASEINFO_SYS_SP_ID,
+	BY_BASEINFO_SYS_CT_ID,
+	BY_BASEINFO_CARDID_ID
+}BYCA_BASEIINFO_ID_E;
+
+int32_t app_by_cas_api_init_baseinfo_data(void);
+char * app_by_cas_api_get_baseinfo_data(ca_get_date_t *data);
+
+
+#ifdef __cplusplus
+}
+#endif
+#endif /*__APP_BYCAS_API_BASEINFO_H__*/
+

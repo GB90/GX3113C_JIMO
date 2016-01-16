@@ -1,0 +1,637 @@
+/*****************************************************************************
+* 						   CONFIDENTIAL
+*        Hangzhou GuoXin Science and Technology Co., Ltd.
+*                      (C)2012, All right reserved
+******************************************************************************
+
+******************************************************************************
+* File Name :	app_tr_cas_api_email.c
+* Author    : 	wangjian
+* Project   :	
+* Type      :
+******************************************************************************
+* Purpose   :	模块头文件
+******************************************************************************
+* Release History:
+VERSION	Date			  AUTHOR         Description
+1.0  	2014.12.29		  wangjian 	    creation
+*****************************************************************************/
+#include "Tr_Cas.h"
+#include "app_common_porting_ca_flash.h"
+#include "app_common_porting_stb_api.h"
+#include "app_tr_cas_api_email.h"
+
+
+static TR_EMAIL_LIST_t s_emailList = {0};
+static TRCAS_EMAIL_t s_emailFlag = {0};
+static uint8_t s_title[EMAIL_TITLE_MAXLEN] = {0};
+static uint8_t s_content[EMAIL_CONTENT_MAXLEN] = {0};
+
+extern void win_tr_cas_email_flag_img_show(uint8_t showFlag);
+extern void win_tr_cas_email_list_update(void);
+extern void TRCA_toEmailNotify(uint8_t byShow);
+
+
+int32_t app_tr_cas_email_flag_exec(void)
+{
+	uint8_t tmpStatus = s_emailFlag.status;
+
+	if (DVB_CA_EMAIL_NEW == tmpStatus)
+	{	
+		if (FALSE == s_emailFlag.show_status)
+		{
+			win_tr_cas_email_flag_img_show(DVB_CA_EMAIL_PROMTP_SHOW);
+		}
+		
+		s_emailFlag.show_status = TRUE;
+	}
+    else if (DVB_CA_EMAIL_FLAG_HIDE == tmpStatus)
+	{	
+		if (TRUE == s_emailFlag.show_status)
+		{
+			win_tr_cas_email_flag_img_show(DVB_CA_EMAIL_PROMTP_HIDE);
+		}
+		
+		s_emailFlag.show_status = FALSE;
+	}
+
+	return 1;
+}
+
+int32_t app_tr_cas_gxmsg_ca_on_event_email(GxMsgProperty0_OnEvent* event)
+{
+	TRCAS_EMAIL_t *pEmailFlag = NULL;
+	
+	if (NULL == event)
+	{
+		return 0;
+	}
+
+	pEmailFlag = (TRCAS_EMAIL_t *)(event->buf);
+	if (NULL == pEmailFlag)
+	{
+		return 0;
+	}
+
+	if ((pEmailFlag->status != s_emailFlag.status) 
+		&& (TRUE == s_emailFlag.show_status))
+	{
+		win_tr_cas_email_flag_img_show(DVB_CA_EMAIL_PROMTP_HIDE);
+		s_emailFlag.status = FALSE;
+		s_emailFlag.show_status = FALSE;
+	}
+
+	s_emailFlag.status = pEmailFlag->status;
+    if (DVB_CA_EMAIL_NEW == s_emailFlag.status)
+    {
+        win_tr_cas_email_list_update();
+    }
+    
+	return 1;
+}
+  
+static uint8_t email_list_load_data(void)
+{
+	uint8_t result = 0;
+    uint8_t *ptemp = NULL;
+    TR_EMAIL_LIST_t *pTmpList = NULL;
+    uint32_t len = EMAIL_DATA_SIZE-4;
+	
+    if (NULL == (ptemp = (uint8_t *)GxCore_Mallocz(len)))
+    {
+        printf("[email_list_load_data]GxCore_Mallocz failed!!!\n");
+        return 1;
+    }
+	
+    if (!app_porting_ca_flash_read_data(EMAIL_FLASH_OFFSET, ptemp, &len))
+    {
+        printf("[email_list_load_data]app_porting_ca_flash_read_data failed!!!\n");
+        result = 2;
+        goto Exit;
+    }
+    
+    pTmpList = (TR_EMAIL_LIST_t *)ptemp;
+    if ((EMAIL_MAGIC != pTmpList->head_magic) 
+		|| (EMAIL_MAGIC != pTmpList->tail_magic))
+    {
+        result = 3;
+        goto Exit;
+    }
+
+	if ((pTmpList->total > EMAIL_MAXNUM) 
+		|| (pTmpList->new_count > EMAIL_MAXNUM))
+	{
+		printf("[email_list_load_data]list count is invalid!!!\n");
+		result = 4;
+        goto Exit;
+	}
+	
+    GxCore_MutexLock(s_emailList.mutex);
+	s_emailList.total = pTmpList->total;
+	s_emailList.new_count = pTmpList->new_count;
+    memcpy(s_emailList.list, pTmpList->list, sizeof(pTmpList->list));
+    GxCore_MutexUnlock(s_emailList.mutex);
+	result = 0;
+	//printf("[email_list_load_data]new:total(%d-%d).\n", s_emailList.new_count, s_emailList.total);
+	
+Exit:
+    if (ptemp)
+    {
+    	GxCore_Free(ptemp);
+		ptemp = NULL;
+	}
+	
+    return result;
+}
+
+static uint8_t email_list_save_data(void)
+{
+	uint8_t result = 0;
+    uint8_t *pTemp = NULL;
+    uint32_t len = 0;
+
+    if (NULL == (pTemp = (uint8_t *)GxCore_Mallocz(EMAIL_DATA_SIZE)))
+    {
+        printf("[email_list_save_data]GxCore_Mallocz failed!!!\n");
+        return 1;
+    }
+    
+    memset(pTemp, 0, EMAIL_DATA_SIZE);
+    
+    GxCore_MutexLock(s_emailList.mutex);
+    s_emailList.head_magic = (uint16_t)EMAIL_MAGIC;
+	s_emailList.tail_magic = (uint16_t)EMAIL_MAGIC;
+	len = sizeof(s_emailList);
+	memcpy(pTemp, &s_emailList, len);
+	//printf("+++[email_list_save_data]email list len<%d>+++\n", len);
+    GxCore_MutexUnlock(s_emailList.mutex);
+    app_porting_ca_flash_write_data(EMAIL_FLASH_OFFSET, pTemp, len);
+
+    if (pTemp)
+    {
+    	GxCore_Free(pTemp);
+		pTemp = NULL;
+	}
+    
+    return result;    
+}
+
+static uint8_t email_list_init(void)
+{
+    static uint8_t initFlag = 0;
+	uint32_t listSize = 0;
+	
+    if (1 == initFlag)
+    {
+        return 0;
+    }
+
+	//printf("email_list_init.\n");
+    memset(&s_emailList, 0, sizeof(TR_EMAIL_LIST_t));
+
+	listSize = sizeof(s_emailList); /*wangjian add on 20150326*/
+	if (listSize > EMAIL_DATA_SIZE)
+	{
+		printf("[email_list_init]!!!List size(%d) exceed to MAX(%d)!!!\n", listSize, EMAIL_DATA_SIZE);
+	}
+	
+    if (GXCORE_SUCCESS != GxCore_MutexCreate(&s_emailList.mutex))
+    {
+        printf("[email_list_init]list mutex create failed!!!\n");
+    }
+    
+    initFlag = 1;
+    email_list_load_data();
+	
+    return 1;
+}
+
+static uint8_t email_list_get_data_by_row(uint8_t row_idx, uint8_t read_flag, TR_EMAIL_DATA_t *pEmail_data)
+{
+	uint8_t bSaveData = 0;
+	
+	if (row_idx >= EMAIL_MAXNUM)
+	{
+		printf("[email_list_get_data_by_row]invaid row_idx!!!\n");
+		return 1;
+	}
+
+	if (NULL == pEmail_data)
+	{
+		printf("[email_list_get_data_by_row]pEmail_data is NULL!!!\n");
+		return 2;
+	}
+
+	GxCore_MutexLock(s_emailList.mutex);
+	if (1 == read_flag)
+	{
+		if (EMAIL_FLAG_UNREAD == s_emailList.list[row_idx].flag)
+		{
+			bSaveData = 1;
+			s_emailList.list[row_idx].flag = EMAIL_FLAG_READED;
+
+			if (s_emailList.new_count > 0)
+			{
+				s_emailList.new_count--;
+			}
+
+			if (0 == s_emailList.new_count)
+			{
+				TRCA_toEmailNotify(TRCAS_EMAIL_NONE);
+			}
+		}
+	}
+	
+	memcpy(pEmail_data, &s_emailList.list[row_idx], sizeof(TR_EMAIL_DATA_t));
+	GxCore_MutexUnlock(s_emailList.mutex);
+
+	if (bSaveData)
+	{
+		email_list_save_data();	
+	}
+
+	return 0;
+}
+
+static uint8_t email_list_get_free_idx(void)
+{
+	uint8_t i = 0;
+
+	for (i = 0; i < EMAIL_MAXNUM; i++)
+	{
+		if (EMAIL_FLAG_FREE == s_emailList.list[i].flag)
+		{
+			break;
+		}
+	}
+
+#ifndef SUPPORT_DELETE_EMAIL_STORE
+	if (i >= EMAIL_MAXNUM)
+	{
+		for (i = 0; i < EMAIL_MAXNUM; i++)
+		{
+			if (EMAIL_FLAG_DELETE == s_emailList.list[i].flag)
+			{
+				break;
+			}
+		}
+	}
+#endif	
+
+	/*Lastest order first.*/
+	if (i >= EMAIL_MAXNUM)
+	{
+		i = EMAIL_MAXNUM-1;
+	}
+
+	return i;	
+}
+
+static int email_time_compare(const void *a ,const void *b)
+{
+    TR_EMAIL_DATA_t *pre = (TR_EMAIL_DATA_t *)a;
+    TR_EMAIL_DATA_t *nxt = (TR_EMAIL_DATA_t *)b ;
+	int ret = 0;
+		
+	ret = memcmp(&pre->create_time, &nxt->create_time, sizeof(CAS_TIMESTAMP));
+	if (ret > 0)
+	{
+		return (-1);
+	}
+	else if (0 == ret)
+	{
+		return 0;
+	}
+	else
+	{
+		return 1;
+	}
+}
+
+
+int32_t app_tr_cas_api_init_email_data(void)
+{
+    email_list_init();
+    
+    if (s_emailList.new_count > 0)
+    {
+        TRCA_toEmailNotify(TRCAS_EMAIL_NEW);
+    }
+    else
+    {
+        TRCA_toEmailNotify(TRCAS_EMAIL_NONE);
+    }
+    
+    return 0;
+}
+
+uint8_t app_tr_cas_api_email_isnew(uint32_t email_crc32)
+{
+	uint8_t isNew = 0;
+	uint8_t i = 0;
+
+	isNew = 1;
+	
+	GxCore_MutexLock(s_emailList.mutex);
+	
+	for (i = 0; i < EMAIL_MAXNUM; i++)
+	{
+		if (EMAIL_FLAG_FREE == s_emailList.list[i].flag)
+		{
+			continue;
+		}
+		
+		if (s_emailList.list[i].data_crc32 == email_crc32)
+        {
+        	isNew = 0;
+			break;
+        }
+	}
+
+	GxCore_MutexUnlock(s_emailList.mutex);
+
+	return isNew;
+}
+
+uint8_t app_tr_cas_email_list_update(void *pCa_emailInfo, uint32_t email_crc32)
+{   
+	CAS_MSG_STRUCT *pCurEmailInfo = NULL;
+	uint8_t curIdx = 0;
+	TR_EMAIL_DATA_t *pTmpData = NULL;
+	uint16_t tmpLen = 0;
+
+	if (NULL == pCa_emailInfo)
+	{
+		printf("[app_tr_cas_email_list_update]pCa_emailInfo is NULL!!!\n");
+		return 1;
+	}
+
+    GxCore_MutexLock(s_emailList.mutex);
+	
+    curIdx = email_list_get_free_idx();
+	pCurEmailInfo = (CAS_MSG_STRUCT *)pCa_emailInfo;
+	
+	pTmpData = &s_emailList.list[curIdx];
+	memset(pTmpData, 0, sizeof(TR_EMAIL_DATA_t));/*wangjian add on 20150327*/
+	pTmpData->data_crc32 = email_crc32;
+    pTmpData->flag = EMAIL_FLAG_UNREAD;
+	pTmpData->level = pCurEmailInfo->bPriority;
+	memcpy(&pTmpData->create_time, &pCurEmailInfo->sCreateTime, sizeof(CAS_TIMESTAMP));
+	
+	tmpLen = TRCAS_MIN(EMAIL_TITLE_MAXLEN, pCurEmailInfo->wTitleLen);
+	pTmpData->title_len = tmpLen;
+	strncpy((char *)pTmpData->title, (char *)pCurEmailInfo->bMsgTitle, tmpLen);
+
+	tmpLen = TRCAS_MIN(EMAIL_CONTENT_MAXLEN, pCurEmailInfo->wDataLen);
+	pTmpData->content_len = tmpLen;
+	strncpy((char *)pTmpData->content, (char *)pCurEmailInfo->bMsgData, tmpLen);
+    s_emailList.total++;
+	s_emailList.new_count++;
+	s_emailList.total = TRCAS_MIN(s_emailList.total, EMAIL_MAXNUM);
+	s_emailList.new_count = TRCAS_MIN(s_emailList.new_count, EMAIL_MAXNUM);
+	
+	/*Sort list according to create time.*/
+	pTmpData = s_emailList.list;
+	tmpLen = EMAIL_MAXNUM;
+	qsort((void *)pTmpData, tmpLen, sizeof(TR_EMAIL_DATA_t), email_time_compare);	
+	GxCore_MutexUnlock(s_emailList.mutex);
+
+    email_list_save_data();
+    return 0;
+}
+
+uint8_t app_tr_cas_api_get_email_count(ca_get_count_t *data)
+{
+    GxCore_MutexLock(s_emailList.mutex);
+	data->totalnum = s_emailList.total;
+	data->newnum = s_emailList.new_count;
+    GxCore_MutexUnlock(s_emailList.mutex);
+	//printf("data->totalnum(%d), data->newnum(%d).\n", data->totalnum, data->newnum);
+	
+    return data->totalnum;
+}
+
+char* app_tr_cas_api_get_email_data(ca_get_date_t *data)
+{
+    uint32_t pos = 0;                             
+	uint32_t ID = 0; 
+	uint8_t result = 0;
+    TR_EMAIL_DATA_t pTmpData = {0};
+    static char cTextBuffer[2][15] = {{0}};
+	static char strSendTime[30] = {0};
+
+	if (NULL == data)
+	{
+		return NULL;
+	}
+
+	pos = data->pos;
+	ID = data->ID;
+	
+	switch (ID)
+	{
+		case TR_EMAIL_FLAG_ID:
+			memset(cTextBuffer[0], 0, 15);
+            result = email_list_get_data_by_row(pos, 0, &pTmpData);
+            if (0 == result)
+            {
+                if (EMAIL_FLAG_UNREAD == pTmpData.flag)
+				{
+					strcpy(cTextBuffer[0], "New");
+				}
+			    else if (EMAIL_FLAG_READED == pTmpData.flag)
+				{
+					strcpy(cTextBuffer[0], "Readed");
+				}
+            }
+			
+			return cTextBuffer[0];
+		case TR_EMAIL_LEVEL_ID:
+			memset(cTextBuffer[1], 0, 15);
+            result = email_list_get_data_by_row(pos, 0, &pTmpData);
+            if (0 == result)
+            {
+            	if (CAS_MSG_PRIORITY_LOW == pTmpData.level)/*modify on 20150328*/
+				{
+					strcpy(cTextBuffer[1], "Priority_LOW");
+				}
+			    else if (CAS_MSG_PRIORITY_MED == pTmpData.level)
+				{
+					strcpy(cTextBuffer[1], "Priority_MED");
+				}
+				else if (CAS_MSG_PRIORITY_HIGH == pTmpData.level)
+				{
+					strcpy(cTextBuffer[1], "Priority_HIGH");
+				}
+				else if (CAS_MSG_PRIORITY_URGENT == pTmpData.level)
+				{
+					strcpy(cTextBuffer[1], "Priority_URGENT");
+				}
+				else
+				{
+					strcpy(cTextBuffer[1], "Priority_Unknown");
+				}
+            }
+			
+			return cTextBuffer[1];
+		case TR_EMAIL_TITLE_ID:
+			memset(s_title, 0, sizeof(s_title));
+            result = email_list_get_data_by_row(pos, 0, &pTmpData);
+            if (0 == result)
+            {
+            	strcpy((char *)s_title, (char *)pTmpData.title);
+                return (char *)s_title;
+            }
+            else
+            {
+                return NULL;
+            }
+		case TR_EMAIL_SENDTIME_ID:
+            result = email_list_get_data_by_row(pos, 0, &pTmpData);
+            if (0 == result)
+            {
+            	sprintf(strSendTime, "%04d.%02d.%02d %02d:%02d:%02d",\
+					  	(pTmpData.create_time.bYear[0]*100 + pTmpData.create_time.bYear[1]),
+						pTmpData.create_time.bMonth, pTmpData.create_time.bDay,\
+						pTmpData.create_time.bHour, pTmpData.create_time.bMinute,\
+						pTmpData.create_time.bSecond);
+				
+                return strSendTime;
+            }
+            else
+            {
+                return NULL;
+            }
+		case TR_EMAIL_CONTENT_ID:
+			memset(s_content, 0, sizeof(s_content));
+            result = email_list_get_data_by_row(pos, 1, &pTmpData);
+            if (0 == result)
+            {
+            	strcpy((char *)s_content, (char *)pTmpData.content);
+                return (char *)s_content;
+            }
+            else
+            {
+                return NULL;
+            }
+		default:
+			break;
+	}
+	
+	return NULL;
+}
+
+bool app_tr_cas_api_delete_email(ca_delete_data_t *data)
+{
+	uint32_t tmpPos = 0; 
+	uint8_t i = 0;
+	TR_EMAIL_DATA_t tmpDelEmail = {0};
+	
+	if (NULL == data)
+	{
+		return FALSE;
+	}
+	
+	tmpPos = data->pos;
+	if (tmpPos >= EMAIL_MAXNUM)
+	{
+		printf("[app_tr_cas_api_delete_email]invaid tmpPos!!!\n");
+		return FALSE;
+	}
+
+	GxCore_MutexLock(s_emailList.mutex);
+
+	i = tmpPos;
+	memcpy(&tmpDelEmail, &s_emailList.list[tmpPos], sizeof(tmpDelEmail));
+
+	if (EMAIL_FLAG_UNREAD == s_emailList.list[i].flag)
+	{
+		s_emailList.new_count--;
+		if (0 == s_emailList.new_count)
+		{
+			TRCA_toEmailNotify(TRCAS_EMAIL_NONE);
+		}
+	}
+	
+	for (i = tmpPos; i < s_emailList.total-1; i++)
+	{
+		memcpy(&s_emailList.list[i], &s_emailList.list[i+1], sizeof(TR_EMAIL_DATA_t));
+	}
+	
+	memset(&s_emailList.list[i], 0, sizeof(TR_EMAIL_DATA_t));
+
+#ifndef SUPPORT_DELETE_EMAIL_STORE
+	s_emailList.list[i].data_crc32 = tmpDelEmail.data_crc32;
+	s_emailList.list[i].flag = EMAIL_FLAG_DELETE;
+#else
+	s_emailList.list[i].data_crc32 = 0x00;
+	s_emailList.list[i].flag = EMAIL_FLAG_FREE;
+#endif
+
+	s_emailList.total--;
+	GxCore_MutexUnlock(s_emailList.mutex);
+	
+	email_list_save_data();
+
+	return TRUE;
+}
+
+bool app_tr_cas_api_delete_all_email(ca_delete_data_t *data)
+{
+	uint8_t i = 0;
+
+#ifndef SUPPORT_DELETE_EMAIL_STORE	
+	uint32_t tmpCrc32 = 0;
+#endif
+	
+	if (NULL == data)
+	{
+		return FALSE;
+	}
+	
+	GxCore_MutexLock(s_emailList.mutex);
+	s_emailList.head_magic = 0;
+	s_emailList.total = 0;
+	s_emailList.new_count = 0;
+	s_emailList.tail_magic = 0;
+
+	if (0 == s_emailList.new_count)
+	{
+		TRCA_toEmailNotify(TRCAS_EMAIL_NONE);
+	}
+
+	for (i = 0; i < EMAIL_MAXNUM; i++)
+	{
+#ifndef SUPPORT_DELETE_EMAIL_STORE	
+		tmpCrc32 = s_emailList.list[i].data_crc32;
+#endif
+
+		memset(&s_emailList.list[i], 0, sizeof(TR_EMAIL_DATA_t));
+
+#ifndef SUPPORT_DELETE_EMAIL_STORE
+		s_emailList.list[i].flag = EMAIL_FLAG_DELETE;
+		s_emailList.list[i].data_crc32 = tmpCrc32;
+#else
+		s_emailList.list[i].flag = EMAIL_FLAG_FREE;
+		s_emailList.list[i].data_crc32 = 0x00;
+#endif		
+	}
+	
+	GxCore_MutexUnlock(s_emailList.mutex);
+
+	email_list_save_data();
+	
+	return TRUE;
+}
+
+uint8_t* app_tr_cas_api_get_email_title_data(void)
+{
+	return s_title;
+}
+
+uint8_t* app_tr_cas_api_get_email_content_data(void)
+{
+	return s_content;
+}
+
+

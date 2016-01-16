@@ -1,0 +1,20 @@
+/**
+ *
+ * @file        gxca_event.h
+ * @brief       
+ * @version:    1.1.0
+ * @date        07/08/2010 03:19:10 PM
+ * @author      Li Xiaobin (lixb), lixb@nationalchip.com
+ *
+ */
+#ifndef __GXCA_EVENT_H__
+#define __GXCA_EVENT_H__
+
+__BEGIN_DECLS
+
+int GxCA_OnEvent(int key, const char* name, void* buf, size_t size);
+int GxCA_OnEventNoWait(int key, const char* name, void* buf, size_t size);
+
+__END_DECLS
+
+#endif /*__GXCA_EVENT_H__*/

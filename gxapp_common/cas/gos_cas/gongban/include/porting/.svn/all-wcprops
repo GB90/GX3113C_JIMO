@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/gos_cas/gongban/include/porting
+END
+GOSCAS_STBDataPublic.h
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/gos_cas/gongban/include/porting/GOSCAS_STBDataPublic.h
+END
+GOSCAS_STBInf.h
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/gos_cas/gongban/include/porting/GOSCAS_STBInf.h
+END
+GOSSTB_CASInf.h
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/gos_cas/gongban/include/porting/GOSSTB_CASInf.h
+END

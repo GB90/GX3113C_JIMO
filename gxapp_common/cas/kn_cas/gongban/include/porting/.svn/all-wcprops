@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/3201_DVBC/!svn/ver/952/gxapp_common/cas/kn_cas/gongban/include/porting
+END
+cas_hcn_func.h
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/kn_cas/gongban/include/porting/cas_hcn_func.h
+END
+cas_hcn_Public.h
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/3201_DVBC/!svn/ver/952/gxapp_common/cas/kn_cas/gongban/include/porting/cas_hcn_Public.h
+END
+cas_hcn.h
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/3201_DVBC/!svn/ver/952/gxapp_common/cas/kn_cas/gongban/include/porting/cas_hcn.h
+END
+cas_hcn_main.h
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/3201_DVBC/!svn/ver/952/gxapp_common/cas/kn_cas/gongban/include/porting/cas_hcn_main.h
+END
+hrreport.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/kn_cas/gongban/include/porting/hrreport.h
+END

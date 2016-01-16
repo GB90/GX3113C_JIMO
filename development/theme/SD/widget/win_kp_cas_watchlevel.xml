@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="GB2312" standalone="no"?>
+<widget name="win_kp_cas_watchlevel" style="default" class="window">
+    <property>
+        <rect>[0,0,720,576]</rect>
+        <forecolor>[#000000,#000000,#000000]</forecolor>
+        <backcolor>[#00FF00,#00FF00,#00FF00]</backcolor>
+    </property>
+    <signal>
+        <create>win_kp_cas_watchlevel_create</create>
+        <destroy>win_kp_cas_watchlevel_destroy</destroy>
+        <keypress>win_kp_cas_watchlevel_keypress</keypress>
+    </signal>
+    <children>
+        <widget name="win_kp_cas_watchlevel_backgroup" style="default" class="image">
+            <property>
+                <rect>[80,78,560,420]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#33508C,#33508C,#33508C]</backcolor>
+                <mode>multiple</mode>
+                <img></img>
+                <lt_img>DS_WIN_BG_T_l.bmp</lt_img>
+                <rt_img>DS_WIN_BG_T_r.bmp</rt_img>
+                <l_img>DS_WIN_BG.bmp</l_img>
+                <r_img>DS_WIN_BG.bmp</r_img>
+            </property>
+        </widget>
+        <widget name="win_divitone_cas_cardinfo_image202" style="default" class="image">
+            <property>
+                <rect>[80,456,560,31]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#808080,#808080,#808080]</backcolor>
+                <mode>single</mode>
+                <img>DS_HELP_COTE.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_kp_cas_watchlevel_title" style="default" class="text">
+            <property>
+                <rect>[163,88,400,42]</rect>
+                <forecolor>[#FFFFFF,#FFFFFF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>simhei</font>
+                <string>Watch Level</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_kp_cas_watchlevel_time_text" style="default" class="text">
+            <property>
+                <rect>[910,110,200,35]</rect>
+                <forecolor>[#FFFFFF,#FFFFFF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>right|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_kp_cas_watchlevel_box" style="default" class="box">
+            <property>
+                <rect>[140,177,447,160]</rect>
+                <forecolor>[#CEE8FF,#FFFFFF,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <interval>10</interval>
+                <format>vertical</format>
+            </property>
+            <children>
+                <widget name="win_kp_cas_watchlevel_boxitem1" style="default" class="boxitem">
+                    <property>
+                        <rect>[0,10,447,29]</rect>
+                        <forecolor>[#CEE8FF,#FFFFFF,#CEE8FF]</forecolor>
+                        <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                        <unfocus_image>DS_BOX_ALLOW_BLUE.bmp</unfocus_image>
+                        <focus_image>DS_BOX_ALLOW_ORANGE.bmp</focus_image>
+                    </property>
+                    <children>
+                        <widget name="win_kp_cas_watchlevel_boxitem1_text" style="default" class="text">
+                            <property>
+                                <rect>[29,1,200,26]</rect>
+                                <forecolor>[#CEE8FF,#FFFFFF,#CEE8FF]</forecolor>
+                                <backcolor>[#FF00FF,#ff00ff,#FF00FF]</backcolor>
+                                <font>Arial</font>
+                                <alignment>left|vcentre</alignment>
+                                <string>Watch Level</string>
+                                <format>static</format>
+                            </property>
+                        </widget>
+                        <widget name="win_kp_cas_watchlevel_boxitem1_value" style="default" class="combobox">
+                            <property>
+                                <rect>[235,1,200,26]</rect>
+                                <forecolor>[#CEE8FF,#FFFFFF,#CEE8FF]</forecolor>
+                                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                                <font>Arial</font>
+                                <content>[????????,????????,????????,????????,????????,????????,???????,????????,?????????,?????????,?????????,?????????,?????????,?????????,?????????]</content>
+                            </property>
+                        </widget>
+                    </children>
+                </widget>
+                <widget name="win_kp_cas_watchlevel_boxitem2" style="default" class="boxitem">
+                    <property>
+                        <rect>[0,49,447,29]</rect>
+                        <forecolor>[#CEE8FF,#FFFFFF,#CEE8FF]</forecolor>
+                        <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                        <unfocus_image>DS_BOX_ALLOW_BLUE.bmp</unfocus_image>
+                        <focus_image>DS_BOX_ALLOW_BLUE.bmp</focus_image>
+                        <disable_image>DS_BOX_ALLOW_BLUE.bmp</disable_image>
+                    </property>
+                    <children>
+                        <widget name="win_kp_cas_watchlevel_boxitem2_text" style="default" class="text">
+                            <property>
+                                <rect>[29,1,200,26]</rect>
+                                <forecolor>[#CEE8FF,#FFFFFF,#CEE8FF]</forecolor>
+                                <backcolor>[#FF00FF,#ff00ff,#FF00FF]</backcolor>
+                                <font>Arial</font>
+                                <alignment>left|vcentre</alignment>
+                                <string>Input PIN</string>
+                                <format>static</format>
+                            </property>
+                        </widget>
+                        <widget name="win_kp_cas_watchlevel_boxitem2_edit" style="default" class="edit">
+                            <property>
+                                <rect>[235,1,200,26]</rect>
+                                <forecolor>[#CEE8FF,#FFFFFF,#CEE8FF]</forecolor>
+                                <backcolor>[#FF00FF,#6bc65a,#FF00FF]</backcolor>
+                                <font>Arial</font>
+                                <alignment>hcentre|vcentre</alignment>
+                                <intaglio>*</intaglio>
+                                <maxlen>6</maxlen>
+                                <format>edit_digit</format>
+                            </property>
+                        </widget>
+                    </children>
+                </widget>
+            </children>
+        </widget>
+        <widget name="win_kp_cas_watchlevel_updown" style="default" class="image">
+            <property>
+                <rect>[134,466,54,12]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_ICON_SWORD.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_kp_cas_watchlevel_tip_image_exit" style="default" class="image">
+            <property>
+                <rect>[299,461,34,22]</rect>
+                <forecolor>[#FFFFFF,#FF00FF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_Icon_Exit.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_kp_cas_watchlevel_tip_image_ok" style="default" class="image">
+            <property>
+                <rect>[446,460,34,22]</rect>
+                <forecolor>[#FFFFFF,#FF00FF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_ICON_OK.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_tip_text_updown" style="default" class="text">
+            <property>
+                <rect>[190,457,100,30]</rect>
+                <forecolor>[#CEE8FF,#FFFFFF,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Move Focus</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_tip_text_exit" style="default" class="text">
+            <property>
+                <rect>[341,455,100,30]</rect>
+                <forecolor>[#CEE8FF,#FFFFFF,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Exit Menu</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_tip_text_ok" style="default" class="text">
+            <property>
+                <rect>[491,457,100,30]</rect>
+                <forecolor>[#CEE8FF,#FFFFFF,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Save</string>
+                <format>static</format>
+            </property>
+        </widget>
+    </children>
+</widget>

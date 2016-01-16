@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="GB2312" standalone="no"?>
+<widget name="win_desai_cas50_email" style="default" class="window">
+    <property>
+        <rect>[0,0,720,576]</rect>
+        <forecolor>[#000000,#000000,#000000]</forecolor>
+        <backcolor>[#00FF00,#00FF00,#FF00FF]</backcolor>
+    </property>
+    <signal>
+        <create>app_desai_cas50_email_create</create>
+        <destroy>app_desai_cas50_email_destroy</destroy>
+        <keypress>app_desai_cas50_email_keypress</keypress>
+    </signal>
+    <children>
+        <widget name="win_desai_cas50_email_backgroup" style="default" class="image">
+            <property>
+                <rect>[80,78,560,420]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#33508C,#33508C,#33508C]</backcolor>
+                <mode>multiple</mode>
+                <img></img>
+                <lt_img>DS_WIN_BG_T_l.bmp</lt_img>
+                <rt_img>DS_WIN_BG_T_r.bmp</rt_img>
+                <l_img>DS_WIN_BG.bmp</l_img>
+                <r_img>DS_WIN_BG.bmp</r_img>
+            </property>
+        </widget>
+        <widget name="win_audio_set_image202" style="default" class="image">
+            <property>
+                <rect>[80,456,560,31]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#808080,#808080,#808080]</backcolor>
+                <mode>single</mode>
+                <img>DS_HELP_COTE.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_email_title" style="default" class="text">
+            <property>
+                <rect>[163,88,400,42]</rect>
+                <forecolor>[#FFFFFF,#FFFFFF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>simhei</font>
+                <string>Email</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_email_listview" style="default" class="listview">
+            <property>
+                <rect>[119,154,500,250]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <roll_time>50</roll_time>
+                <enable_roll>true</enable_roll>
+                <interval>1</interval>
+                <focus_img>DS_LISTVIEW_BLUE_500.bmp</focus_img>
+                <i18n>false</i18n>
+                <item_rect>[0,0,500,30]</item_rect>
+                <item_fore_color>[#CEE8FF,#212021,#CEE8FF]</item_fore_color>
+                <item_back_color>[#36518f,#36518f,#36518f]</item_back_color>
+                <alignment>left|vcentre</alignment>
+            </property>
+            <signal>
+                <create>app_desai_cas50_email_list_create</create>
+                <keypress>app_desai_cas50_email_list_keypress</keypress>
+                <get_total>app_desai_cas50_email_get_count</get_total>
+                <get_data>app_desai_cas50_email_get_data</get_data>
+                <change>app_desai_cas50_email_list_change</change>
+            </signal>
+            <children>
+                <widget name="win_desai_cas50_email_listwiew_header" style="default" class="header">
+                    <property>
+                        <rect>[0,0,500,40]</rect>
+                        <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                        <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                        <format>headershow</format>
+                        <colum_number>5</colum_number>
+                    </property>
+                    <children>
+                        <widget name="win_desai_cas50_email_listwiew_email_id" style="default" class="text">
+                            <property>
+                                <rect>[0,0,60,40]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                                <font>Arial</font>
+                                <string>ID</string>
+                                <format>static</format>
+                            </property>
+                        </widget>
+                        <widget name="win_desai_cas50_email_listwiew_flag" style="default" class="text">
+                            <property>
+                                <rect>[60,0,64,40]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                                <font>Arial</font>
+                                <string>Flag</string>
+                                <format>static</format>
+                            </property>
+                        </widget>
+                        <widget name="win_desai_cas50_email_listwiew_emailtitle" style="default" class="text">
+                            <property>
+                                <rect>[124,0,152,40]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                                <font>Arial</font>
+                                <string>Title</string>
+                                <format>static</format>
+                            </property>
+                        </widget>
+                        <widget name="win_desai_cas50_email_listwiew_sender" style="default" class="text">
+                            <property>
+                                <rect>[276,0,115,40]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                                <font>Arial</font>
+                                <string>Sender</string>
+                                <format>static</format>
+                            </property>
+                        </widget>
+                        <widget name="win_desai_cas50_email_listwiew_sendtime" style="default" class="text">
+                            <property>
+                                <rect>[391,0,109,40]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                                <font>Arial</font>
+                                <string>SendTime</string>
+                                <format>static</format>
+                            </property>
+                        </widget>
+                    </children>
+                </widget>
+                <widget name="win_desai_cas50_email_listwiew_scrollbar" style="default" class="scrollbar">
+                    <property>
+                        <rect>[493,40,0,210]</rect>
+                        <forecolor>[#000000,#000000,#000000]</forecolor>
+                        <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                        <format>scroll_hide</format>
+                    </property>
+                </widget>
+                <widget name="win_desai_cas50_email_listwiew_listitem1" style="default" class="listitem">
+                    <property>
+                        <font>Arial</font>
+                        <alignment>left|vcentre</alignment>
+                    </property>
+                </widget>
+                <widget name="win_desai_cas50_email_listwiew_listitem2" style="default" class="listitem">
+                    <property>
+                        <font>Arial</font>
+                        <alignment>left|vcentre</alignment>
+                    </property>
+                </widget>
+                <widget name="win_desai_cas50_email_listwiew_listitem3" style="default" class="listitem">
+                    <property>
+                        <font>Arial</font>
+                        <alignment>left|vcentre</alignment>
+                    </property>
+                </widget>
+                <widget name="win_desai_cas50_email_listwiew_listitem4" style="default" class="listitem">
+                    <property>
+                        <font>Arial</font>
+                        <alignment>left|vcentre</alignment>
+                    </property>
+                </widget>
+                <widget name="win_desai_cas50_email_listwiew_listitem5" style="default" class="listitem">
+                    <property>
+                        <font>Arial</font>
+                        <alignment>left|vcentre</alignment>
+                    </property>
+                </widget>
+                <widget name="win_desai_cas50_email_listitem261" style="default" class="listitem">
+                    <property>
+                        <font>Arial</font>
+                        <alignment>left|vcentre</alignment>
+                    </property>
+                </widget>
+            </children>
+        </widget>
+        <widget name="win_desai_cas50_email_listwiew_updown" style="default" class="image">
+            <property>
+                <rect>[86,466,54,12]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_ICON_SWORD.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_email_tip_image_exit" style="default" class="image">
+            <property>
+                <rect>[224,461,34,22]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_Icon_Exit.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_tip_image_red" style="default" class="image">
+            <property>
+                <rect>[385,461,22,22]</rect>
+                <forecolor>[#FFFFFF,#FF00FF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_ICON_RED.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_tip_image_yellow" style="default" class="image">
+            <property>
+                <rect>[499,461,20,21]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_ICON_ORANGE.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_tip_text_updown" style="default" class="text">
+            <property>
+                <rect>[144,457,80,30]</rect>
+                <forecolor>[#FFFFFF,#FF00FF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <string>Move Focus</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_tip_text_exit" style="default" class="text">
+            <property>
+                <rect>[265,458,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <string>Exit Menu</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_tip_text_red" style="default" class="text">
+            <property>
+                <rect>[415,458,80,30]</rect>
+                <forecolor>[#FFFFFF,#FF00FF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <string>Delete One</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_tip_text_yellow" style="default" class="text">
+            <property>
+                <rect>[525,457,120,30]</rect>
+                <forecolor>[#FFFFFF,#FF00FF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <string>Delete All</string>
+                <format>static</format>
+            </property>
+        </widget>
+    </children>
+</widget>

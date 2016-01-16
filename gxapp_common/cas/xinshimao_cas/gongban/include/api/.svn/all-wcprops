@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/3201_DVBC/!svn/ver/1140/gxapp_common/cas/xinshimao_cas/gongban/include/api
+END
+app_xinshimao_cas_api_pop.h
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/3201_DVBC/!svn/ver/1139/gxapp_common/cas/xinshimao_cas/gongban/include/api/app_xinshimao_cas_api_pop.h
+END
+app_xinshimao_cas_api_demux.h
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/xinshimao_cas/gongban/include/api/app_xinshimao_cas_api_demux.h
+END
+app_xinshimao_cas_api_baseinfo.h
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/xinshimao_cas/gongban/include/api/app_xinshimao_cas_api_baseinfo.h
+END
+app_xinshimao_cas_api_smart.h
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/xinshimao_cas/gongban/include/api/app_xinshimao_cas_api_smart.h
+END
+app_xinshimao_cas_api_rolling_message.h
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/3201_DVBC/!svn/ver/1140/gxapp_common/cas/xinshimao_cas/gongban/include/api/app_xinshimao_cas_api_rolling_message.h
+END

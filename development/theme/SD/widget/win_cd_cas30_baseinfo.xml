@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="GB2312" standalone="no"?>
+<widget name="win_cd_cas30_baseinfo" style="default" class="window">
+    <property>
+        <rect>[0,0,720,576]</rect>
+        <forecolor>[#000000,#000000,#000000]</forecolor>
+        <backcolor>[#00FF00,#00FF00,#00FF00]</backcolor>
+    </property>
+    <signal>
+        <create>win_cd_cas30_baseinfo_create</create>
+        <destroy>win_cd_cas30_baseinfo_destroy</destroy>
+        <keypress>win_cd_cas30_baseinfo_keypress</keypress>
+    </signal>
+    <children>
+        <widget name="win_cd_cas30_cardupdate_image_bg" style="default" class="image">
+            <property>
+                <rect>[80,78,560,420]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#33508C,#33508C,#33508C]</backcolor>
+                <mode>multiple</mode>
+                <img></img>
+                <lt_img>DS_WIN_BG_T_l.bmp</lt_img>
+                <rt_img>DS_WIN_BG_T_r.bmp</rt_img>
+                <l_img>DS_WIN_BG.bmp</l_img>
+                <r_img>DS_WIN_BG.bmp</r_img>
+            </property>
+        </widget>
+        <widget name="win_audio_set_image202" style="default" class="image">
+            <property>
+                <rect>[80,456,560,31]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#808080,#808080,#808080]</backcolor>
+                <mode>single</mode>
+                <img>DS_HELP_COTE.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_baseinfo_operator1_name" style="default" class="text">
+            <property>
+                <rect>[86,138,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>TVS ID</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_baseinfo_operator2_name" style="default" class="text">
+            <property>
+                <rect>[363,138,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>TVS ID</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_baseinfo_operator3_name" style="default" class="text">
+            <property>
+                <rect>[86,179,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>TVS ID</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_baseinfo_operator4_name" style="default" class="text">
+            <property>
+                <rect>[363,179,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>TVS ID</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_baseinfo_paried_name" style="default" class="text">
+            <property>
+                <rect>[86,384,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Paired Status</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_baseinfo_worktime_name" style="default" class="text">
+            <property>
+                <rect>[86,263,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Work Time</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_baseinfo_level_name" style="default" class="text">
+            <property>
+                <rect>[86,222,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Watch Level</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_baseinfo_id_name" style="default" class="text">
+            <property>
+                <rect>[86,302,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Card Id</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_baseinfo_version_name" style="default" class="text">
+            <property>
+                <rect>[364,222,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Ca Version</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_baseinfo_unique_name" style="default" class="text">
+            <property>
+                <rect>[86,344,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Unique ID</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_baseinfo_operator1" style="default" class="text">
+            <property>
+                <rect>[204,138,160,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_baseinfo_operator2" style="default" class="text">
+            <property>
+                <rect>[482,138,160,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_baseinfo_operator3" style="default" class="text">
+            <property>
+                <rect>[204,179,160,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_baseinfo_operator4" style="default" class="text">
+            <property>
+                <rect>[482,179,160,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_baseinfo_paried" style="default" class="text">
+            <property>
+                <rect>[208,384,400,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_baseinfo_worktime" style="default" class="text">
+            <property>
+                <rect>[208,263,400,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_baseinfo_level" style="default" class="text">
+            <property>
+                <rect>[204,222,160,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_baseinfo_id" style="default" class="text">
+            <property>
+                <rect>[208,302,400,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_baseinfo_version" style="default" class="text">
+            <property>
+                <rect>[484,223,160,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_baseinfo_unique" style="default" class="text">
+            <property>
+                <rect>[208,344,400,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_baseinfo_tip_image_exit" style="default" class="image">
+            <property>
+                <rect>[279,461,34,22]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <mode>single</mode>
+                <img>DS_Icon_Exit.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_tip_text_exit" style="default" class="text">
+            <property>
+                <rect>[341,457,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Exit Menu</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_cd_cas30_baseinfo_title" style="default" class="text">
+            <property>
+                <rect>[163,88,400,42]</rect>
+                <forecolor>[#FFFFFF,#FFFFFF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>simhei</font>
+                <string>Base Info</string>
+                <format>static</format>
+            </property>
+        </widget>
+    </children>
+</widget>

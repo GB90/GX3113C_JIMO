@@ -1,0 +1,146 @@
+#!/bin/bash
+
+
+unset CHIP
+unset DEMOD
+unset MARKET
+unset OS
+# set_env $CHIP $DEMOD $MARKET $OS
+set_env() {
+    CHIP=$1
+    DEMOD=$2
+    MARKET=$3
+    OS=$4
+
+    export ARCH DEMOD MARKET OS
+}
+
+build_clean() {
+    make clean
+}
+
+# build <chip> <demod> <market> <os>
+build() {
+    CHIP=$1
+    case "$CHIP" in
+        gx3201)
+            ARCH=csky
+            ;;
+	gx3113c)
+            ARCH=csky
+            ;;
+		gx3115)
+            ARCH=csky
+            ;;
+        gx6131)
+            ARCH=csky
+            ;;
+        gx3200)
+            ARCH=arm
+            ;;
+        *)
+            echo "ERROR CHIP_ID: $CHIP"
+            exit 1
+            ;;
+    esac
+
+	
+    
+    DEMOD=$2
+    MARKET=$3
+    OS=$4
+
+    case "$OS" in
+        ecos)
+            ;;
+        linux)
+            ;;
+        *)
+            echo "ERROR OS: $OS"
+            exit 1
+            ;;
+    esac
+	
+    if [ ! -f sh/$CHIP/$DEMOD/$MARKET/env.sh ]; then
+	echo "sh/$CHIP/$DEMOD/$MARKET/env.sh not exist, please check."
+	exit 1
+    fi
+
+    
+    cp sh/$CHIP/$DEMOD/$MARKET/env.sh env.sh
+
+	source env.sh $ARCH-$OS
+    make clean
+    make
+    
+}
+
+help() {
+	gx3201_gx1001_list=`ls sh/gx3201/gx1001`
+	gx3201_gx1001_list=`echo ${gx3201_gx1001_list}|sed "s/ /|/g"`
+	gx3201_gx1503_list=`ls sh/gx3201/gx1503`
+    gx3201_gx1503_list=`echo ${gx3201_gx1503_list}|sed "s/ /|/g"`
+    gx3201_atbm886x_list=`ls sh/gx3201/atbm886x`
+    gx3201_atbm886x_list=`echo ${gx3201_atbm886x_list}|sed "s/ /|/g"`
+	gx3113c_gx1503_list=`ls sh/gx3113c/gx1503`
+    gx3113c_gx1503_list=`echo ${gx3113c_gx1503_list}|sed "s/ /|/g"`
+    gx3113c_atbm886x_list=`ls sh/gx3113c/atbm886x`
+    gx3113c_atbm886x_list=`echo ${gx3113c_atbm886x_list}|sed "s/ /|/g"`
+
+	gx3115_gx1503_list=`ls sh/gx3115/gx1503`
+    gx3115_gx1503_list=`echo ${gx3115_gx1503_list}|sed "s/ /|/g"`
+    gx3115_atbm886x_list=`ls sh/gx3115/atbm886x`
+    gx3115_atbm886x_list=`echo ${gx3115_atbm886x_list}|sed "s/ /|/g"`
+        echo ""
+        echo "./build <chip> <demod> <market> <os>"
+	echo ""
+	echo "  chip    list :" 
+        echo "  	       gx3201|gx3113c|gx3115"
+	echo ""
+        echo "  demod    list :" 
+        echo "                  gx1001|gx1503|atbm886x"
+	echo ""
+        echo "  market  list (gx3201+gx1001):"
+	echo "                  ${gx3201_gx1001_list}" 
+        echo ""
+        echo "  market  list (gx3201+gx1503):"
+        echo "                  ${gx3201_gx1503_list}" 
+        echo ""
+        echo "  market  list (gx3201+atbm886x):"
+        echo "                  ${gx3201_atbm886x_list}" 
+        echo ""
+        echo "  market  list (gx3113c+gx1503):"
+        echo "                  ${gx3113c_gx1503_list}" 
+        echo ""
+        echo "  market  list (gx3113c+atbm886x):"
+        echo "                  ${gx3113c_atbm886x_list}" 
+        echo ""
+
+        echo "  market  list (gx3115+gx1503):"
+        echo "                  ${gx3115_gx1503_list}" 
+        echo ""
+        echo "  market  list (gx3115+atbm886x):"
+        echo "                  ${gx3115_atbm886x_list}" 
+        echo ""
+	echo "  os    list :" 
+        echo "                  ecos|linux"
+        echo ""
+	echo ""
+	echo "  eg: ./build gx3201 gx1001 runde_guangxi_yulin ecos"
+        echo "      ./build gx3201 gx1503 gongban linux"
+        echo ""
+        echo "./build clean"
+        echo ""
+}
+
+if [ $# -le 2 ]; then
+    if [ "$1" = "clean" ]; then
+	source env.sh
+        build_clean
+    else
+	help
+    fi
+    exit 1
+fi
+
+build $@

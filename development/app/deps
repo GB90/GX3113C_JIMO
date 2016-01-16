@@ -1,0 +1,279 @@
+objects/3113c_otp_chip.o: 3113c_otp_chip.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  3113c_otp_chip.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app.o: app.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  app.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/flash_chip.o: flash_chip.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  flash_chip.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/main.o: main.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  main.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/otp_chip.o: otp_chip.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  otp_chip.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/signal_connect.o: signal_connect.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  signal_connect.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_call_back.o: ./menu/app_call_back.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/app_call_back.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_dmsetting.o: ./menu/app_dmsetting.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/app_dmsetting.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_file_list.o: ./menu/app_file_list.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/app_file_list.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_full_keyboard.o: ./menu/app_full_keyboard.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/app_full_keyboard.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_game_snake.o: ./menu/app_game_snake.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/app_game_snake.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_input.o: ./menu/app_input.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/app_input.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_linux_update.o: ./menu/app_linux_update.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/app_linux_update.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_popmsg.o: ./menu/app_popmsg.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/app_popmsg.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_top.o: ./menu/app_top.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/app_top.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_update_manual.o: ./menu/app_update_manual.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/app_update_manual.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_update_manu.o: ./menu/app_update_manu.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/app_update_manu.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_win_interface.o: ./menu/app_win_interface.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/app_win_interface.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_advanced_set_menu.o: ./menu/win_advanced_set_menu.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/win_advanced_set_menu.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_all_search.o: ./menu/win_all_search.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/win_all_search.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_audio_set.o: ./menu/win_audio_set.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/win_audio_set.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_book_manage.o: ./menu/win_book_manage.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/win_book_manage.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_ca_menu.o: ./menu/win_ca_menu.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/win_ca_menu.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_channel_set.o: ./menu/win_channel_set.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/win_channel_set.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_favorite_prog_list.o: ./menu/win_favorite_prog_list.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/win_favorite_prog_list.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_full_screen.o: ./menu/win_full_screen.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/win_full_screen.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_lang_set.o: ./menu/win_lang_set.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/win_lang_set.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_main_frequecy_set.o: ./menu/win_main_frequecy_set.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/win_main_frequecy_set.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_main_menu.o: ./menu/win_main_menu.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/win_main_menu.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_manual_search.o: ./menu/win_manual_search.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/win_manual_search.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_menu_epg_list.o: ./menu/win_menu_epg_list.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/win_menu_epg_list.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_menu_tv_list.o: ./menu/win_menu_tv_list.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/win_menu_tv_list.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_passwd_set.o: ./menu/win_passwd_set.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/win_passwd_set.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_password_check.o: ./menu/win_password_check.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/win_password_check.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_password_input.o: ./menu/win_password_input.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/win_password_input.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_pop_tip.o: ./menu/win_pop_tip.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/win_pop_tip.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_prog_bar.o: ./menu/win_prog_bar.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/win_prog_bar.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_prog_info.o: ./menu/win_prog_info.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/win_prog_info.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_prog_manage.o: ./menu/win_prog_manage.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/win_prog_manage.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_prog_menu.o: ./menu/win_prog_menu.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/win_prog_menu.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_prog_num.o: ./menu/win_prog_num.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/win_prog_num.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_search_menu.o: ./menu/win_search_menu.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/win_search_menu.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_search_result.o: ./menu/win_search_result.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/win_search_result.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_stb_info.o: ./menu/win_stb_info.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/win_stb_info.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_sys_set.o: ./menu/win_sys_set.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/win_sys_set.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_sys_update.o: ./menu/win_sys_update.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/win_sys_update.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_trans_set.o: ./menu/win_trans_set.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/win_trans_set.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_videocolor_set.o: ./menu/win_videocolor_set.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/win_videocolor_set.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_video_menu.o: ./menu/win_video_menu.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/win_video_menu.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_video_set.o: ./menu/win_video_set.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/win_video_set.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_volume.o: ./menu/win_volume.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/win_volume.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_desai_cas_5.0_baseinfo.o: ./cas/desai_cas50/menu/win_desai_cas_5.0_baseinfo.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./cas/desai_cas50/menu/win_desai_cas_5.0_baseinfo.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_desai_cas_5.0_card_setwatchlevel.o: ./cas/desai_cas50/menu/win_desai_cas_5.0_card_setwatchlevel.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./cas/desai_cas50/menu/win_desai_cas_5.0_card_setwatchlevel.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_desai_cas_5.0_card_setworktime.o: ./cas/desai_cas50/menu/win_desai_cas_5.0_card_setworktime.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./cas/desai_cas50/menu/win_desai_cas_5.0_card_setworktime.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_desai_cas_5.0_changepin.o: ./cas/desai_cas50/menu/win_desai_cas_5.0_changepin.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./cas/desai_cas50/menu/win_desai_cas_5.0_changepin.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_desai_cas_5.0_email.o: ./cas/desai_cas50/menu/win_desai_cas_5.0_email.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./cas/desai_cas50/menu/win_desai_cas_5.0_email.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_desai_cas_5.0_entitleinfo.o: ./cas/desai_cas50/menu/win_desai_cas_5.0_entitleinfo.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./cas/desai_cas50/menu/win_desai_cas_5.0_entitleinfo.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_desai_cas_5.0_exigent.o: ./cas/desai_cas50/menu/win_desai_cas_5.0_exigent.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./cas/desai_cas50/menu/win_desai_cas_5.0_exigent.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_desai_cas_5.0_finger.o: ./cas/desai_cas50/menu/win_desai_cas_5.0_finger.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./cas/desai_cas50/menu/win_desai_cas_5.0_finger.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_desai_cas_5.0_ippv_buy.o: ./cas/desai_cas50/menu/win_desai_cas_5.0_ippv_buy.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./cas/desai_cas50/menu/win_desai_cas_5.0_ippv_buy.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_desai_cas5.0_menu_email.o: ./cas/desai_cas50/menu/win_desai_cas5.0_menu_email.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./cas/desai_cas50/menu/win_desai_cas5.0_menu_email.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_desai_cas_5.0_operatorinfo.o: ./cas/desai_cas50/menu/win_desai_cas_5.0_operatorinfo.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./cas/desai_cas50/menu/win_desai_cas_5.0_operatorinfo.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_desai_cas_5.0_pop.o: ./cas/desai_cas50/menu/win_desai_cas_5.0_pop.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./cas/desai_cas50/menu/win_desai_cas_5.0_pop.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_desai_cas_5.0_purserinfo.o: ./cas/desai_cas50/menu/win_desai_cas_5.0_purserinfo.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./cas/desai_cas50/menu/win_desai_cas_5.0_purserinfo.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_desai_cas_5.0_rolling_message.o: ./cas/desai_cas50/menu/win_desai_cas_5.0_rolling_message.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./cas/desai_cas50/menu/win_desai_cas_5.0_rolling_message.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/win_desai_cas_5.0_updating.o: ./cas/desai_cas50/menu/win_desai_cas_5.0_updating.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./cas/desai_cas50/menu/win_desai_cas_5.0_updating.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_pvr_bar.o: ./pvr/app_pvr_bar.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./pvr/app_pvr_bar.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_pvr_media.o: ./pvr/app_pvr_media.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./pvr/app_pvr_media.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_pvr_setting.o: ./pvr/app_pvr_setting.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./pvr/app_pvr_setting.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_movie_subt.o: ./menu/media/app_movie_subt.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/media/app_movie_subt.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_movie_view.o: ./menu/media/app_movie_view.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/media/app_movie_view.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_volume.o: ./menu/media/app_volume.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/media/app_volume.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_text_set.o: ./menu/media/app_text_set.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/media/app_text_set.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_music_set.o: ./menu/media/app_music_set.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/media/app_music_set.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_media_popmsg.o: ./menu/media/app_media_popmsg.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/media/app_media_popmsg.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_music_info.o: ./menu/media/app_music_info.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/media/app_music_info.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_text_view.o: ./menu/media/app_text_view.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/media/app_text_view.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_music_view.o: ./menu/media/app_music_view.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/media/app_music_view.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_pic_set.o: ./menu/media/app_pic_set.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/media/app_pic_set.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_file_browser.o: ./menu/media/app_file_browser.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/media/app_file_browser.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_media_info.o: ./menu/media/app_media_info.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/media/app_media_info.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_movie_set.o: ./menu/media/app_movie_set.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/media/app_movie_set.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_pmp_set.o: ./menu/media/app_pmp_set.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/media/app_pmp_set.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_media_popmsg_timeout.o: ./menu/media/app_media_popmsg_timeout.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/media/app_media_popmsg_timeout.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_pic_info.o: ./menu/media/app_pic_info.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/media/app_pic_info.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_open_file.o: ./menu/media/app_open_file.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/media/app_open_file.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_media_centre.o: ./menu/media/app_media_centre.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/media/app_media_centre.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_movie_info.o: ./menu/media/app_movie_info.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/media/app_movie_info.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_down_view.o: ./menu/media/app_down_view.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/media/app_down_view.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_pic_view.o: ./menu/media/app_pic_view.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/media/app_pic_view.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_utility.o: ./menu/media/app_utility.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/media/app_utility.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_file_edit.o: ./menu/media/app_file_edit.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./menu/media/app_file_edit.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/bsp.o: bsp.cpp
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  bsp.cpp
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^

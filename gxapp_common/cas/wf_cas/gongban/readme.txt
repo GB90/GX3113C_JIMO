@@ -1,0 +1,5 @@
+
+export DVB_CA_TYPE=DVB_CA_TYPE_WF
+export DVB_CA_1_NAME=wf_cas
+export DVB_CA_1_LIB=wfcas21gx3201
+export DVB_CA_1_FLAG=DVB_CA_TYPE_WF_CA_FLAG

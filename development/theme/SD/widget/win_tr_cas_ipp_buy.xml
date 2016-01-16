@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="GB2312" standalone="no"?>
+<widget name="win_tr_cas_ipp_buy" style="default" class="window">
+    <property>
+        <rect>[80,130,560,320]</rect>
+        <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+        <backcolor>[#00FF00,#00FF00,#00FF00]</backcolor>
+    </property>
+    <signal>
+        <create>win_tr_ppv_create</create>
+        <destroy>win_tr_ppv_destroy</destroy>
+        <keypress>win_tr_ppv_keypress</keypress>
+    </signal>
+    <children>
+        <widget name="win_tr_cas_ppv_image_bg" style="default" class="image">
+            <property>
+                <rect>[0,0,560,320]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#33508C,#33508C,#33508C]</backcolor>
+                <mode>multiple</mode>
+                <img></img>
+                <lt_img>DS_WIN_BG_T_l.bmp</lt_img>
+                <rt_img>DS_WIN_BG_T_r.bmp</rt_img>
+                <l_img>DS_WIN_BG.bmp</l_img>
+                <r_img>DS_WIN_BG.bmp</r_img>
+            </property>
+        </widget>
+        <widget name="win_divitone_cas_cardinfo_image202" style="default" class="image">
+            <property>
+                <rect>[80,456,560,31]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#808080,#808080,#808080]</backcolor>
+                <mode>single</mode>
+                <img>DS_HELP_COTE.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_tr_ppv_title" style="default" class="text">
+            <property>
+                <rect>[73,20,400,25]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <string>IPP program,please buy it</string>
+                <format>automatic</format>
+            </property>
+        </widget>
+        <widget name="win_tr_ppv_p1_name" style="default" class="text">
+            <property>
+                <rect>[33,54,200,25]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Program ID</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_tr_ppv_p1" style="default" class="text">
+            <property>
+                <rect>[233,54,300,25]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_tr_ppv_p2_name" style="default" class="text">
+            <property>
+                <rect>[33,86,200,25]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Charge Type</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_tr_ppv_p2" style="default" class="text">
+            <property>
+                <rect>[233,86,300,25]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_tr_ppv_p3_name" style="default" class="text">
+            <property>
+                <rect>[32,119,200,25]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Price Rate</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_tr_ppv_p3" style="default" class="text">
+            <property>
+                <rect>[232,119,300,25]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_tr_ppv_p4_name" style="default" class="text">
+            <property>
+                <rect>[32,151,200,25]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>SN</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_tr_ppv_p4" style="default" class="text">
+            <property>
+                <rect>[232,151,300,25]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_tr_ppv_p5_name" style="default" class="text">
+            <property>
+                <rect>[31,183,200,25]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Start Time</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_tr_ppv_p6_name" style="default" class="text">
+            <property>
+                <rect>[31,217,200,25]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>End Time</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_tr_ppv_p5" style="default" class="text">
+            <property>
+                <rect>[231,183,300,25]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_tr_ppv_p6" style="default" class="text">
+            <property>
+                <rect>[231,217,300,25]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_tr_ppv_box" style="default" class="box">
+            <property>
+                <rect>[29,249,510,36]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <format>vertical</format>
+            </property>
+            <signal>
+                <keypress>app_tr_cas_pin_box_key_press</keypress>
+            </signal>
+            <children>
+                <widget name="win_tr_ppv_boxitem1" style="default" class="boxitem">
+                    <property>
+                        <rect>[32,0,447,35]</rect>
+                        <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                        <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                        <focus_image>DS_update_blue.bmp</focus_image>
+                    </property>
+                    <children>
+                        <widget name="win_tr_ppv_pin_hint" style="default" class="text">
+                            <property>
+                                <rect>[0,3,200,30]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                                <font>Arial</font>
+                                <string>Please input PIN</string>
+                                <format>static</format>
+                            </property>
+                        </widget>
+                        <widget name="win_tr_ppv_pin_edit" style="default" class="edit">
+                            <property>
+                                <rect>[237,4,200,26]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#FF00FF,#6bc65a,#FF00FF]</backcolor>
+                                <font>Arial</font>
+                                <alignment>hcentre|vcentre</alignment>
+                                <intaglio>*</intaglio>
+                                <maxlen>6</maxlen>
+                                <format>edit_digit</format>
+                            </property>
+                        </widget>
+                    </children>
+                </widget>
+            </children>
+        </widget>
+        <widget name="win_tr_cas_ipp_buy_text910" style="default" class="text">
+            <property>
+                <rect>[90,292,400,25]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <string>[0-9]input,[OK]Order</string>
+                <format>automatic</format>
+            </property>
+        </widget>
+    </children>
+</widget>

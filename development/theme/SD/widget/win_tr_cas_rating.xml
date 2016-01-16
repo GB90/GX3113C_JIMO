@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="GB2312" standalone="no"?>
+<widget name="win_tr_cas_rating" style="default" class="window">
+    <property>
+        <rect>[0,0,720,576]</rect>
+        <forecolor>[#000000,#000000,#000000]</forecolor>
+        <backcolor>[#00FF00,#00FF00,#00FF00]</backcolor>
+    </property>
+    <signal>
+        <create>win_tr_cas_rating_create</create>
+        <destroy>win_tr_cas_rating_destroy</destroy>
+        <keypress>win_tr_cas_rating_keypress</keypress>
+    </signal>
+    <children>
+        <widget name="win_tr_cas_rating_image_bg" style="default" class="image">
+            <property>
+                <rect>[80,78,560,420]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#33508C,#33508C,#33508C]</backcolor>
+                <mode>multiple</mode>
+                <img></img>
+                <lt_img>DS_WIN_BG_T_l.bmp</lt_img>
+                <rt_img>DS_WIN_BG_T_r.bmp</rt_img>
+                <l_img>DS_WIN_BG.bmp</l_img>
+                <r_img>DS_WIN_BG.bmp</r_img>
+            </property>
+        </widget>
+        <widget name="win_divitone_cas_cardinfo_image202" style="default" class="image">
+            <property>
+                <rect>[80,456,560,31]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#808080,#808080,#808080]</backcolor>
+                <mode>single</mode>
+                <img>DS_HELP_COTE.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_tr_cas_rating_title" style="default" class="text">
+            <property>
+                <rect>[163,89,400,42]</rect>
+                <forecolor>[#FFFFFF,#FFFFFF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>simhei</font>
+                <string>Card Set Watchlevel</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_tr_cas_rating_box" style="default" class="box">
+            <property>
+                <rect>[138,172,447,160]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <interval>10</interval>
+                <format>vertical</format>
+            </property>
+            <signal>
+                <keypress>win_tr_cas_rating_box_keypress</keypress>
+            </signal>
+            <children>
+                <widget name="win_tr_cas_rating_boxitem1" style="default" class="boxitem">
+                    <property>
+                        <rect>[0,10,447,29]</rect>
+                        <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                        <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                        <unfocus_image>DS_BOX_ALLOW_BLUE.bmp</unfocus_image>
+                        <focus_image>DS_BOX_ALLOW_BLUE.bmp</focus_image>
+                        <disable_image>DS_BOX_ALLOW_BLUE.bmp</disable_image>
+                    </property>
+                    <children>
+                        <widget name="win_tr_cas_rating_boxitem1_text" style="default" class="text">
+                            <property>
+                                <rect>[30,1,160,26]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                                <font>Arial</font>
+                                <alignment>left|vcentre</alignment>
+                                <string>Input PIN</string>
+                                <format>static</format>
+                            </property>
+                        </widget>
+                        <widget name="win_tr_cas_rating_boxitem1_edit" style="default" class="edit">
+                            <property>
+                                <rect>[224,2,200,24]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#ff00ff,#6bc65a,#ff00ff]</backcolor>
+                                <font>Arial</font>
+                                <alignment>hcentre|vcentre</alignment>
+                                <intaglio>*</intaglio>
+                                <maxlen>6</maxlen>
+                                <format>edit_digit</format>
+                            </property>
+                        </widget>
+                    </children>
+                </widget>
+                <widget name="win_tr_cas_rating_boxitem2" style="default" class="boxitem">
+                    <property>
+                        <rect>[0,49,447,29]</rect>
+                        <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                        <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                        <unfocus_image>DS_BOX_ALLOW_BLUE.bmp</unfocus_image>
+                        <focus_image>DS_BOX_ALLOW_ORANGE.bmp</focus_image>
+                        <disable_image>DS_BOX_ALLOW_BLUE.bmp</disable_image>
+                    </property>
+                    <children>
+                        <widget name="win_tr_cas_rating_boxitem2_text" style="default" class="text">
+                            <property>
+                                <rect>[31,0,160,26]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                                <font>Arial</font>
+                                <alignment>left|vcentre</alignment>
+                                <string>Watch Level(0-10)</string>
+                                <format>static</format>
+                            </property>
+                        </widget>
+                        <widget name="win_tr_cas_rating_boxitem2_value" style="default" class="combobox">
+                            <property>
+                                <rect>[224,2,200,24]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                                <font>Arial</font>
+                                <content>[0,1,2,3,4,5,6,7,8,9,10]</content>
+                            </property>
+                        </widget>
+                    </children>
+                </widget>
+            </children>
+        </widget>
+        <widget name="win_tr_cas_rating_tip_3times" style="default" class="text">
+            <property>
+                <rect>[110,390,500,30]</rect>
+                <forecolor>[#BC0000,#BC0000,#BC0000]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <string>[Notice]Please input 6-bit Pin</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_tr_cas_rating_leftright" style="default" class="image">
+            <property>
+                <rect>[98,466,54,12]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_ICON_SWORD.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_tr_cas_rating_tip_image_exit" style="default" class="image">
+            <property>
+                <rect>[291,461,34,22]</rect>
+                <forecolor>[#FFFFFF,#FF00FF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_Icon_Exit.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_tr_cas_rating_tip_image_ok" style="default" class="image">
+            <property>
+                <rect>[479,461,34,22]</rect>
+                <forecolor>[#FFFFFF,#FF00FF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_ICON_OK.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_tr_cas_rating_text_updown" style="default" class="text">
+            <property>
+                <rect>[157,458,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Move Focus</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_tr_cas_rating_text_exit" style="default" class="text">
+            <property>
+                <rect>[331,456,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Exit Menu</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_tr_cas_rating_text_ok" style="default" class="text">
+            <property>
+                <rect>[521,458,100,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Save</string>
+                <format>static</format>
+            </property>
+        </widget>
+    </children>
+</widget>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="GB2312" standalone="no"?>
+<widget name="win_kp_cas_baseinfo" style="default" class="window">
+    <property>
+        <rect>[0,0,720,576]</rect>
+        <forecolor>[#000000,#000000,#000000]</forecolor>
+        <backcolor>[#00FF00,#00FF00,#00FF00]</backcolor>
+    </property>
+    <signal>
+        <create>win_kp_cas_baseinfo_create</create>
+        <destroy>win_kp_cas_baseinfo_destroy</destroy>
+        <keypress>win_kp_cas_baseinfo_keypress</keypress>
+    </signal>
+    <children>
+        <widget name="win_kp_cas_baseinfo_backgroup" style="default" class="image">
+            <property>
+                <rect>[80,78,560,420]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#33508C,#33508C,#33508C]</backcolor>
+                <mode>multiple</mode>
+                <img></img>
+                <lt_img>DS_WIN_BG_T_l.bmp</lt_img>
+                <rt_img>DS_WIN_BG_T_r.bmp</rt_img>
+                <l_img>DS_WIN_BG.bmp</l_img>
+                <r_img>DS_WIN_BG.bmp</r_img>
+            </property>
+        </widget>
+        <widget name="win_divitone_cas_cardinfo_image202" style="default" class="image">
+            <property>
+                <rect>[80,456,560,31]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#808080,#808080,#808080]</backcolor>
+                <mode>single</mode>
+                <img>DS_HELP_COTE.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_kp_cas_baseinfo_title" style="default" class="text">
+            <property>
+                <rect>[163,88,400,42]</rect>
+                <forecolor>[#FFFFFF,#FFFFFF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>simhei</font>
+                <string>Base Info</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_kp_cas_baseinfo_time_text" style="default" class="text">
+            <property>
+                <rect>[910,110,200,35]</rect>
+                <forecolor>[#FFFFFF,#FFFFFF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <alignment>right|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_kp_cas_baseinfo_op0_name" style="default" class="text">
+            <property>
+                <rect>[116,165,200,30]</rect>
+                <forecolor>[#CEE8FF,#FFFFFF,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <alignment>left|vcentre</alignment>
+                <string>CA</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_kp_cas_baseinfo_op1_name" style="default" class="text">
+            <property>
+                <rect>[116,211,200,30]</rect>
+                <forecolor>[#CEE8FF,#FFFFFF,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <alignment>left|vcentre</alignment>
+                <string>CA Version</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_kp_cas_baseinfo_op2_name" style="default" class="text">
+            <property>
+                <rect>[116,260,200,30]</rect>
+                <forecolor>[#CEE8FF,#FFFFFF,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <alignment>left|vcentre</alignment>
+                <string>Licence ID</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_kp_cas_baseinfo_op3_name" style="default" class="text">
+            <property>
+                <rect>[116,310,200,30]</rect>
+                <forecolor>[#CEE8FF,#FFFFFF,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <alignment>left|vcentre</alignment>
+                <string>Unique ID</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_kp_cas_baseinfo_op4_name" style="default" class="text">
+            <property>
+                <rect>[116,360,200,30]</rect>
+                <forecolor>[#CEE8FF,#FFFFFF,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <alignment>left|vcentre</alignment>
+                <string>AreaCode</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_kp_cas_baseinfo_op5_name" style="default" class="text">
+            <property>
+                <rect>[116,410,200,30]</rect>
+                <forecolor>[#CEE8FF,#FFFFFF,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <alignment>left|vcentre</alignment>
+                <string>Attibute</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_kp_cas_baseinfo_op0" style="default" class="text">
+            <property>
+                <rect>[320,165,300,30]</rect>
+                <forecolor>[#CEE8FF,#FFFFFF,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_kp_cas_baseinfo_op1" style="default" class="text">
+            <property>
+                <rect>[320,210,300,30]</rect>
+                <forecolor>[#CEE8FF,#FFFFFF,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_kp_cas_baseinfo_op2" style="default" class="text">
+            <property>
+                <rect>[320,260,300,30]</rect>
+                <forecolor>[#CEE8FF,#FFFFFF,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_kp_cas_baseinfo_op3" style="default" class="text">
+            <property>
+                <rect>[320,310,300,30]</rect>
+                <forecolor>[#CEE8FF,#FFFFFF,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_kp_cas_baseinfo_op4" style="default" class="text">
+            <property>
+                <rect>[320,360,300,30]</rect>
+                <forecolor>[#CEE8FF,#FFFFFF,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_kp_cas_baseinfo_op5" style="default" class="text">
+            <property>
+                <rect>[320,410,300,30]</rect>
+                <forecolor>[#CEE8FF,#FFFFFF,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_kp_cas_baseinfo_tip_image_exit" style="default" class="image">
+            <property>
+                <rect>[288,461,34,22]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_Icon_Exit.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_tip_text_exit" style="default" class="text">
+            <property>
+                <rect>[340,457,200,30]</rect>
+                <forecolor>[#CEE8FF,#FFFFFF,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <alignment>left|vcentre</alignment>
+                <string>Exit Menu</string>
+                <format>static</format>
+            </property>
+        </widget>
+    </children>
+</widget>

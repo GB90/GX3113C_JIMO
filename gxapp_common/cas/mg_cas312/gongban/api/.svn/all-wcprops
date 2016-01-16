@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/3201_DVBC/!svn/ver/1079/gxapp_common/cas/mg_cas312/gongban/api
+END
+app_mg_cas312_api_ppv.c
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/3201_DVBC/!svn/ver/1077/gxapp_common/cas/mg_cas312/gongban/api/app_mg_cas312_api_ppv.c
+END
+app_mg_cas312_api_baseinfo.c
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/3201_DVBC/!svn/ver/1077/gxapp_common/cas/mg_cas312/gongban/api/app_mg_cas312_api_baseinfo.c
+END
+app_mg_cas312_api_smart.c
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/3201_DVBC/!svn/ver/1077/gxapp_common/cas/mg_cas312/gongban/api/app_mg_cas312_api_smart.c
+END
+app_mg_cas312_api_email.c
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/3201_DVBC/!svn/ver/1077/gxapp_common/cas/mg_cas312/gongban/api/app_mg_cas312_api_email.c
+END
+app_mg_cas312_api_lock_service.c
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/3201_DVBC/!svn/ver/1077/gxapp_common/cas/mg_cas312/gongban/api/app_mg_cas312_api_lock_service.c
+END
+app_mg_cas312_api_rolling_message.c
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/3201_DVBC/!svn/ver/1077/gxapp_common/cas/mg_cas312/gongban/api/app_mg_cas312_api_rolling_message.c
+END
+app_mg_cas312_porting_stb_api.c
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/3201_DVBC/!svn/ver/1079/gxapp_common/cas/mg_cas312/gongban/api/app_mg_cas312_porting_stb_api.c
+END
+app_mg_cas312_api_event.c
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/3201_DVBC/!svn/ver/1077/gxapp_common/cas/mg_cas312/gongban/api/app_mg_cas312_api_event.c
+END
+app_mg_cas312_api_demux.c
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/3201_DVBC/!svn/ver/1077/gxapp_common/cas/mg_cas312/gongban/api/app_mg_cas312_api_demux.c
+END

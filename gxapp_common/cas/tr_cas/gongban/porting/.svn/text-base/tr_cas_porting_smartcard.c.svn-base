@@ -1,0 +1,139 @@
+/*****************************************************************************
+* 						   CONFIDENTIAL
+*        Hangzhou GuoXin Science and Technology Co., Ltd.
+*                      (C)2012, All right reserved
+******************************************************************************
+
+******************************************************************************
+* File Name :	tr_cas_porting_smartcard.c
+* Author    : 	xxxx
+* Project   :	goxceed dvbc
+* Type      :
+******************************************************************************
+* Purpose   :	模块头文件
+******************************************************************************
+* Release History:
+VERSION	Date			  AUTHOR         Description
+1.0  	2012.12.02		  xxxx 	 			creation
+*****************************************************************************/
+#include <gxtype.h>
+#include "gxmsg.h"
+#include "gxapp_sys_config.h"
+#include "app_common_play.h"
+#include "app_common_table_pmt.h"
+#include "app_common_porting_stb_api.h"
+#include "app_common_porting_ca_flash.h"
+#include "app_common_porting_ca_demux.h"
+#include "app_common_porting_ca_descramble.h"
+#include "app_common_porting_ca_smart.h"
+#include "app_tr_cas_api_smart.h"
+#include "Tr_Cas.h"
+
+
+typedef S16 (*TRCASC_ATR_NOTIFY)(U8, U8, U8*, U8);
+
+static TRCASC_ATR_NOTIFY s_trcas_atrNotify = NULL;
+static uint8_t pbyReply[1024];
+static uint16_t pwReplyLen = 0;
+
+
+S16 TRDRV_SCARD_Initialise(IN S16 (*SC_ATR_Notify)(U8 bCardNumber, U8 bStatus, U8 *pbATR, U8 bProtocol))
+{
+	if (SC_ATR_Notify != NULL)
+	{
+		s_trcas_atrNotify = SC_ATR_Notify;
+		return 0;
+	}
+	else
+	{
+		return 1;
+	}
+}
+
+void  TRDRV_SCARD_ResetCard(U8 bCardNumber)
+{
+	U8 pbyLen = 33;
+	U8 pbyATR[256] = {0,};
+
+	GxSmcTimeParams    time;
+	time.baud_rate  = RUNTIME_BAUD_RATE;
+	time.egt        = RUNTIME_EGT;
+	time.etu        = RUNTIME_ETU;
+	time.tgt        = RUNTIME_TGT;
+	time.twdt       = RUNTIME_TWDT;
+	time.wdt        = RUNTIME_WDT;
+
+	app_porting_ca_smart_reset(time, pbyATR, &pbyLen);
+	return;
+}
+
+S16 TRDRV_SCARD_AdpuFunction(U8 bCardNumber, IN U8 *pbTxData, 
+	   									U32 ulTxLength, OUT U8 *pbRxData, 
+	   									OUT U32 *pulRxLength)
+{
+	int ret = 0;
+	uint16_t wCommandLen = ulTxLength;
+	uint8_t *pcmd = pbTxData;
+	
+	memset(pbyReply, 0x00, 1024);
+
+	ret = app_porting_ca_smart_status();
+	if (!ret)
+	{
+		printf("[TRDRV_SCARD_AdpuFunction]smart out!!!\n");
+		return 1;
+	}
+	
+	ret = app_porting_ca_smart_sc_apdu61(pcmd, wCommandLen, pbyReply, &pwReplyLen);
+	if (ret == TRUE)
+	{	
+		if (pbRxData)
+		{
+			memcpy(pbRxData, pbyReply, pwReplyLen);
+		}
+		
+		if (pulRxLength)
+		{
+			*pulRxLength = pwReplyLen;
+		}
+		//CAS_DUMP("\nREPLY",pbyReply,pwReplyLen);
+		return 0;
+	}
+	
+	return 1;
+}
+
+S16 TRDRV_SCARD_GetSlotState(U8 bCardNumber, OUT U8 *pbSlotState)
+{
+	bool bIsCardIn = TRUE;
+	
+	bIsCardIn = app_porting_ca_smart_status();
+	if (TRUE == bIsCardIn)
+	{
+		*pbSlotState = CAS_SCARD_INSERT;
+	}
+	else if (FALSE == bIsCardIn)
+	{
+       	*pbSlotState = CAS_SCARD_REMOVE;
+	}
+	
+	return 0;
+}
+
+void TRDRV_SCARD_In(char *pbyATR)
+{
+	if (s_trcas_atrNotify != NULL)
+	{
+		s_trcas_atrNotify(0, CAS_SCARD_INSERT, (U8 *)pbyATR, 0);     	
+	}
+}
+
+void TRDRV_SCARD_Remove(char *pbyATR)
+{
+	if (s_trcas_atrNotify != NULL)
+	{
+		s_trcas_atrNotify(0, CAS_SCARD_REMOVE, (U8 *)pbyATR, 0);     	
+	}
+}
+
+

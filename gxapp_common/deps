@@ -1,0 +1,258 @@
+objects/app_common_lcn.o: ./table/app_common_lcn.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./table/app_common_lcn.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_common_table_bat.o: ./table/app_common_table_bat.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./table/app_common_table_bat.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_common_table_cat.o: ./table/app_common_table_cat.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./table/app_common_table_cat.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_common_table_nit.o: ./table/app_common_table_nit.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./table/app_common_table_nit.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_common_table_ota.o: ./table/app_common_table_ota.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./table/app_common_table_ota.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_common_table_pmt.o: ./table/app_common_table_pmt.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./table/app_common_table_pmt.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_common_book.o: ./book/app_common_book.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./book/app_common_book.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_common_dolby.o: ./play/app_common_dolby.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./play/app_common_dolby.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_common_play.o: ./play/app_common_play.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./play/app_common_play.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/gx3201_dcv_main.o: ./play/gx3201_dcv_main.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./play/gx3201_dcv_main.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_common_nvod.o: ./nvod/app_common_nvod.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./nvod/app_common_nvod.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_common_flash.o: ./flash/app_common_flash.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./flash/app_common_flash.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_common_search.o: ./search/app_common_search.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./search/app_common_search.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_common_prog.o: ./prog/app_common_prog.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./prog/app_common_prog.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_common_epg.o: ./epg/app_common_epg.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./epg/app_common_epg.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_common_init.o: ./init/app_common_init.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./init/app_common_init.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_id_manage.o: ./osd_msg/app_id_manage.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./osd_msg/app_id_manage.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_osd_msg.o: ./osd_msg/app_osd_msg.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./osd_msg/app_osd_msg.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_send_msg.o: ./osd_msg/app_send_msg.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./osd_msg/app_send_msg.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/osd_msg.o: ./osd_msg/osd_msg.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./osd_msg/osd_msg.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_common_porting_ads_flash.o: ./porting/app_common_porting_ads_flash.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./porting/app_common_porting_ads_flash.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_common_porting_ca_demux.o: ./porting/app_common_porting_ca_demux.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./porting/app_common_porting_ca_demux.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_common_porting_ca_descramble.o: ./porting/app_common_porting_ca_descramble.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./porting/app_common_porting_ca_descramble.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_common_porting_ca_flash.o: ./porting/app_common_porting_ca_flash.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./porting/app_common_porting_ca_flash.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_common_porting_ca_os.o: ./porting/app_common_porting_ca_os.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./porting/app_common_porting_ca_os.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_common_porting_ca_smart.o: ./porting/app_common_porting_ca_smart.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./porting/app_common_porting_ca_smart.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_common_porting_stb_api.o: ./porting/app_common_porting_stb_api.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./porting/app_common_porting_stb_api.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_pvr.o: ./pvr/app_pvr.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./pvr/app_pvr.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_desai_cas_5.0_api_baseinfo.o: ./cas/desai_cas50/gongban/api/app_desai_cas_5.0_api_baseinfo.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./cas/desai_cas50/gongban/api/app_desai_cas_5.0_api_baseinfo.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_desai_cas_5.0_api_demux.o: ./cas/desai_cas50/gongban/api/app_desai_cas_5.0_api_demux.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./cas/desai_cas50/gongban/api/app_desai_cas_5.0_api_demux.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_desai_cas_5.0_api_smart.o: ./cas/desai_cas50/gongban/api/app_desai_cas_5.0_api_smart.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./cas/desai_cas50/gongban/api/app_desai_cas_5.0_api_smart.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_desai_cas_5.0_porting_stb_api.o: ./cas/desai_cas50/gongban/api/app_desai_cas_5.0_porting_stb_api.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./cas/desai_cas50/gongban/api/app_desai_cas_5.0_porting_stb_api.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/desai_cas_5.0_porting.o: ./cas/desai_cas50/gongban/porting/desai_cas_5.0_porting.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./cas/desai_cas50/gongban/porting/desai_cas_5.0_porting.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/gx_panel_linux.o: ./bsp/gx_panel_linux.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./bsp/gx_panel_linux.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/stb_panel_2key.o: ./bsp/stb_panel_2key.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./bsp/stb_panel_2key.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/stb_panel_4key.o: ./bsp/stb_panel_4key.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./bsp/stb_panel_4key.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/stb_panel.o: ./bsp/stb_panel.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./bsp/stb_panel.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/stb_panel_config.o: ./bsp/stb_panel_config.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./bsp/stb_panel_config.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/stb_panel_config_linux.o: ./bsp/stb_panel_config_linux.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./bsp/stb_panel_config_linux.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/stb_panel_ct1642.o: ./bsp/stb_panel_ct1642.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./bsp/stb_panel_ct1642.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/stb_panel_ct1642_haixin.o: ./bsp/stb_panel_ct1642_haixin.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./bsp/stb_panel_ct1642_haixin.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/stb_panel_ct1642_jinya.o: ./bsp/stb_panel_ct1642_jinya.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./bsp/stb_panel_ct1642_jinya.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/stb_panel_ct1642_jinya_led.o: ./bsp/stb_panel_ct1642_jinya_led.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./bsp/stb_panel_ct1642_jinya_led.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/stb_panel_fd650.o: ./bsp/stb_panel_fd650.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./bsp/stb_panel_fd650.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/stb_panel_fd650_keneng.o: ./bsp/stb_panel_fd650_keneng.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./bsp/stb_panel_fd650_keneng.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/stb_panel_fd650_runde.o: ./bsp/stb_panel_fd650_runde.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./bsp/stb_panel_fd650_runde.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/stb_panel_fd650_skyworth.o: ./bsp/stb_panel_fd650_skyworth.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./bsp/stb_panel_fd650_skyworth.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/stb_panel_fd650_thinewtec.o: ./bsp/stb_panel_fd650_thinewtec.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./bsp/stb_panel_fd650_thinewtec.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/stb_panel_jizhong.o: ./bsp/stb_panel_jizhong.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./bsp/stb_panel_jizhong.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/stb_panel_none.o: ./bsp/stb_panel_none.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./bsp/stb_panel_none.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/stb_panel_PT6964.o: ./bsp/stb_panel_PT6964.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./bsp/stb_panel_PT6964.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/stb_panel_shenzhou_tm1635.o: ./bsp/stb_panel_shenzhou_tm1635.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./bsp/stb_panel_shenzhou_tm1635.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_common_panel.o: ./bsp/panel_common/app_common_panel.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./bsp/panel_common/app_common_panel.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/pmp_setting.o: ./media/pmp_setting/pmp_setting.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./media/pmp_setting/pmp_setting.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/play_text.o: ./media/file_view/play_text.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./media/file_view/play_text.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/file_edit.o: ./media/file_view/file_edit.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./media/file_view/file_edit.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/play_manage.o: ./media/file_view/play_manage.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./media/file_view/play_manage.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/file_view.o: ./media/file_view/file_view.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./media/file_view/file_view.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/play_movie.o: ./media/file_view/play_movie.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./media/file_view/play_movie.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/play_music.o: ./media/file_view/play_music.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./media/file_view/play_music.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/play_pic.o: ./media/file_view/play_pic.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./media/file_view/play_pic.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/pmp_tags.o: ./media/pmp_tags/pmp_tags.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./media/pmp_tags/pmp_tags.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/pmp_subtitle.o: ./media/pmp_subtitle/pmp_subtitle.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./media/pmp_subtitle/pmp_subtitle.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/down_prog_thunder.o: ./media/down_view/down_prog_thunder.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./media/down_view/down_prog_thunder.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/down_prog.o: ./media/down_view/down_prog.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./media/down_view/down_prog.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/down_view.o: ./media/down_view/down_view.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./media/down_view/down_view.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/down_prog_rss.o: ./media/down_view/down_prog_rss.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./media/down_view/down_prog_rss.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/down_sitecfg.o: ./media/down_view/down_sitecfg.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./media/down_view/down_sitecfg.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/down_prog_pc.o: ./media/down_view/down_prog_pc.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./media/down_view/down_prog_pc.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/pmp_explorer.o: ./media/pmp_explorer/pmp_explorer.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./media/pmp_explorer/pmp_explorer.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/pmp_spectrum.o: ./media/pmp_spectrum/pmp_spectrum.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./media/pmp_spectrum/pmp_spectrum.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/pmp_id3.o: ./media/pmp_id3/pmp_id3.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./media/pmp_id3/pmp_id3.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/lrc_tree.o: ./media/pmp_lyrics/lrc_tree.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./media/pmp_lyrics/lrc_tree.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/lrc.o: ./media/pmp_lyrics/lrc.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./media/pmp_lyrics/lrc.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/lrc_time_tag.o: ./media/pmp_lyrics/lrc_time_tag.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./media/pmp_lyrics/lrc_time_tag.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/pmp_lyrics.o: ./media/pmp_lyrics/pmp_lyrics.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./media/pmp_lyrics/pmp_lyrics.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/lrc_id_tag.o: ./media/pmp_lyrics/lrc_id_tag.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./media/pmp_lyrics/lrc_id_tag.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/lrc_list.o: ./media/pmp_lyrics/lrc_list.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./media/pmp_lyrics/lrc_list.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/lrc_defaultbuilder.o: ./media/pmp_lyrics/lrc_defaultbuilder.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./media/pmp_lyrics/lrc_defaultbuilder.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/lrc_dumpbuilder.o: ./media/pmp_lyrics/lrc_dumpbuilder.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./media/pmp_lyrics/lrc_dumpbuilder.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/lrc_parser.o: ./media/pmp_lyrics/lrc_parser.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./media/pmp_lyrics/lrc_parser.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/lrc_pool.o: ./media/pmp_lyrics/lrc_pool.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./media/pmp_lyrics/lrc_pool.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/desai_ad_porting.o: ./ads/dsads/gongban/porting/desai_ad_porting.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./ads/dsads/gongban/porting/desai_ad_porting.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_ds_ads_porting_stb_api.o: ./ads/dsads/gongban/api/app_ds_ads_porting_stb_api.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./ads/dsads/gongban/api/app_ds_ads_porting_stb_api.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_common_ad.o: ./spplayer/app_common_ad.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./spplayer/app_common_ad.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^
+objects/app_common_ad_scroll_load.o: ./spplayer/app_common_ad_scroll_load.c
+	@echo -e "compiling \033[032m[csky-elf-gcc]\033[0m":  ./spplayer/app_common_ad_scroll_load.c
+	@csky-elf-gcc $(CFLAGS) -c -o $@ $^

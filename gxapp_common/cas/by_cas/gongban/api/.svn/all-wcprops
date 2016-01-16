@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/3201_DVBC/!svn/ver/809/gxapp_common/cas/by_cas/gongban/api
+END
+app_by_cas_api_finger.c
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/by_cas/gongban/api/app_by_cas_api_finger.c
+END
+app_by_cas_api_rolling_message.c
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/by_cas/gongban/api/app_by_cas_api_rolling_message.c
+END
+app_by_cas_porting_stb_api.c
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/by_cas/gongban/api/app_by_cas_porting_stb_api.c
+END
+app_by_cas_api_demux.c
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/by_cas/gongban/api/app_by_cas_api_demux.c
+END
+app_by_cas_api_entitle.c
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/by_cas/gongban/api/app_by_cas_api_entitle.c
+END
+app_by_cas_api_baseinfo.c
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/by_cas/gongban/api/app_by_cas_api_baseinfo.c
+END
+app_by_cas_api_smart.c
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/3201_DVBC/!svn/ver/809/gxapp_common/cas/by_cas/gongban/api/app_by_cas_api_smart.c
+END
+app_by_cas_api_email.c
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/by_cas/gongban/api/app_by_cas_api_email.c
+END
+app_by_cas_api_lock_service.c
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/3201_DVBC/!svn/ver/768/gxapp_common/cas/by_cas/gongban/api/app_by_cas_api_lock_service.c
+END

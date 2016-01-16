@@ -1,0 +1,6 @@
+﻿永新CA3.0(公版) env.sh配置：
+
+export DVB_CA_TYPE=DVB_CA_TYPE_CDCAS30
+export DVB_CA_1_NAME=cd_cas30
+export DVB_CA_1_LIB=Y1120-tonghui-gx3001-20121212D
+export DVB_CA_1_FLAG=DVB_CA_TYPE_CD_CAS30_FLAG

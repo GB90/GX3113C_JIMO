@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="GB2312" standalone="no"?>
+<widget name="win_desai_cas50_ippv_buy" style="default_window" class="window">
+    <property>
+        <rect>[0,0,720,576]</rect>
+        <forecolor>[#000000,#000000,#000000]</forecolor>
+        <backcolor>[#00FF00,#00FF00,#00FF00]</backcolor>
+    </property>
+    <signal>
+        <create>win_desai_cas50_ippv_buy_create</create>
+        <destroy>win_desai_cas50_ippv_buy_destroy</destroy>
+        <keypress>win_desai_cas50_ippv_buy_keypress</keypress>
+    </signal>
+    <children>
+        <widget name="win_desai_cas50_ippv_buy_backgroup" style="default" class="image">
+            <property>
+                <rect>[80,78,560,420]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#33508C,#33508C,#33508C]</backcolor>
+                <mode>multiple</mode>
+                <img></img>
+                <lt_img>DS_WIN_BG_T_l.bmp</lt_img>
+                <rt_img>DS_WIN_BG_T_r.bmp</rt_img>
+                <l_img>DS_WIN_BG.bmp</l_img>
+                <r_img>DS_WIN_BG.bmp</r_img>
+            </property>
+        </widget>
+        <widget name="win_audio_set_image202" style="default" class="image">
+            <property>
+                <rect>[80,456,560,31]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#808080,#808080,#808080]</backcolor>
+                <mode>single</mode>
+                <img>DS_HELP_COTE.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_ippv_buy_title" style="default" class="text">
+            <property>
+                <rect>[163,88,400,42]</rect>
+                <forecolor>[#FFFFFF,#FFFFFF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <string>(DSCA)IPPV PREVIEW BUY</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_ippv_buy_ucProviderID" style="default" class="text">
+            <property>
+                <rect>[104,136,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>(DSCA)Provider ID</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_ippv_buy_ucProviderID_value" style="default" class="text">
+            <property>
+                <rect>[224,136,140,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_ippv_buy_aucIppvName" style="default" class="text">
+            <property>
+                <rect>[103,174,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Program Name</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_ippv_buy_aucIppvName_value" style="default" class="text">
+            <property>
+                <rect>[223,175,180,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_ippv_buy_stBeginTime" style="default" class="text">
+            <property>
+                <rect>[103,210,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Start Time</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_ippv_buy_stBeginTime_value" style="default" class="text">
+            <property>
+                <rect>[223,210,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_ippv_buy_stEndTime" style="default" class="text">
+            <property>
+                <rect>[103,247,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>EndTime</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_ippv_buy_stEndTime_value" style="default" class="text">
+            <property>
+                <rect>[223,247,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_ippv_buy_purse1" style="default" class="text">
+            <property>
+                <rect>[103,321,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>(DSCA)Purse 1</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_ippv_buy_purse1_value" style="default" class="text">
+            <property>
+                <rect>[223,321,140,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_ippv_purse2" style="default" class="text">
+            <property>
+                <rect>[372,321,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>(DSCA)Purse 2</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_ippv_buy_purse2_value" style="default" class="text">
+            <property>
+                <rect>[492,321,140,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_ippv_purse3" style="default" class="text">
+            <property>
+                <rect>[103,356,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>(DSCA)Purse 3</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_ippv_buy_purse3_value" style="default" class="text">
+            <property>
+                <rect>[223,356,140,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_ippv_purse4" style="default" class="text">
+            <property>
+                <rect>[372,355,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>(DSCA)Purse 4</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_ippv_buy_purse4_value" style="default" class="text">
+            <property>
+                <rect>[492,355,140,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_ippv_price" style="default" class="text">
+            <property>
+                <rect>[103,284,120,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Price</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_ippv_buy_price_value" style="default" class="text">
+            <property>
+                <rect>[223,284,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_ippv_buy_box" style="default" class="box">
+            <property>
+                <rect>[113,390,500,60]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <interval>10</interval>
+                <format>vertical</format>
+            </property>
+            <signal>
+                <keypress>win_desai_cas50_ippv_buy_box_keypress</keypress>
+            </signal>
+            <children>
+                <widget name="win_desai_cas50_ippv_buy_purse_boxitem1" style="default" class="boxitem">
+                    <property>
+                        <rect>[0,10,500,36]</rect>
+                        <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                        <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                        <focus_image>s_bar_orange580.bmp</focus_image>
+                    </property>
+                    <children>
+                        <widget name="win_desai_cas50_ippv_buy_purse_boxitem1_text" style="default" class="text">
+                            <property>
+                                <rect>[10,3,250,30]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                                <font>Arial</font>
+                                <string>Input PIN</string>
+                                <format>static</format>
+                            </property>
+                        </widget>
+                        <widget name="win_desai_cas50_ippv_buy_purse_boxitem1_edit" style="default" class="edit">
+                            <property>
+                                <rect>[269,3,200,30]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#ff00ff,#debe42,#ff00ff]</backcolor>
+                                <font>Arial</font>
+                                <alignment>hcentre|vcentre</alignment>
+                                <intaglio>*</intaglio>
+                                <maxlen>6</maxlen>
+                                <format>edit_digit</format>
+                            </property>
+                        </widget>
+                    </children>
+                </widget>
+            </children>
+        </widget>
+        <widget name="win_desai_cas50_ippv_buy_ok" style="default" class="button">
+            <property>
+                <rect>[164,460,53,26]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#212021,#212021,#212021]</backcolor>
+                <font>Arial</font>
+                <alignment>hcentre|vcentre</alignment>
+                <string>Buy</string>
+                <focus_img>DS_MASSAGE_YESNO_ORANGE.bmp</focus_img>
+                <unfocus_img>DS_MASSAGE_YESBO_BLUE.bmp</unfocus_img>
+            </property>
+            <signal>
+                <keypress>win_desai_cas50_ippv_buy_ok_keypress</keypress>
+            </signal>
+        </widget>
+        <widget name="win_desai_cas50_ippv_buy_cancle" style="default" class="button">
+            <property>
+                <rect>[431,459,53,26]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#212021,#212021,#212021]</backcolor>
+                <font>Arial</font>
+                <alignment>hcentre|vcentre</alignment>
+                <string>Cancle</string>
+                <focus_img>DS_MASSAGE_YESNO_ORANGE.bmp</focus_img>
+                <unfocus_img>DS_MASSAGE_YESBO_BLUE.bmp</unfocus_img>
+            </property>
+            <signal>
+                <keypress>win_desai_cas50_ippv_buy_cancle_keypress</keypress>
+            </signal>
+        </widget>
+    </children>
+</widget>

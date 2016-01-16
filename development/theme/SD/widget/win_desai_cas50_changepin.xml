@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="GB2312" standalone="no"?>
+<widget name="win_desai_cas50_changepin" style="default" class="window">
+    <property>
+        <rect>[0,0,720,576]</rect>
+        <forecolor>[#000000,#000000,#000000]</forecolor>
+        <backcolor>[#00FF00,#00FF00,#00FF00]</backcolor>
+    </property>
+    <signal>
+        <create>win_change_pin_create</create>
+        <destroy>win_change_pin_destroy</destroy>
+        <keypress>win_change_pin_keypress</keypress>
+    </signal>
+    <children>
+        <widget name="win_change_pin_backgroup" style="default" class="image">
+            <property>
+                <rect>[80,78,560,420]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#33508C,#33508C,#33508C]</backcolor>
+                <mode>multiple</mode>
+                <img></img>
+                <lt_img>DS_WIN_BG_T_l.bmp</lt_img>
+                <rt_img>DS_WIN_BG_T_r.bmp</rt_img>
+                <l_img>DS_WIN_BG.bmp</l_img>
+                <r_img>DS_WIN_BG.bmp</r_img>
+            </property>
+        </widget>
+        <widget name="win_audio_set_image202" style="default" class="image">
+            <property>
+                <rect>[80,456,560,31]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#808080,#808080,#808080]</backcolor>
+                <mode>single</mode>
+                <img>DS_HELP_COTE.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_change_pin_title" style="default" class="text">
+            <property>
+                <rect>[163,88,400,42]</rect>
+                <forecolor>[#FFFFFF,#FFFFFF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>simhei</font>
+                <string>Modify Pin</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_change_pin_box" style="default" class="box">
+            <property>
+                <rect>[131,195,447,160]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <interval>10</interval>
+                <format>vertical</format>
+            </property>
+            <signal>
+                <keypress>win_change_pin_box_keypress</keypress>
+            </signal>
+            <children>
+                <widget name="win_change_pin_boxitem1" style="default" class="boxitem">
+                    <property>
+                        <rect>[0,10,447,35]</rect>
+                        <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                        <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                        <unfocus_image>DS_update_blue.bmp</unfocus_image>
+                        <focus_image>DS_update_blue.bmp</focus_image>
+                        <disable_image>DS_update_blue.bmp</disable_image>
+                    </property>
+                    <children>
+                        <widget name="win_change_pin_boxitem1_text" style="default" class="text">
+                            <property>
+                                <rect>[11,2,200,30]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                                <font>Arial</font>
+                                <alignment>left|vcentre</alignment>
+                                <string>Old PIN</string>
+                                <format>static</format>
+                            </property>
+                        </widget>
+                        <widget name="win_change_pin_boxitem1_edit" style="default" class="edit">
+                            <property>
+                                <rect>[234,2,200,30]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#ff00ff,#debe42,#ff00ff]</backcolor>
+                                <font>Arial</font>
+                                <alignment>hcentre|vcentre</alignment>
+                                <intaglio>*</intaglio>
+                                <maxlen>6</maxlen>
+                                <format>edit_digit</format>
+                            </property>
+                        </widget>
+                    </children>
+                </widget>
+                <widget name="win_change_pin_boxitem2" style="default" class="boxitem">
+                    <property>
+                        <rect>[0,55,447,35]</rect>
+                        <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                        <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                        <unfocus_image>DS_update_blue.bmp</unfocus_image>
+                        <focus_image>DS_update_blue.bmp</focus_image>
+                        <disable_image>DS_update_blue.bmp</disable_image>
+                    </property>
+                    <children>
+                        <widget name="win_change_pin_boxitem2_text" style="default" class="text">
+                            <property>
+                                <rect>[11,2,200,30]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                                <font>Arial</font>
+                                <alignment>left|vcentre</alignment>
+                                <string>New PIN</string>
+                                <format>static</format>
+                            </property>
+                        </widget>
+                        <widget name="win_change_pin_boxitem2_edit" style="default" class="edit">
+                            <property>
+                                <rect>[234,2,200,30]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#ff00ff,#debe42,#ff00ff]</backcolor>
+                                <font>Arial</font>
+                                <alignment>hcentre|vcentre</alignment>
+                                <intaglio>*</intaglio>
+                                <maxlen>6</maxlen>
+                                <format>edit_digit</format>
+                            </property>
+                        </widget>
+                    </children>
+                </widget>
+                <widget name="win_change_pin_boxitem3" style="default" class="boxitem">
+                    <property>
+                        <rect>[0,100,447,35]</rect>
+                        <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                        <backcolor>[#212021,#212021,#212021]</backcolor>
+                        <unfocus_image>DS_update_blue.bmp</unfocus_image>
+                        <focus_image>DS_update_blue.bmp</focus_image>
+                        <disable_image>DS_update_blue.bmp</disable_image>
+                    </property>
+                    <children>
+                        <widget name="win_change_pin_boxitem3_text" style="default" class="text">
+                            <property>
+                                <rect>[11,2,200,30]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                                <font>Arial</font>
+                                <alignment>left|vcentre</alignment>
+                                <string>Confirm New PIN</string>
+                                <format>static</format>
+                            </property>
+                        </widget>
+                        <widget name="win_change_pin_boxitem3_edit" style="default" class="edit">
+                            <property>
+                                <rect>[234,3,200,30]</rect>
+                                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                                <backcolor>[#ff00ff,#debe42,#ff00ff]</backcolor>
+                                <font>Arial</font>
+                                <alignment>hcentre|vcentre</alignment>
+                                <intaglio>*</intaglio>
+                                <maxlen>6</maxlen>
+                                <format>edit_digit</format>
+                            </property>
+                        </widget>
+                    </children>
+                </widget>
+            </children>
+        </widget>
+        <widget name="win_tip_image_leftright" style="default" class="image">
+            <property>
+                <rect>[86,465,54,12]</rect>
+                <forecolor>[#FFFFFF,#FF00FF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_ICON_SWORD.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_passwd_set_tip_image_exit" style="default" class="image">
+            <property>
+                <rect>[505,460,34,22]</rect>
+                <forecolor>[#FFFFFF,#FF00FF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_Icon_Exit.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_passwd_set_tip_image_ok" style="default" class="image">
+            <property>
+                <rect>[250,460,34,22]</rect>
+                <forecolor>[#FFFFFF,#FF00FF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <mode>single</mode>
+                <img>DS_ICON_OK.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_tip_text_leftright" style="default" class="text">
+            <property>
+                <rect>[144,457,100,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Move Focus</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_tip_text_exit" style="default" class="text">
+            <property>
+                <rect>[547,456,100,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Exit Menu</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_tip_text_ok" style="default" class="text">
+            <property>
+                <rect>[290,456,80,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Save</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_change_pin_text_tip_input" style="default" class="text">
+            <property>
+                <rect>[423,458,80,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Input</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_desai_cas50_changepin_text1336" style="default" class="text">
+            <property>
+                <rect>[377,459,40,25]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <string>0~9</string>
+                <format>static</format>
+            </property>
+        </widget>
+    </children>
+</widget>

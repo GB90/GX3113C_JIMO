@@ -1,0 +1,7 @@
+#ifndef GXAV_SDC_PROPERTYTYPES_H
+#define GXAV_SDC_PROPERTYTYPES_H
+
+
+
+
+#endif

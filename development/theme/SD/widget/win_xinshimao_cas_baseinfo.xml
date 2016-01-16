@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="GB2312" standalone="no"?>
+<widget name="win_xinshimao_cas_baseinfo" style="default" class="window">
+    <property>
+        <rect>[0,0,720,576]</rect>
+        <forecolor>[#000000,#000000,#000000]</forecolor>
+        <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+    </property>
+    <signal>
+        <create>win_xinshimao_cas_baseinfo_create</create>
+        <destroy>win_xinshimao_cas_baseinfo_destroy</destroy>
+        <keypress>win_xinshimao_cas_baseinfo_keypress</keypress>
+    </signal>
+    <children>
+        <widget name="win_xinshimao_cas_baseinfo_image_bg" style="default" class="image">
+            <property>
+                <rect>[0,0,720,576]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#808080,#808080,#808080]</backcolor>
+                <mode>single</mode>
+                <img>bg.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_xinshimao_cas_baseinfo_backgroup" style="default" class="image">
+            <property>
+                <rect>[40,50,640,440]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#515151,#515151,#515151]</backcolor>
+                <mode>multiple</mode>
+                <img></img>
+                <lt_img>s_win_l_t.bmp</lt_img>
+                <rt_img>s_win_r_t.bmp</rt_img>
+                <lb_img>s_win_l_b.bmp</lb_img>
+                <rb_img>s_win_r_b.bmp</rb_img>
+                <l_img>s_win_l_m.bmp</l_img>
+                <r_img>s_win_r_m.bmp</r_img>
+                <t_img>s_win_m_t.bmp</t_img>
+                <b_img>s_win_m_b.bmp</b_img>
+            </property>
+        </widget>
+        <widget name="win_xinshimao_cas_baseinfo_image" style="default" class="image">
+            <property>
+                <rect>[50,110,620,350]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#212021,#212021,#212021]</backcolor>
+                <mode>multiple</mode>
+                <img></img>
+                <lt_img>menu_win_l_u.bmp</lt_img>
+                <rt_img>menu_win_r_u.bmp</rt_img>
+                <lb_img>menu_win_l_b.bmp</lb_img>
+                <rb_img>menu_win_r_b.bmp</rb_img>
+                <l_img>menu_win_l_m.bmp</l_img>
+                <r_img>menu_win_r_m.bmp</r_img>
+                <t_img>menu_win_u_m.bmp</t_img>
+                <b_img>menu_win_b_m.bmp</b_img>
+            </property>
+        </widget>
+        <widget name="win_xinshimao_cas_baseinfo_title" style="default" class="text">
+            <property>
+                <rect>[260,52,200,35]</rect>
+                <forecolor>[#FFFFFF,#FFFFFF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>simhei</font>
+                <string>Base info</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_xinshimao_cas_baseinfo_card_name" style="default" class="text">
+            <property>
+                <rect>[65,126,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#212021,#212021,#212021]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Card Id</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_xinshimao_cas_baseinfo_type_name" style="default" class="text">
+            <property>
+                <rect>[65,169,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#212021,#212021,#212021]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Card Type</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_xinshimao_cas_baseinfo_married_name" style="default" class="text">
+            <property>
+                <rect>[65,212,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#212021,#212021,#212021]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Married Status</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_xinshimao_cas_baseinfo_flag_name" style="default" class="text">
+            <property>
+                <rect>[65,251,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#212021,#212021,#212021]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Entitle Status</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_xinshimao_cas_baseinfo_region_name" style="default" class="text">
+            <property>
+                <rect>[65,296,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#212021,#212021,#212021]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Region Id</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_xinshimao_cas_baseinfo_network_name" style="default" class="text">
+            <property>
+                <rect>[65,334,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#212021,#212021,#212021]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>NetWork Id</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_xinshimao_cas_baseinfo_card" style="default" class="text">
+            <property>
+                <rect>[290,126,350,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#212021,#212021,#212021]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_xinshimao_cas_baseinfo_type" style="default" class="text">
+            <property>
+                <rect>[290,169,350,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#212021,#212021,#212021]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_xinshimao_cas_baseinfo_married" style="default" class="text">
+            <property>
+                <rect>[290,212,350,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#212021,#212021,#212021]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_xinshimao_cas_baseinfo_flag" style="default" class="text">
+            <property>
+                <rect>[290,251,350,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#212021,#212021,#212021]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_xinshimao_cas_baseinfo_region" style="default" class="text">
+            <property>
+                <rect>[290,296,350,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#212021,#212021,#212021]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_xinshimao_cas_baseinfo_network" style="default" class="text">
+            <property>
+                <rect>[290,334,350,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#212021,#212021,#212021]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_stb_info_tip_image_exit" style="default" class="image">
+            <property>
+                <rect>[277,500,40,26]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#216BBF,#216BBF,#216BBF]</backcolor>
+                <mode>single</mode>
+                <img>tips_exit.bmp</img>
+            </property>
+        </widget>
+        <widget name="win_tip_text_exit" style="default" class="text">
+            <property>
+                <rect>[324,496,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Exit Menu</string>
+                <format>static</format>
+            </property>
+        </widget>
+    </children>
+</widget>

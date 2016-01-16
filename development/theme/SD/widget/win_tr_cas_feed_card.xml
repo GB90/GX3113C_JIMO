@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="GB2312" standalone="no"?>
+<widget name="win_tr_cas_feed_card" style="default" class="window">
+    <property>
+        <rect>[163,150,400,250]</rect>
+        <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+        <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+    </property>
+    <signal>
+        <create>win_tr_cas_feed_card_create</create>
+        <destroy>win_tr_cas_feed_card_destroy</destroy>
+        <keypress>win_tr_cas_feed_card_keypress</keypress>
+    </signal>
+    <children>
+        <widget name="win_tr_cas_feed_card_rect_image" style="default" class="image">
+            <property>
+                <rect>[0,0,400,250]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#515151,#515151,#515151]</backcolor>
+                <mode>multiple</mode>
+                <img></img>
+                <lt_img>DS_MASSAGE_LT.bmp</lt_img>
+                <rt_img>DS_MASSAGE_RT.bmp</rt_img>
+                <lb_img>DS_MASSAGE_LD.bmp</lb_img>
+                <rb_img>DS_MASSAGE_RD.bmp</rb_img>
+                <l_img>DS_MASSAGE_L.bmp</l_img>
+                <r_img>DS_MASSAGE_R.bmp</r_img>
+                <t_img>DS_MASSAGE_TOP.bmp</t_img>
+                <b_img>DS_MASSAGE_B.bmp</b_img>
+            </property>
+        </widget>
+        <widget name="win_tr_cas_feed_card_image627" style="default" class="image">
+            <property>
+                <rect>[20,19,360,220]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#808080,#808080,#808080]</backcolor>
+                <mode>multiple</mode>
+                <img></img>
+                <l_img>DS_MSG_IMAGE_225_70.bmp</l_img>
+                <r_img>DS_MSG_IMAGE_225_70.bmp</r_img>
+            </property>
+        </widget>
+        <widget name="win_tr_cas_feed_card_title" style="default" class="text">
+            <property>
+                <rect>[100,2,200,34]</rect>
+                <forecolor>[#bbff00,#bbff00,#bbff00]</forecolor>
+                <backcolor>[#ff00ff,#ff00ff,#ff00ff]</backcolor>
+                <font>Arial</font>
+                <string>Feed Card</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_tr_cas_feed_card_tips" style="default" class="text">
+            <property>
+                <rect>[100,96,200,34]</rect>
+                <forecolor>[#BC0000,#BC0000,#BC0000]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <string>Please insert the parent-card</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_tr_cas_feed_card_help_text" style="default" class="text">
+            <property>
+                <rect>[77,200,250,25]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <string>Exit Feed Menu</string>
+                <format>static</format>
+            </property>
+        </widget>
+    </children>
+</widget>

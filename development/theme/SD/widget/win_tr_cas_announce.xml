@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="GB2312" standalone="no"?>
+<widget name="win_tr_cas_announce" style="default" class="window">
+    <property>
+        <rect>[0,0,340,220]</rect>
+        <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+        <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+    </property>
+    <signal>
+        <create>win_tr_cas_announce_create</create>
+        <destroy>win_tr_cas_announce_destroy</destroy>
+        <keypress>win_tr_cas_announce_keypress</keypress>
+    </signal>
+    <children>
+        <widget name="win_announce_image" style="default" class="image">
+            <property>
+                <rect>[0,0,340,220]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#515151,#515151,#515151]</backcolor>
+                <mode>multiple</mode>
+                <img></img>
+                <lt_img>DS_MASSAGE_LT.bmp</lt_img>
+                <rt_img>DS_MASSAGE_RT.bmp</rt_img>
+                <lb_img>DS_MASSAGE_LD.bmp</lb_img>
+                <rb_img>DS_MASSAGE_RD.bmp</rb_img>
+                <l_img>DS_MASSAGE_L.bmp</l_img>
+                <r_img>DS_MASSAGE_R.bmp</r_img>
+                <t_img>DS_MASSAGE_TOP.bmp</t_img>
+                <b_img>DS_MASSAGE_B.bmp</b_img>
+            </property>
+        </widget>
+        <widget name="win_tr_cas_announce_image601" style="default" class="image">
+            <property>
+                <rect>[17,12,310,200]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#808080,#808080,#808080]</backcolor>
+                <mode>multiple</mode>
+                <img></img>
+                <l_img>DS_MSG_IMAGE_225_70.bmp</l_img>
+                <r_img>DS_MSG_IMAGE_225_70.bmp</r_img>
+            </property>
+        </widget>
+        <widget name="win_announce_head" style="default" class="text">
+            <property>
+                <rect>[27,2,280,36]</rect>
+                <forecolor>[#FFFFFF,#FFFFFF,#FFFFFF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <string>Inform</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_announce_content" style="default" class="notepad">
+            <property>
+                <rect>[14,47,310,160]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#36518f,#36518f,#36518f]</backcolor>
+                <alignment>left|top</alignment>
+                <font>Arial</font>
+                <vertical_margin>10</vertical_margin>
+                <horizontal_margin>10</horizontal_margin>
+            </property>
+            <children>
+                <widget name="win_announce_content_scrollbar" style="default" class="scrollbar">
+                    <property>
+                        <rect>[303,0,0,160]</rect>
+                        <state>hide</state>
+                        <forecolor>[#000000,#000000,#000000]</forecolor>
+                        <backcolor>[#212021,#212021,#212021]</backcolor>
+                        <format>scroll_hide</format>
+                    </property>
+                </widget>
+            </children>
+        </widget>
+    </children>
+</widget>

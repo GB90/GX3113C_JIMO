@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="GB2312" standalone="no"?>
+<widget name="win_detail_tuner" style="default" class="window">
+    <property>
+        <rect>[0,0,720,576]</rect>
+        <forecolor>[#000000,#000000,#000000]</forecolor>
+        <backcolor>[#00FF00,#00FF00,#00FF00]</backcolor>
+    </property>
+    <signal>
+        <create>win_detail_tuner_create</create>
+        <destroy>win_detail_tuner_destroy</destroy>
+        <keypress>win_detail_tuner_keypress</keypress>
+    </signal>
+    <children>
+        <widget name="win_detail_set_image_bg" style="default" class="image">
+            <property>
+                <rect>[0,0,720,560]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#33508C,#33508C,#33508C]</backcolor>
+                <mode>multiple</mode>
+                <img></img>
+            </property>
+        </widget>
+        <widget name="win_detail_content" style="default" class="notepad">
+            <property>
+                <rect>[30,20,660,460]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#36518f,#36518f,#36518f]</backcolor>
+                <alignment>left|top</alignment>
+                <font>Arial</font>
+                <vertical_margin>0</vertical_margin>
+                <horizontal_margin>0</horizontal_margin>
+            </property>
+            <children>
+                <widget name="win_detail_scrollbar" style="default" class="scrollbar">
+                    <property>
+                        <rect>[493,0,0,220]</rect>
+                        <state>hide</state>
+                        <forecolor>[#000000,#000000,#000000]</forecolor>
+                        <backcolor>[#212021,#212021,#212021]</backcolor>
+                        <format>scroll_hide</format>
+                    </property>
+                </widget>
+            </children>
+        </widget>
+        <widget name="win_prog_info_fre" style="default" class="text">
+            <property>
+                <rect>[0,482,100,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Frequency</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_detail_fre_value" style="default" class="text">
+            <property>
+                <rect>[99,482,150,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_prog_info_err" style="default" class="text">
+            <property>
+                <rect>[280,513,100,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>ERR</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_detail_err_value" style="default" class="text">
+            <property>
+                <rect>[381,514,150,30]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_detail_sn_value" style="default" class="text">
+            <property>
+                <rect>[630,514,80,30]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_detail_signal_strength" style="default" class="text">
+            <property>
+                <rect>[0,511,200,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>Signal strength</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_detail_signal_strength_value" style="default" class="text">
+            <property>
+                <rect>[200,513,80,30]</rect>
+                <forecolor>[#000000,#000000,#000000]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_prog_info_lock_text" style="default" class="text">
+            <property>
+                <rect>[250,481,100,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <alignment>left|vcentre</alignment>
+                <string>LockState</string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_detail_lock_value" style="default" class="text">
+            <property>
+                <rect>[351,481,150,30]</rect>
+                <forecolor>[#CEE8FF,#212021,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
+        <widget name="win_detail_tuner_text1356" style="default" class="text">
+            <property>
+                <rect>[530,514,100,30]</rect>
+                <forecolor>[#CEE8FF,#CEE8FF,#CEE8FF]</forecolor>
+                <backcolor>[#FF00FF,#FF00FF,#FF00FF]</backcolor>
+                <font>Arial</font>
+                <string>snr</string>
+                <format>static</format>
+            </property>
+        </widget>
+    </children>
+</widget>

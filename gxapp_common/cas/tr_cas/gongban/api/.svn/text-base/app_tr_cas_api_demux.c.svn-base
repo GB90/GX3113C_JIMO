@@ -1,0 +1,179 @@
+/*****************************************************************************
+* 						   CONFIDENTIAL
+*        Hangzhou GuoXin Science and Technology Co., Ltd.
+*                      (C)2012, All right reserved
+******************************************************************************
+
+******************************************************************************
+* File Name :	app_gy_cas_api_demux.c
+* Author    : 	xxxx
+* Project   :	goxceed dvbc
+* Type      :
+******************************************************************************
+* Purpose   :	模块头文件
+******************************************************************************
+* Release History:
+VERSION	Date			  AUTHOR         Description
+1.0  	2012.12.02		  xxxx		 			creation
+*****************************************************************************/
+#include <gxtype.h>
+#include "gxmsg.h"
+#include "gxapp_sys_config.h"
+#include "app_common_play.h"
+#include "app_common_table_pmt.h"
+#include "app_common_porting_stb_api.h"
+#include "app_common_porting_ca_flash.h"
+#include "app_common_porting_ca_demux.h"
+#include "app_common_porting_ca_descramble.h"
+#include "app_common_porting_ca_smart.h"
+#include "Tr_Cas.h"
+
+
+extern void tr_cas_release_ecm_filter(void);
+extern void tr_cas_release_emm_filter(void);
+extern play_scramble_para_t play_Para;
+
+extern ca_descramble_t g_descramlbeList[MAX_SCRAMBLE_CHANNEL];
+
+static play_scramble_para_t TrplayPara = {0, 0, 0, 0x1FFF, 0x1FFF, 0x1FFF, 0x1FFF, 0x1FFF, 0x1FFF};
+static unsigned short int s_emmPid = PSI_INVALID_PID;
+
+
+uint8_t	app_tr_cas_api_release_ecm_filter(void)
+{
+	play_scramble_para_t playpara = {0};
+
+	CAS_Dbg("app_tr_cas_api_release_ecm_filter.\n");
+	app_play_get_playing_para(&playpara);
+
+	tr_cas_release_ecm_filter();
+
+	playpara.p_ecm_pid = PSI_INVALID_PID;
+	playpara.p_ecm_pid_video = PSI_INVALID_PID;
+	playpara.p_ecm_pid_audio = PSI_INVALID_PID;
+	app_play_set_playing_para(&playpara);
+	return 1;
+}
+
+void app_tr_cas_api_get_app_scramble_para(play_scramble_para_t **Param)
+{	
+	if (Param)
+	{
+		*Param = &TrplayPara;
+	}
+}
+
+uint8_t app_tr_cas_api_start_ecm_filter(play_scramble_para_t *pplayPara)
+{
+	CAS_Dbg("<app_tr_cas_api_start_ecm_filter>.\n");
+	
+	if (NULL == pplayPara)
+	{
+		return 0;
+	}
+	
+	memcpy(&TrplayPara, pplayPara, sizeof(play_scramble_para_t));
+	return 1;
+}
+
+uint8_t app_tr_cas_api_release_emm_filter(void)
+{	
+	CAS_Dbg("app_tr_cas_api_release_emm_filter.\n");
+	tr_cas_release_emm_filter();
+	s_emmPid = PSI_INVALID_PID;
+	
+	return TRUE;
+}
+
+uint8_t app_tr_cas_api_start_emm_filter(uint16_t emm_pid)
+{
+	CAS_Dbg("app_tr_cas_api_start_emm_filter.\n");
+	if (emm_pid != PSI_INVALID_PID)
+	{
+		s_emmPid = emm_pid;
+	}
+	
+	return TRUE;
+}
+
+bool app_tr_cas_api_check_cat_ca_descriptor_valid(uint8_t *sectionData, uint32_t CA_system_id)
+{
+	printf("[cat]CA_system_id(0x%x).\n", CA_system_id);
+	
+	if (CA_system_id == 0x4af9)
+	{
+		return TRUE;
+	}
+	
+	return FALSE;
+}
+
+bool app_tr_cas_api_check_pmt_ca_descriptor_valid(uint8_t *sectionData, uint32_t CA_system_id)
+{
+	printf("[pmt]CA_system_id(0x%x).\n", CA_system_id);
+	if (CA_system_id == 0x4af9)
+	{
+		return TRUE;
+	}
+	
+	return FALSE;
+}
+
+void app_tr_cas_api_nit_zone_des(uint8_t* databuf)
+{	
+	uint8_t *pSecData = databuf;
+	uint8_t descLen = 0; 
+	uint8_t *pRegionIdDesc = NULL;
+	int8_t i = 0, count = 0;
+	uint16_t regionFreq = 0;
+	uint16_t regionCode = 0;
+	uint16_t freqList[5] = {0};
+
+	/*wangjian modify on 20141231*/
+	printf("[app_tr_cas_api_nit_zone_des]Find TRCAS RegionCode Desc@.\n");
+	descLen = pSecData[1];
+	if ((descLen < 4) || (descLen % 4))
+	{
+		printf("[app_tr_cas_api_nit_zone_des]invaid TRCAS RegionCode Desc!!!\n");
+		return;
+	}
+	
+	pRegionIdDesc = pSecData + 2;
+	count = descLen / 4;
+
+	if (4 == descLen)
+	{
+		regionFreq = ((pRegionIdDesc[0] << 8) | pRegionIdDesc[1]);
+		regionCode = ((pRegionIdDesc[2] << 8) | pRegionIdDesc[3]);
+		if (regionCode != 0)
+		{
+			MC_PostRegionCode(regionCode);
+			printf("[app_tr_cas_api_nit_zone_des]MC_SetRegionCode(0x%x) success^_^.\n", regionCode);
+		}
+		
+		return;	
+	}
+
+	// TODO: Find region code.
+	/*Invalid region code, then tune to the freq one by one.*/
+	while (count > 0)
+	{
+		regionFreq = ((pRegionIdDesc[0] << 8) | pRegionIdDesc[1]);
+		regionCode = ((pRegionIdDesc[2] << 8) | pRegionIdDesc[3]);
+		printf("[app_tr_cas_api_nit_zone_des]TRCAS(%d): Freq(%d); RegionCode(0x%x)#.\n",\
+				i, regionFreq, regionCode);
+
+		freqList[i] = regionFreq;
+		pRegionIdDesc += 4;
+		count--;
+		i++;
+		if (i > 5)
+		{
+			printf("[app_tr_cas_api_nit_zone_des]freq list num exceed to MAX!!!\n");
+			break;
+		}
+	}
+	
+	return;
+}
+

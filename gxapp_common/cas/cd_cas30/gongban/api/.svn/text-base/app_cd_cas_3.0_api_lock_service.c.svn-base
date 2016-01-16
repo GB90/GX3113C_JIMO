@@ -1,0 +1,375 @@
+/*****************************************************************************
+* 						   CONFIDENTIAL
+*        Hangzhou GuoXin Science and Technology Co., Ltd.
+*                      (C)2012, All right reserved
+******************************************************************************
+
+******************************************************************************
+* File Name :	app_ca_api.c
+* Author    : 	zhouhm
+* Project   :	goxceed dvbc
+* Type      :
+******************************************************************************
+* Purpose   :	模块头文件
+******************************************************************************
+* Release History:
+VERSION	Date			  AUTHOR         Description
+1.0  	2012.12.02		  zhouhm 	 			creation
+*****************************************************************************/
+#include "app_common_play.h"
+#include "app_common_prog.h"
+#include "app_common_search.h"
+#include "app_common_porting_stb_api.h"
+//#include "app_win_interface.h"
+#include "app_cd_cas_3.0_api_smart.h"
+#include "app_common_porting_ca_flash.h"
+#include "app_common_porting_ca_smart.h"
+#include "app_common_porting_ca_demux.h"
+#include "app_common_porting_ca_descramble.h"
+#include "app_cd_cas_3.0_api_demux.h"
+#include "CDCASS.h"
+#include "gxmsg.h"
+#include "gxprogram_manage_berkeley.h"
+#include "service/gxplayer.h"
+#include "gxplayer_url.h"
+#include "app_cd_cas_3.0_api_lock_service.h"
+
+ static uint8_t lock_service_status = FALSE;
+extern void app_win_exist_to_full_screen(void);
+void app_cd_cas30_api_lock_service(const SCDCALockService* pLockService)
+{
+	GxMsgProperty_PlayerPlay *player_play;
+	char url[GX_PM_MAX_PROG_URL_SIZE]={0};
+	app_msg appMsg={0};
+	bool isScramble = FALSE;
+	uint16_t uVideoPid=0x1FFF;
+	uint16_t	uAudioPid=0x1FFF;
+
+	uint16_t uVideoType=0;
+	uint16_t	uAudioType=0;
+
+	uint16_t uVideoEcm=0x1FFF;
+	uint16_t uAudioEcm=0x1FFF;
+	uint16_t scrambleType = 0;
+	uint16_t ecmPid = 0x1FFF;
+	uint16_t i = 0;
+	uint16_t uTemp = 0;
+	GxBusPmDataSat sat_arry={0};
+	int32_t ret;
+	uint16_t tpid_temp;
+	uint32_t qam = 0;
+	int16_t prog_count = 0;
+	int16_t prog_pos = 0;
+	GxBusPmDataProg prog_arry;
+
+
+	SCDCALockService LockServiceInfo = {0};
+
+	play_scramble_para_t playPara={0};
+
+	if (NULL ==pLockService )
+		{
+			return;
+		}
+	memcpy(&LockServiceInfo,pLockService,sizeof(SCDCALockService));
+
+	printf(" CDSTBCA_LockService \n");
+
+	/************************************************************************************************
+	*    应急广播需退出到全屏下，需退出到全屏,并且不相应任何按键
+	*/
+	app_win_exist_to_full_screen();
+
+
+	uTemp = pLockService->m_dwFrequency>>16;
+	LockServiceInfo.m_dwFrequency = uTemp&0x000F;
+	LockServiceInfo.m_dwFrequency += ((uTemp&0x00F0)>>4)*10;
+	LockServiceInfo.m_dwFrequency += ((uTemp&0x0F00)>>8)*100;
+//	LockServiceInfo.m_dwFrequency *= 1000;
+
+	LockServiceInfo.m_symbol_rate = ((pLockService->m_symbol_rate>>16)&0x000F)*1000;
+	uTemp = (pLockService->m_symbol_rate>>4) & 0x00000FFF;
+	LockServiceInfo.m_symbol_rate += uTemp&0x000F;
+	LockServiceInfo.m_symbol_rate += ((uTemp&0x00F0)>>4)*10;
+	LockServiceInfo.m_symbol_rate += ((uTemp&0x0F00)>>8)*100;
+//	LockServiceInfo.m_symbol_rate *= 1000;
+	qam = LockServiceInfo.m_Modulation-1;
+
+
+	printf("m_dwFrequency=%u m_symbol_rate=%u m_Modulation=%d pcrpid=0x%x\n",
+		(unsigned int)LockServiceInfo.m_dwFrequency,(unsigned int)LockServiceInfo.m_symbol_rate,LockServiceInfo.m_Modulation,LockServiceInfo.m_wPcrPid);
+
+
+	ret = GxBus_PmSatsGetByPos(0,1,&sat_arry);
+	if(ret == -1)
+	{
+		//sat获取不成功
+		printf("can't get Sat\n");
+		return;
+	}
+
+      app_play_stop();
+
+	if (0 == app_search_lock_tp(LockServiceInfo.m_dwFrequency, LockServiceInfo.m_symbol_rate, INVERSION_OFF, qam,1000))
+	{
+		;
+	}
+	else
+	{
+		/* 应急广播锁频失败，界面需应急广播启动失败*/
+		printf("CDSTBCA_LockService app_tp_set failed\n");
+		return;
+	}
+	GxCore_ThreadDelay(500);
+
+
+	for (i = 0; i< CDCA_MAXNUM_COMPONENT; i++)
+	{
+		if ((0x1FFF != pLockService->m_CompArr[i].m_wCompPID)&&(0 != pLockService->m_CompArr[i].m_wCompPID))
+		{
+			printf("m_CompArr[%d].m_CompType=%d m_CompArr[%d].m_wCompPID=0x%x m_CompArr[%d].m_wECMPID=0x%x\n",i,
+				pLockService->m_CompArr[i].m_CompType,i,pLockService->m_CompArr[i].m_wCompPID,i,pLockService->m_CompArr[i].m_wECMPID);
+			switch(pLockService->m_CompArr[i].m_CompType)
+			{
+				case MPEG_1_VIDEO:
+				case MPEG_2_VIDEO:
+					uVideoPid = pLockService->m_CompArr[i].m_wCompPID;
+					uVideoType = GXBUS_PM_PROG_MPEG;
+					if (0 != pLockService->m_CompArr[i].m_wECMPID)
+					{
+						uVideoEcm = pLockService->m_CompArr[i].m_wECMPID;
+					}
+					break;
+				case H264:
+					uVideoPid = pLockService->m_CompArr[i].m_wCompPID;
+					uVideoType = GXBUS_PM_PROG_H264;
+					if (0 != pLockService->m_CompArr[i].m_wECMPID)
+					{
+						uVideoEcm = pLockService->m_CompArr[i].m_wECMPID;
+					}
+					break;
+				case AVS:
+					uVideoPid = pLockService->m_CompArr[i].m_wCompPID;
+					uVideoType = GXBUS_PM_PROG_AVS;
+					if (0 != pLockService->m_CompArr[i].m_wECMPID)
+					{
+						uVideoEcm = pLockService->m_CompArr[i].m_wECMPID;
+					}
+					break;
+				case MPEG_1_AUDIO:
+				case MPEG_2_AUDIO:	
+					uAudioPid = pLockService->m_CompArr[i].m_wCompPID;
+					uAudioType = GXBUS_PM_AUDIO_MPEG;
+					if (0 != pLockService->m_CompArr[i].m_wECMPID)
+					{
+						uAudioEcm = pLockService->m_CompArr[i].m_wECMPID;
+					}
+					break;
+				case AAC_ADTS:
+					uAudioPid = pLockService->m_CompArr[i].m_wCompPID;
+					uAudioType = GXBUS_PM_AUDIO_AAC_ADTS;
+					if (0 != pLockService->m_CompArr[i].m_wECMPID)
+					{
+						uAudioEcm = pLockService->m_CompArr[i].m_wECMPID;
+					}
+				case AAC_LATM:
+					uAudioPid = pLockService->m_CompArr[i].m_wCompPID;
+					uAudioType = GXBUS_PM_AUDIO_AAC_LATM;
+					if (0 != pLockService->m_CompArr[i].m_wECMPID)
+					{
+						uAudioEcm = pLockService->m_CompArr[i].m_wECMPID;
+					}
+					break;
+				case LPCM:
+					uAudioPid = pLockService->m_CompArr[i].m_wCompPID;
+					uAudioType = GXBUS_PM_AUDIO_LPCM;
+					if (0 != pLockService->m_CompArr[i].m_wECMPID)
+					{
+						uAudioEcm = pLockService->m_CompArr[i].m_wECMPID;
+					}
+					break;
+				case AC3:
+					uAudioPid = pLockService->m_CompArr[i].m_wCompPID;
+					uAudioType = GXBUS_PM_AUDIO_AC3;
+					if (0 != pLockService->m_CompArr[i].m_wECMPID)
+					{
+						uAudioEcm = pLockService->m_CompArr[i].m_wECMPID;
+					}
+					break;
+				case DTS:
+					uAudioPid = pLockService->m_CompArr[i].m_wCompPID;
+					uAudioType = GXBUS_PM_AUDIO_DTS;
+					if (0 != pLockService->m_CompArr[i].m_wECMPID)
+					{
+						uAudioEcm = pLockService->m_CompArr[i].m_wECMPID;
+					}
+					break;
+				case DOLBY_TRUEHD:
+					uAudioPid = pLockService->m_CompArr[i].m_wCompPID;
+					uAudioType = GXBUS_PM_AUDIO_DOLBY_TRUEHD;
+					if (0 != pLockService->m_CompArr[i].m_wECMPID)
+					{
+						uAudioEcm = pLockService->m_CompArr[i].m_wECMPID;
+					}
+					break;
+				case AC3_PLUS:
+					uAudioPid = pLockService->m_CompArr[i].m_wCompPID;
+					uAudioType = GXBUS_PM_AUDIO_AC3_PLUS;
+					if (0 != pLockService->m_CompArr[i].m_wECMPID)
+					{
+						uAudioEcm = pLockService->m_CompArr[i].m_wECMPID;
+					}
+					break;
+				case DTS_HD:
+					uAudioPid = pLockService->m_CompArr[i].m_wCompPID;
+					uAudioType = GXBUS_PM_AUDIO_DTS_HD;
+					if (0 != pLockService->m_CompArr[i].m_wECMPID)
+					{
+						uAudioEcm = pLockService->m_CompArr[i].m_wECMPID;
+					}
+					break;
+				case DTS_MA:
+					uAudioPid = pLockService->m_CompArr[i].m_wCompPID;
+					uAudioType = GXBUS_PM_AUDIO_DTS_MA;
+					if (0 != pLockService->m_CompArr[i].m_wECMPID)
+					{
+						uAudioEcm = pLockService->m_CompArr[i].m_wECMPID;
+					}
+					break;
+				case AC3_PLUS_SEC:
+					uAudioPid = pLockService->m_CompArr[i].m_wCompPID;
+					uAudioType = GXBUS_PM_AUDIO_AC3_PLUS_SEC;
+					if (0 != pLockService->m_CompArr[i].m_wECMPID)
+					{
+						uAudioEcm = pLockService->m_CompArr[i].m_wECMPID;
+					}
+					break;
+				case DTS_HD_SEC:
+					uAudioPid = pLockService->m_CompArr[i].m_wCompPID;
+					uAudioType = GXBUS_PM_AUDIO_DTS_HD_SEC;
+					if (0 != pLockService->m_CompArr[i].m_wECMPID)
+					{
+						uAudioEcm = pLockService->m_CompArr[i].m_wECMPID;
+					}
+					break;
+				default:
+					break;
+			}
+
+		}
+	}
+
+	if ((uVideoEcm == uAudioEcm)&&(PSI_INVALID_PID != uVideoEcm))
+	{
+		ecmPid = uVideoEcm;
+		uVideoEcm = PSI_INVALID_PID;
+		uAudioEcm = PSI_INVALID_PID;
+		isScramble = TRUE;
+	}
+	else
+	{
+		if (PSI_INVALID_PID != uVideoEcm)
+		{
+			isScramble = TRUE;
+		}
+
+		if (PSI_INVALID_PID != uAudioEcm)
+		{
+			isScramble = TRUE;
+		}
+	}
+	/*Lock service in*/
+	app_cd_cas30_api_set_lock_status(TRUE);
+	/*If the program is program list,Just only play it*/
+	ret = GxBus_PmTpExistChek(sat_arry.id, LockServiceInfo.m_dwFrequency*1000, LockServiceInfo.m_symbol_rate*1000, 0, qam+1,&tpid_temp);
+	if(ret > 0)
+	{
+		/*tp列表中存在应急广播频点信息
+		* 查找是否存在对应音视频
+		*/
+		prog_count = GxBus_PmProgNumGet();
+		for(prog_pos = 0;prog_pos<prog_count; prog_pos++)
+		{
+			GxBus_PmProgGetByPos(prog_pos, 1, &prog_arry);
+			if ((tpid_temp == prog_arry.tp_id)&&(uVideoPid == prog_arry.video_pid)
+				&&(uAudioPid == prog_arry.cur_audio_pid)&&(uVideoType ==prog_arry.video_type)
+				&&(uAudioType == prog_arry.cur_audio_type))
+			{						
+				/*节目列表中存在对应节目，切台信息条、前面板等同步显示*/
+				printf("PROG NAME = %s\n", prog_arry.prog_name);
+				app_prog_save_playing_pos_in_group(prog_pos);
+				app_play_switch_prog_clear_msg();	
+				app_play_reset_play_timer(0);			
+				return ;
+			}
+		}
+		
+	}
+	/*The program is not in program list.
+	* Play the new program
+	* novel-supertv  request play unscramble program only
+	*/
+	appMsg.msg= GxBus_MessageNew(GXMSG_PLAYER_PLAY);
+	player_play = GxBus_GetMsgPropertyPtr(appMsg.msg, GxMsgProperty_PlayerPlay);
+
+#if (DVB_DEMOD_DTMB == DVB_DEMOD_MODE)
+	if (GXBUS_PM_SAT_1501_DTMB == app_flash_get_config_gx150x_mode_flag())
+	{
+		qam = 0;
+		LockServiceInfo.m_symbol_rate = 0;
+	}
+#endif
+
+#if (DVB_DEMOD_DVBC == DVB_DEMOD_MODE)
+	sprintf(url,"dvbc://fre:%d&qam:%d&symbol:%d&vpid:%d&apid:%d&pcrpid:%d&vcodec:%d&acodec:%d&tuner:0&scramble:%d&pmt:1024&sync:0&tsid:1&dmxid:0",
+		(unsigned int)LockServiceInfo.m_dwFrequency*1000,qam,(unsigned int)LockServiceInfo.m_symbol_rate*1000,uVideoPid,uAudioPid,LockServiceInfo.m_wPcrPid,uVideoType,uAudioType,isScramble);
+#elif (DVB_DEMOD_DTMB == DVB_DEMOD_MODE)
+	sprintf(url,"dtmb://fre:%d&qam:%d&symbol:%d&vpid:%d&apid:%d&pcrpid:%d&vcodec:%d&acodec:%d&tuner:0&scramble:%d&pmt:1024&sync:0&tsid:1&dmxid:0",
+		(unsigned int)LockServiceInfo.m_dwFrequency*1000,qam,(unsigned int)LockServiceInfo.m_symbol_rate*1000,uVideoPid,uAudioPid,LockServiceInfo.m_wPcrPid,uVideoType,uAudioType,isScramble);
+#endif
+	printf("CDSTBCA_LockService url=%s\n",url);
+
+	//memcpy(player_play->url,url,PLAYER_URL_LONG);//modify by sunil
+	memset(player_play->url,0,PLAYER_URL_LONG);
+	memcpy(player_play->url,url,GX_PM_MAX_PROG_URL_SIZE);
+	player_play->player = PLAYER0;
+	CAS_Dbg("************************sent start*************************\n");
+	GxBus_MessageSend(appMsg.msg);
+    	GxCore_ThreadDelay(200);
+
+	if ( TRUE == isScramble)
+	{
+		playPara.program_type = isScramble;
+		playPara.scramble_type = scrambleType;
+		playPara.p_video_pid = uVideoPid;
+		playPara.p_audio_pid = uAudioPid;
+		playPara.p_ecm_pid = ecmPid;
+		playPara.p_ecm_pid_video = uVideoEcm;
+		playPara.p_ecm_pid_audio = uAudioEcm;
+		CAS_Dbg("Emergency  isScramble=%d  scrambleType=%d uVideoPid=0x%x uAudioPid=0x%x tpSearch.frequency=%d\n",
+			isScramble,scrambleType,uVideoPid,uAudioPid,(unsigned int)LockServiceInfo.m_dwFrequency);
+		CAS_Dbg("Emergency   ecmPid=%d uVideoEcm=%d uAudioEcm=0x%x\n",						ecmPid,uVideoEcm,uAudioEcm);
+		//app_cas_api_start_ecm_filter(&playPara);
+	}
+
+	appMsg.msg = NULL;
+	appMsg.param = NULL;
+	
+}
+
+uint8_t app_cd_cas30_api_set_lock_status(uint8_t lock_status)
+{
+	CAS_Dbg("app_cd_cas30_api_set_lock_status =%d\n",lock_status);
+	if (lock_service_status != lock_status)
+		lock_service_status = lock_status;
+	return lock_service_status;
+	
+}
+
+uint8_t app_cd_cas30_api_get_lock_status(void)
+{
+	CAS_Dbg("app_cd_cas30_api_get_lock_status =%d\n",lock_service_status);
+	return lock_service_status;
+}
+
+
