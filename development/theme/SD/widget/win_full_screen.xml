@@ -54,6 +54,17 @@
                 <format>static</format>
             </property>
         </widget>
+		<widget name="win_full_screen_center_text_msg_signal_bad" style="default" class="text">
+            <property>
+                <rect>[175,270,360,30]</rect>
+                <state>hide</state>
+                <forecolor>[#CEE8FF,#CEE8FF,#CEE8FF]</forecolor>
+                <backcolor>[#36518f,#36518f,#36518f]</backcolor>
+                <font>Arial</font>
+                <string></string>
+                <format>static</format>
+            </property>
+        </widget>
         <widget name="full_screen_img_mail" style="default" class="image">
             <property>
                 <rect>[43,118,45,37]</rect>

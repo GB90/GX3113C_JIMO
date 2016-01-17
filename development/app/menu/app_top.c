@@ -372,6 +372,22 @@ int service_msg_to_app(void* usrdata)
 				//	count = 0;
 				//}
 //#endif
+				#ifdef CUST_JIMO
+				focus_Window = (char*)GUI_GetFocusWindow();
+				if (NULL != focus_Window)
+				{
+					if(strcasecmp("win_full_screen", focus_Window) == 0)
+					{
+						app_hide_prompt();
+						GUI_SetProperty("win_full_screen_center_text_msg_signal_bad", "string", "Signal disconnect and call");
+						GUI_SetProperty("win_full_screen_center_text_msg_signal_bad","state","show");
+					}
+					else
+					{
+						GUI_SetProperty("win_full_screen_center_text_msg_signal_bad","state","hide");
+					}
+				}
+				#endif
 				return EVENT_TRANSFER_STOP;
 			}
 		case GXMSG_FRONTEND_LOCKED:
@@ -382,6 +398,10 @@ int service_msg_to_app(void* usrdata)
 #endif
 			TOP_Msg_Dbg("[service_msg_to_app] GXMSG_FRONTEND_LOCKED\n");
 			app_play_clear_msg_pop_type(MSG_POP_SIGNAL_BAD);
+#ifdef CUST_JIMO
+			printf("Hide the signal bad center msg!!\n");
+			GUI_SetProperty("win_full_screen_center_text_msg_signal_bad","state","hide");
+#endif
 			app_panel_show(PANEL_LOCK,0);
 			return EVENT_TRANSFER_STOP;
 		case GXMSG_BOOK_TRIGGER:

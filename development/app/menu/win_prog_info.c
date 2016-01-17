@@ -129,8 +129,11 @@ SIGNAL_HANDLER int win_prog_info_create(const char* widgetname, void *usrdata)
 
 		GxBus_PmTpGetById(Prog.tp_id, &tp);
 		memset(temp,0,20);
-
+#ifdef CUST_JIMO//FRE mask
+		sprintf(temp,"%03d MHz", 0);
+#else
 		sprintf(temp,"%d MHz", tp.frequency/1000);
+#endif
 		GUI_SetProperty("win_prog_info_fre_value", "string", temp);	
 	}
 

@@ -169,7 +169,6 @@ int app_service(void* usrdata)
 		sat_tp_reply_msg.widget_tv_list_name = "win_search_result_tv_name";
 		sat_tp_reply_msg.widget_radio_list_name = "win_search_result_radio_name";
 		sat_tp_reply_msg.widget_fre_name = "win_search_result_frequency_value";  
-			
  		app_search_sat_tp_reply_msg(sat_tp_reply_msg);
 		break;
 

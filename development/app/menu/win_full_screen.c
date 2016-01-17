@@ -787,8 +787,7 @@ SIGNAL_HANDLER  int app_full_screen_keypress(const char* widgetname, void *usrda
 				app_play_video_window_zoom(890, 170, 220, 180);
 #endif
 				break;
-
-			case KEY_OK://PROG_LIST
+			case KEY_OK:
 			case KEY_PROG_LIST:
 				/*begin:modify by cth*/
 #if defined(APP_SD) && !defined(DVB_CA_TYPE_MG_FLAG) && !defined(DVB_CA_TYPE_MG312_FLAG)

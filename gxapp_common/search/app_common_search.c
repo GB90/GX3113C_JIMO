@@ -1497,7 +1497,9 @@ void app_search_sat_tp_reply_msg(search_sat_tp_reply_msg  sat_tp_reply_msg)
 
 	if (NULL != sat_tp_reply_msg.widget_fre_name)
 		GUI_SetProperty(sat_tp_reply_msg.widget_fre_name, "string", buf);		 			
-
+	#ifdef CUST_JIMO
+		GUI_SetProperty(sat_tp_reply_msg.widget_fre_name, "string", "000");
+	#endif
 	app_lcn_set_searching_tp_id(params->tp_id);
 
 	GUI_SetProperty(sat_tp_reply_msg.widget_fre_name, "draw_now", NULL);

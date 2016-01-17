@@ -676,8 +676,6 @@ void app_win_prompt_msg_exec_call_back(void)
 				oldMsgpoptype = i;
 				#ifndef CUST_JIMO
 				app_show_prompt("Bad signal");
-				#else
-					app_popmsg(POP_DIALOG_X_START, POP_DIALOG_Y_START,"        信号中断        请播打维修电话：87568578",POPMSG_TYPE_OK);
 				#endif
 			}
 			break;
@@ -685,7 +683,7 @@ void app_win_prompt_msg_exec_call_back(void)
 			if(oldMsgpoptype != i)
 			{
 				oldMsgpoptype = i;
-				app_show_prompt("program Locked");
+				app_show_prompt("program Locked");	
 			}
 			break;
 		case MSG_POP_PROG_SKIP:

@@ -71,6 +71,9 @@
         <tran id="Confirm Password"                >确认密码</tran>
         <tran id="the password have changed"                >密码已经改变</tran>
         <tran id="Please enter password"                >请输入密码</tran>
+<!--Add for JIMO pro by gw start!!!-->
+		<tran id="Signal disconnect and call">信号中断，请拨打维修电话:87568578</tran>
+<!--Add for JIMO pro by gw end!!!-->
         <tran id="Bad Signal"                >无信号或信号差</tran>
         <tran id="Scramble Service"                >加密节目</tran>
         <tran id="Game"                >游戏</tran>
