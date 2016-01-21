@@ -1442,7 +1442,8 @@ SIGNAL_HANDLER int app_system_menu_box1_keypress(const char* widgetname, void *u
 							break;
 	
 						case 2:
-							{	
+							{		
+#ifndef CUST_JIMO
 								extern int PasswdCheckOK();
 								extern void win_SetName(char *win);
 								win_SetName("win_advanced_set_menu");
@@ -1450,6 +1451,10 @@ SIGNAL_HANDLER int app_system_menu_box1_keypress(const char* widgetname, void *u
 								if(!PasswdCheckOK())
 								{
 								}
+#else
+			
+								GUI_CreateDialog("win_advanced_set_menu");
+#endif
 							}
 							break;
 						case 3:

@@ -229,8 +229,8 @@ char* app_win_get_local_time_string(void)
 	static char buf[50] = {0};
 
 	app_epg_get_local_time(&LocalTime,TRUE);
-
-/*	sprintf((void*)buf,
+/*
+	sprintf((void*)buf,
 			"%04d-%02d-%02d %02d:%02d",
 			LocalTime.tm_year,
 			LocalTime.tm_mon,
@@ -238,6 +238,7 @@ char* app_win_get_local_time_string(void)
 			LocalTime.tm_hour,
 			LocalTime.tm_min);
 */
+
 	sprintf((void*)buf,
 			"%02d:%02d",
 			LocalTime.tm_hour,

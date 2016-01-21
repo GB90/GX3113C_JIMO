@@ -151,11 +151,18 @@ SIGNAL_HANDLER int app_prog_menu_box_keypress(const char* widgetname, void *usrd
 							{
 								if (0 !=  app_prog_check_group_num(GROUP_MODE_FAV,app_prog_get_stream_type(),1))
 								{
-#ifdef APP_SD
-									app_play_video_window_zoom(99,140,248,186);
-#endif
+										app_play_stop();
+									app_play_set_zoom_para(FAV_MENU_VIDEO_X, FAV_MENU_VIDEO_Y, FAV_MENU_VIDEO_W, FAV_MENU_VIDEO_H);
+									app_play_video_window_zoom(FAV_MENU_VIDEO_X, FAV_MENU_VIDEO_Y, FAV_MENU_VIDEO_W, FAV_MENU_VIDEO_H);
+
+
 									GUI_CreateDialog("win_favorite_prog_list");
 									GUI_SetInterface("flush", NULL);
+									if (FALSE == app_play_get_play_status())
+									{
+
+										app_play_reset_play_timer(0);
+									}
 								}
 								else
 								{

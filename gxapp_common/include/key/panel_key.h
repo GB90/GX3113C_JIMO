@@ -200,14 +200,14 @@ extern "C" {
 #define PANEL_KEY_POWER 0xfdcb5da2
 #endif
 #if (KEY_JIMO == REMOTE_TYPE)
-#define PANEL_KEY_EXIT  0xfd02c53a
-#define PANEL_KEY_DOWN    0xfd028d72
-#define PANEL_KEY_UP  0xfd022dd2
-#define PANEL_KEY_RIGHT 0xfd024db2
-#define PANEL_KEY_MENU  0xfd02659a
-#define PANEL_KEY_OK    0xfd02c738
-#define PANEL_KEY_LEFT  0xfd02cd32
-#define PANEL_KEY_POWER 0xfd023fc0
+#define PANEL_KEY_EXIT  0x7f805ca3
+#define PANEL_KEY_DOWN    0x7f80b44b
+#define PANEL_KEY_UP  0x7f80ac53
+#define PANEL_KEY_RIGHT 0x7f806699
+#define PANEL_KEY_MENU  0x7f80de21
+#define PANEL_KEY_OK    0x7f808c73
+#define PANEL_KEY_LEFT  0x7f807c83
+#define PANEL_KEY_POWER 0x7f80c43b
 #endif
 
 

@@ -346,7 +346,7 @@
         </widget>
         <widget name="win_full_screen_text_roll_top" style="default" class="text">
             <property>
-                <rect>[0,37,720,42]</rect>
+                <rect>[0,55,720,42]</rect>
                 <state>hide</state>
                 <forecolor>[#CEE8FF,#FFFFFF,#CEE8FF]</forecolor>
                 <backcolor>[#00FF00,#00FF00,#00FF00]</backcolor>

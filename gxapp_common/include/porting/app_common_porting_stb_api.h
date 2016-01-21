@@ -30,7 +30,7 @@ extern "C" {
 */
 
 #define CAS_NAME                  ("cas")
-#define CAS_PRINT_OPEN				1
+#define CAS_PRINT_OPEN				0
 #define ADS_PRINT_OPEN				0
 
 

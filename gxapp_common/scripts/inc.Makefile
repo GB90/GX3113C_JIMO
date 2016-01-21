@@ -135,6 +135,11 @@ else
 	echo "#define DVB_PVR_FLAG 0">> include/gxapp_sys_config.h
 endif
 
+ifeq  ($(DVB_ZOOM_RESTART_PLAY), yes)
+	echo "#define DVB_ZOOM_RESTART_PLAY 1">> include/gxapp_sys_config.h
+else
+	echo "#define DVB_ZOOM_RESTART_PLAY 0">> include/gxapp_sys_config.h
+endif
 ifeq  ($(DVB_NETWORK_FLAG), yes)
 	echo "#define DVB_NETWORK_FLAG 1">> include/gxapp_sys_config.h
 else

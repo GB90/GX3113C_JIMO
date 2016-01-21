@@ -108,11 +108,27 @@ SIGNAL_HANDLER int win_favorite_prog_list_keypress(const char* widgetname, void 
 				app_prog_change_group(GROUP_MODE_ALL,app_prog_get_stream_type(), 1);
 				if (TRUE == app_get_win_create_flag(MAIN_MENU_WIN))
 				{
-					app_play_check_play_timer();
+#if ( 1 == DVB_ZOOM_RESTART_PLAY)
+					app_play_stop();
 					GUI_EndDialog("win_favorite_prog_list");
 					GUI_EndDialog("win_prog_menu");
 					GUI_EndDialog("win_main_menu");
+					GUI_SetInterface("flush", NULL);
+					app_play_video_window_full();
+					app_play_reset_play_timer(0);
+#elif (0 == DVB_ZOOM_RESTART_PLAY)
+					app_play_check_play_timer();
+					app_play_hide_video_layer();
+					GUI_EndDialog("win_favorite_prog_list");				
+					GUI_EndDialog("win_sys_set");
+					GUI_EndDialog("win_main_menu");	
+					GUI_SetInterface("flush", NULL);
+					app_play_video_window_full();
 
+		
+					app_play_show_video_layer();
+
+				    #endif
 					app_win_set_focus_video_window(FULL_SCREEN_WIN);
 				}
 				else
@@ -120,11 +136,27 @@ SIGNAL_HANDLER int win_favorite_prog_list_keypress(const char* widgetname, void 
 					/*
 					 *  快捷键进入，直接退出到全屏
 					 */
-					app_play_video_window_full();
-					app_play_check_play_timer();
+#if ( 1 == DVB_ZOOM_RESTART_PLAY)
+					app_play_stop();
+					app_play_set_zoom_para(0,0,VIDEO_WINDOW_W,VIDEO_WINDOW_H);
+
 					GUI_EndDialog("win_favorite_prog_list");
 					GUI_EndDialog("win_prog_menu");
 					GUI_EndDialog("win_main_menu");
+					GUI_SetInterface("flush", NULL);
+					app_play_reset_play_timer(0);
+#elif (0 == DVB_ZOOM_RESTART_PLAY)
+					app_play_check_play_timer();
+					app_play_hide_video_layer();
+					GUI_EndDialog("win_favorite_prog_list");
+					GUI_SetInterface("flush", NULL);
+					GUI_EndDialog("win_prog_menu");
+					GUI_EndDialog("win_main_menu");
+					app_play_video_window_full();
+	
+					app_play_show_video_layer();					
+#endif	
+					
 					app_win_set_focus_video_window(FULL_SCREEN_WIN);					
 				}
 
@@ -135,15 +167,16 @@ SIGNAL_HANDLER int win_favorite_prog_list_keypress(const char* widgetname, void 
 				if (TRUE == app_get_win_create_flag(MAIN_MENU_WIN))
 				{
 					app_win_set_focus_video_window(MAX_WINDOW_NUM);
+#if ( 1 == DVB_ZOOM_RESTART_PLAY)
+					app_play_stop();
+					app_play_set_zoom_para(MAIN_MENU_VIDEO_X, MAIN_MENU_VIDEO_Y, MAIN_MENU_VIDEO_W, MAIN_MENU_VIDEO_H);	
+					GUI_EndDialog("win_favorite_prog_list");		
+#elif (0 == DVB_ZOOM_RESTART_PLAY)	
 					app_play_check_play_timer();
 					GUI_EndDialog("win_favorite_prog_list");
 					app_play_stop();
-#ifdef APP_SD
-					app_play_video_window_zoom(340, 40, 324, 242);	
+					app_play_set_zoom_para(MAIN_MENU_VIDEO_X, MAIN_MENU_VIDEO_Y, MAIN_MENU_VIDEO_W, MAIN_MENU_VIDEO_H);	
 #endif
-#ifdef APP_HD
-					app_play_video_window_zoom(400, 160, 500, 290);
-#endif				
 				}
 				else
 				{
@@ -151,11 +184,26 @@ SIGNAL_HANDLER int win_favorite_prog_list_keypress(const char* widgetname, void 
 					/*
 					 *  快捷键进入，直接退出到全屏
 					 */
-					app_play_video_window_full();
-					app_play_check_play_timer();
+#if ( 1 == DVB_ZOOM_RESTART_PLAY)
+					app_play_stop();
+					app_play_set_zoom_para(0,0,VIDEO_WINDOW_W,VIDEO_WINDOW_H);
 					GUI_EndDialog("win_favorite_prog_list");
 					GUI_EndDialog("win_prog_menu");
 					GUI_EndDialog("win_main_menu");
+					app_play_reset_play_timer(0);
+					#if (DVB_THEME_TYPE == DVB_THEME_DTMB_HD)
+					GUI_SetInterface("video_top", NULL);
+					#endif
+#elif (0 == DVB_ZOOM_RESTART_PLAY)	
+					app_play_check_play_timer();
+					app_play_hide_video_layer();
+					GUI_EndDialog("win_favorite_prog_list");
+					GUI_SetInterface("flush", NULL);
+					GUI_EndDialog("win_prog_menu");
+					GUI_EndDialog("win_main_menu");
+					app_play_video_window_full();
+					app_play_show_video_layer();
+#endif
 					app_win_set_focus_video_window(FULL_SCREEN_WIN);					
 				}
 				return EVENT_TRANSFER_STOP;	

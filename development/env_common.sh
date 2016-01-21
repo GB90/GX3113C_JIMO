@@ -53,7 +53,7 @@ unset DVB_DEMOD_MODE
 unset DVB_TS_SRC
 unset DVB_AUTO_TEST_FLAG
 unset MOVE_FUNCTION_FLAG
-unset DVB_FLASH
+unset DVB_ZOOM_RESTART_PLAY
 #CA枚举（与app_common_porting_stb_api.h中dvb_ca_type_t结构体中对应）
 unset DVB_CA_TYPE
 #对应市场（厂家）CA链接库名称（如libY1120-tonghui-gx3001-20121212D.a，设为Y1120-tonghui-gx3001-20121212D）
@@ -132,6 +132,7 @@ export DVB_AD_MARKET=gongban
 export CUSTOMER=CUST_JIMO    #即墨  
 #export CUSTOMER=CUST_SHANXI    #山西无线 
 #export CUSTOMER=CUST_WUKA_LEDOU
+#export CUSTOMER=CUST_LEDOU
 echo DVB_CUSTOMER_NAME=$CUSTOMER
 if [ $CUSTOMER = "CUST_NEIMENG" ]; then
 	export DVB_LOGO_JPG=logo_etuokeqi.jpg		#neimeng
@@ -261,6 +262,18 @@ elif [ $CUSTOMER = "CUST_WUKA_LEDOU" ]; then
 	export DVB_CA_1_LIB=ca
 	export DVB_CA_1_FLAG=DVB_CA_TYPE_DVB_FLAG
 	export FACTORY_SERIALIZATION_SUPPORT=yes
+elif [ $CUSTOMER = "CUST_LEDOU" ]; then
+	export DVB_LOGO_JPG=logo_thinewtec.jpg
+	export DVB_KEY_TYPE=KEY_THINEWTEC
+	export DVB_PANEL_TYPE=PANEL_TYPE_fd650_THINEWTEC #PANEL_TYPE_2KEY 
+	export DVB_SERIAL_YUEHAI=no
+	export DVB_CENTER_FRE=578
+	export DVB_CA_FLAG=yes
+	export DVB_CA_TYPE=DVB_CA_TYPE_DVB
+	export DVB_CA_1_NAME=dvb_cas
+	export DVB_CA_1_LIB=
+	export DVB_CA_1_FLAG=DVB_CA_TYPE_DVB_FLAG
+	export FACTORY_SERIALIZATION_SUPPORT=no
 elif [ $CUSTOMER = "CUST_JIMO" ]; then
 	export DVB_CA_FLAG=yes
 	export DVB_SERIAL_YUEHAI=no
@@ -472,7 +485,8 @@ export DVB_CENTER_SYMRATE=6875
 export DVB_CENTER_QAM=2
 
 export DVB_AUTO_TEST_FLAG=no
-
+# 视频缩放是否重新播放
+export DVB_ZOOM_RESTART_PLAY=yes
 #串口
 export DVB_SERIAL_SUPPORT=no
 #移动

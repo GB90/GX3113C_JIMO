@@ -117,7 +117,7 @@ static int refresh_prog_bar(void *userdata)
 
 	// TODO: chage to HH:MM
 	//runde
-    GUI_SetProperty(PROGBAR_TEXT_TIME, "string", app_win_get_local_time_string());
+    //GUI_SetProperty(PROGBAR_TEXT_TIME, "string", app_win_get_local_time_string());
 
 	app_epg_free();
 	if(0 == app_prog_get_num_in_group())
@@ -246,7 +246,7 @@ SIGNAL_HANDLER int prog_bar_create(const char* widgetname, void *usrdata)
 	duration = config * 1000;
 
 
-	//    app_epg_sync_time();
+	//app_epg_sync_time();
 	if (GXBUS_PM_PROG_TV == app_prog_get_stream_type())
 	{
 		//        GUI_SetProperty(PROGBAR_IMAGE_TVRADIO, "img", PROGBAR_BMP_TV);

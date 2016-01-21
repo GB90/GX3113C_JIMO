@@ -287,9 +287,9 @@ int32_t app_lower_power_entry(uint32_t key,uint32_t io_num,uint32_t io_status)
 		//	sprintf((void*)cmd, "keys=0x%x powercut=%d,%d",key,io_num,io_status);
 		sprintf((void*)cmd,
 				"keys=0x%x,0x%x,0x%x,0x%x,0x%x,0x%x powercut=%d,%d",
-				0xbb44af50,
+				0x7f00c400,
 				0xfb04b748,
-				0x50005700,
+				0xbb44af50,
 				0xFF00AF50,
 				0xFDCB3FC0,
 				PANEL_KEY_POWER,

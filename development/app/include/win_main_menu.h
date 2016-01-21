@@ -32,12 +32,7 @@ typedef enum
 }win_main_menu_button;
 int win_main_menu_change_button(int oldbuttonindex , int newbuttonindex);
 
-#ifdef APP_SD
-#define MAIN_MENU_VIDEO_X 		337
-#define MAIN_MENU_VIDEO_Y 		50
-#define MAIN_MENU_VIDEO_WIDTH 	326
-#define MAIN_MENU_VIDEO_HIGHTH 	246
-#endif/*APP_SD*/
+
 
 #ifdef APP_HD
 int win_main_menu_set_img_list(void);

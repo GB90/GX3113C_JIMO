@@ -183,6 +183,6 @@
   <widget class="window" style="default" name="win_cd_cas30_entitle"/>
   <widget class="window" style="default" name="win_cd_cas30_email"/>
   <widget class="window" style="default" name="win_by_cas_email"/>
-  <widget class="window" style="default" name="win_full_screen"/>
   <widget class="window" style="default" name="win_search_result"/>
+  <widget class="window" style="default" name="win_full_screen"/>
 </interface>

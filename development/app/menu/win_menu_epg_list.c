@@ -276,12 +276,13 @@ SIGNAL_HANDLER int win_epg_list_create(const char* widgetname, void *usrdata)
 	win_menu_epg_list_set_day_widget_string();
 
 	app_win_set_focus_video_window(WEEKLY_EPG_WIN);	
-
+#if 0 // ( 0 == DVB_ZOOM_RESTART_PLAY)
 	if (FALSE == app_play_get_play_status())
 	{
 		app_play_switch_prog_clear_msg();	
 		app_play_reset_play_timer(0);
 	}
+#endif
 	return 0;
 
 
@@ -497,37 +498,83 @@ SIGNAL_HANDLER int win_epg_list_keypress(const char* widgetname, void *usrdata)
 			return EVENT_TRANSFER_STOP;				
 		case KEY_OK:
 		case KEY_EXIT:
+#if ( 1 == DVB_ZOOM_RESTART_PLAY)
+			app_play_stop();
 			app_play_video_window_full();
-			app_play_check_play_timer();
 			GUI_EndDialog("win_epg_list");
 			GUI_EndDialog("win_main_menu");
+			GUI_SetInterface("flush", NULL);
+			app_play_reset_play_timer(0);
+#elif (0 == DVB_ZOOM_RESTART_PLAY)
+			app_play_check_play_timer();
+			app_play_hide_video_layer();
+			app_play_video_window_full();
+			GUI_EndDialog("win_epg_list");
+			GUI_EndDialog("win_main_menu");
+
+			GUI_SetInterface("flush", NULL);
+
+			app_play_show_video_layer();
+
+#endif
+
+
+
 			app_win_set_focus_video_window(FULL_SCREEN_WIN);
 			return EVENT_TRANSFER_STOP;	
 		case KEY_RECALL:
 		case KEY_MENU:
 			if (TRUE == app_get_win_create_flag(MAIN_MENU_WIN))
 				{
-					app_play_check_play_timer();
+#if ( 1 == DVB_ZOOM_RESTART_PLAY)					
+					app_play_stop();
+					app_play_set_zoom_para(MAIN_MENU_VIDEO_X, MAIN_MENU_VIDEO_Y, MAIN_MENU_VIDEO_W, MAIN_MENU_VIDEO_H);
 					GUI_EndDialog("win_epg_list");
 					GUI_SetInterface("flush", NULL);
-					#ifdef APP_SD
-					app_play_video_window_zoom(192, 152, 348, 240);
-					#endif
-					#ifdef APP_HD
-					app_play_video_window_zoom(400, 160, 500, 290);
-					#endif
-					app_win_set_focus_video_window(MAIN_MENU_WIN);					
+					app_play_reset_play_timer(0);
+					
+					app_win_set_focus_video_window(MAIN_MENU_WIN);	
+					
+#elif ( 0 == DVB_ZOOM_RESTART_PLAY)
+					app_play_check_play_timer();
+					app_play_hide_video_layer();
+					GUI_EndDialog("win_epg_list");
+					if(TRUE == app_play_get_msg_pop_type_state(MSG_POP_PROG_LOCK))
+					{
+						GUI_CreateDialog("win_password_input");
+					}
+					GUI_SetInterface("flush", NULL);
+					app_play_video_window_zoom(MAIN_MENU_VIDEO_X, MAIN_MENU_VIDEO_Y, MAIN_MENU_VIDEO_W, MAIN_MENU_VIDEO_H);
+			
+					app_play_show_video_layer();
+					
+					app_win_set_focus_video_window(MAIN_MENU_WIN);	
+					
+#endif
 				}
 			else
 				{
 					/*
 					* 快捷方式进入，直接退出到全屏
 					*/
-
-					app_play_video_window_full();
-					app_play_check_play_timer();
+#if ( 1 == DVB_ZOOM_RESTART_PLAY)	
+					app_play_stop();
+					app_play_set_zoom_para(0,0,VIDEO_WINDOW_W,VIDEO_WINDOW_H);					
 					GUI_EndDialog("win_epg_list");
 					GUI_EndDialog("win_main_menu");
+					GUI_SetInterface("flush", NULL);
+					app_play_reset_play_timer(0);
+#elif ( 0 == DVB_ZOOM_RESTART_PLAY)
+					app_play_check_play_timer();
+					app_play_hide_video_layer();
+					app_play_video_window_full();
+					GUI_EndDialog("win_epg_list");
+					GUI_EndDialog("win_main_menu");
+					GUI_SetInterface("flush", NULL);
+
+					app_play_show_video_layer();
+
+#endif
 					app_win_set_focus_video_window(FULL_SCREEN_WIN);				
 				}
 			return EVENT_TRANSFER_STOP;	

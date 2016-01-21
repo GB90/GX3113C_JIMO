@@ -130,5 +130,41 @@
 #define FRE_BEGIN_HIGH_FULL (866)
 
 #endif
+#define MAIN_MENU_VIDEO_X  192 
+#define MAIN_MENU_VIDEO_Y  152
+#define MAIN_MENU_VIDEO_W  348 
+#define MAIN_MENU_VIDEO_H  240 
 
+/*
+* tv list menu video zoom position
+*/
+
+#define TV_MENU_VIDEO_X  85 
+#define TV_MENU_VIDEO_Y  140 
+#define TV_MENU_VIDEO_W  248 
+#define TV_MENU_VIDEO_H  186 
+
+/*
+* epg menu video zoom position
+*/
+#define EPG_MENU_VIDEO_X  64 
+#define EPG_MENU_VIDEO_Y  116 
+#define EPG_MENU_VIDEO_W  220 
+#define EPG_MENU_VIDEO_H  150 
+
+/*
+* fav menu video zoom position
+*/
+#define FAV_MENU_VIDEO_X  85 
+#define FAV_MENU_VIDEO_Y  140 
+#define FAV_MENU_VIDEO_W  248 
+#define FAV_MENU_VIDEO_H  186 
+
+/*
+* edit menu video zoom position
+*/
+#define EDIT_MENU_VIDEO_X  430 
+#define EDIT_MENU_VIDEO_Y  40 
+#define EDIT_MENU_VIDEO_W  240 
+#define EDIT_MENU_VIDEO_H  180 
 #endif
